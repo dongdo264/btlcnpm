@@ -1,0 +1,19 @@
+<div class="container">
+        <div class="col-sm-10">
+            <div class="row">
+                {{#each this.categories}}
+                <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                <img src="./public/img/{{CatID}}/main.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                   <h5 class="card-title">{{CatBrand}}</h5>
+                 <p class="card-text">{{CatName}} : {{CatPrice}}</p>
+                <a href="#" class="btn btn-primary" title="Xem chi tiết">Xem chi tiết</a>
+             </div>
+            </div>
+            </div>
+            {{/each}}
+            </div>
+        </div>
+        
+</div>
