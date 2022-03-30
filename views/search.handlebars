@@ -1,19 +1,37 @@
-<div class="container">
-        <div class="col-sm-10">
-            <div class="row">
+<section class="body_product">
+        <div class="container">
+            <div class="title"><h3>Danh sách sản phẩm</h3></div>
+            <form class="d-flex">
+                <select class="my-3" name="optionsearch" id="myselected" onchange="window.location.href = this.value">
+                    <option selected = "selected" value="">Mặc định</option>
+                    <option value="/mostsale?qr={{searchName}}">Bán chạy nhất</option>
+                    <option value="/sortbyprice?qr={{searchName}}">Sắp xếp giá tăng dần</option>
+                    <option value="/sortbypricedesc?qr={{searchName}}">Sắp xếp giá giảm dần</option>
+                </select>
+            </form>
+            <div class="show_product">
                 {{#each this.categories}}
-                <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                <img src="./public/img/{{CatID}}/main.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                   <h5 class="card-title">{{CatBrand}}</h5>
-                 <p class="card-text">{{CatName}} : {{CatPrice}}</p>
-                <a href="#" class="btn btn-primary" title="Xem chi tiết">Xem chi tiết</a>
-             </div>
-            </div>
-            </div>
-            {{/each}}
+                <div class="card">
+                    <div class="items">
+                        <div class="image">
+                            <img src="/img/{{productID}}/view1.webp" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>{{productName}} </h3>
+                            <p>{{productPrice}} đ</p>
+                        </div>
+                        <div class="color">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                       <div class="button">
+                        <a href="/product/view/{{productID}}">Xem chi tiết</a>
+                       </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
-        
-</div>
+    </section>

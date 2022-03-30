@@ -1,6 +1,8 @@
 const express = require('express');
 
 const { engine } = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const sessionMiddleware = require('./middleware/sessionMiddleware');
 
 const app = express();
 
@@ -12,10 +14,17 @@ app.use(express.urlencoded({
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 
-app.use('/public', express.static('public'));
 
-const catRouter = require('./routes/product.route');
-app.use('/', catRouter);
+app.use(express.static('public'));
+app.use(cookieParser('MY SECRET'));
+app.use(sessionMiddleware);
+
+const productRouter = require('./routes/product.route');
+const userRouter = require('./routes/user.route');
+
+app.use('/product', productRouter);
+
+app.use('/', userRouter);
 
 const PORT = 3000;
 app.listen(PORT);

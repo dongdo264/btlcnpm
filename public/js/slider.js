@@ -1,3 +1,4 @@
+/*
 var slideIndex = 1;
  showSlides(slideIndex);
 function plusSlides(n) {
@@ -20,4 +21,35 @@ function showSlides(n) {
    }
    slides[slideIndex-1].style.display = "block";
    dots[slideIndex-1].className += " active";
+ } */
+ var mainImg = document.getElementById('mainImg');
+ var viewImg = document.getElementsByClassName('small-img');
+
+ viewImg[0].onclick = function() {
+   mainImg.src = viewImg[0].src;
  }
+ viewImg[1].onclick = function() {
+  mainImg.src = viewImg[1].src;
+}
+viewImg[2].onclick = function() {
+  mainImg.src = viewImg[2].src;
+}
+viewImg[3].onclick = function() {
+  mainImg.src = viewImg[3].src;
+}
+
+
+// function selectOption() {
+//   var mySelect = document.getElementById('myselected');
+//   var element = mySelect.value;
+//   console.log(element);
+//   if (element == "") {
+//     mySelect.selectedIndex = 0;
+//   } else if(element == "mostsale") {
+//     mySelect.selectedIndex = 1;
+//   } else if (element == "asc") {
+//     mySelect.selectedIndex = 2;
+//   } else if (element == "desc") {
+//     mySelect.selectedIndex = 3;
+//   }
+// }

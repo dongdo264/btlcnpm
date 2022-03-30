@@ -1,0 +1,45 @@
+<section class="container sproduct my-5 pt-5">
+    <div class="row">
+        {{#each this.categories}}
+        <div class="col-lg-5 col-md-12 col-12">
+            <img class="img-fluid w-100" src="/img/{{productID}}/view1.webp" id="mainImg">
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="/img/{{productID}}/view1.webp" width="100%" alt="" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="/img/{{productID}}/view2.webp" width="100%" alt="" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="/img/{{productID}}/view3.webp" width="100%" alt="" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="/img/{{productID}}/view4.webp" width="100%" alt="" class="small-img">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
+            <h6>Thông tin sản phẩm</h6>
+            <h3>{{productName}}</h3>
+            <h2>Giá sản phẩm: {{productPrice}} đ</h2>
+            <form class="d-flex" method="POST" action="/product/view/{{productID}}">
+                <select class="my-3" name="selectsize">
+                    <option value="">Chọn size</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                </select>
+            
+                <button class="btn btn-outline-success" type="submit">Thêm vào giỏ hàng</button>
+            </form>
+            <!--<a href="/product/view/{{productID}}/addtocart"><button class="buy-btn">Thêm vào giỏ hàng</button></a> -->
+            <h5>Loại đinh: {{style}}</h5>
+            <h4>Đã bán: {{quantityOdered}} sản phẩm</h4>
+            <h4>Mô tả: </h4>
+            <span>{{this.productDescription}}</span>
+        </div>
+        {{/each}}
+    </div>
+</section>

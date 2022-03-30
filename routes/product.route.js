@@ -3,21 +3,39 @@ const db = require('../utils/database');
 
 const router = express.Router();
 
-router.get('/', async function(req, res) {
-    const list = await db.load('select * from categories');
-    res.render('home', {
-        categories : list,
-        empty : list.length === 0
+router.get('/view/:id', async function(req, res) {
+    const id = req.params.id;
+    const product = await db.load("SELECT * FROM products WHERE productID = " + id);
+    res.render('view', {
+       categories : product
     });
 });
 
-router.post('/search', async function(req, res) {
-    const searchName = req.body.searchCat;
-    const list = await db.load("SELECT * FROM categories WHERE CatName LIKE '" + '%' + searchName + '%' + "'");
-    res.render('search', {
-        categories : list,
-        empty : list.length === 0
-    });
-})
+router.post('/view/:id', async function(req, res) {
+    var size = req.body.selectsize;
+    const id = req.params.id;
+    const obj = {
+        customerID : req.signedCookies.sessionId,
+        productId : id
+    }
+    const tb = 'customerscart';
+    db.add(tb, obj);
+    //const url = '/product/view/' + id;
+    res.redirect('/');
+});
+
+router.get('/view/:id/addtocart', async function(req, res) {
+    console.log(req.body.selectsize);
+    const id = req.params.id;
+    const obj = {
+        customerID : req.signedCookies.sessionId,
+        productId : id
+    }
+    const tb = 'customerscart';
+    db.add(tb, obj);
+    //const url = '/product/view/' + id;
+    res.redirect('/');
+});
+
 
 module.exports = router;
