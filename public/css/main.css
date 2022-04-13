@@ -122,9 +122,28 @@
     text-decoration: none;
 }
 
+.header .cart:hover .ti-shopping-cart {
+    color: #ffe11b;
+}
+
 .header .ti-shopping-cart {
     font-size: 15px;
     color: #fff;
+}
+
+.header .header-cart__number {
+    position: relative;
+    top: -10px;
+    left: -10px;
+    background: #ffe11b;
+    color: #1d1d1d;
+    font-size: 10px;
+    height: 20px;
+    line-height: 14px;
+    text-align: center;
+    min-width: 14px;
+    border-radius: 60%;
+    padding: 1px 5px;
 }
 
 .header .header__search-box {
@@ -322,9 +341,13 @@
     margin-right: auto;
 }
 
+.container .category {
+    padding-top: 5px;
+}
+
 /* manhdz */
 .site-content {
- 
+    padding-top: 30px;
     padding-left: 120px;
     padding-right: 15px;
     color: #fff;
@@ -878,4 +901,8 @@ label {
     font-size: 1.6rem;
     line-height: calc(22 / 14);
     margin-bottom: 30px;
+}
+
+.info-order .table_orders .number_product {
+    display: flex;
 }

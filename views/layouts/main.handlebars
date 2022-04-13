@@ -20,7 +20,7 @@
        <header class="header">
         <div class="header__row_1">
             <div class="container">
-                <a href="/"><img src="/img/logo.png" alt="Trang chủ Home" class="logo-shop"></a>
+                <a href="/"><img src="/img/logoo.png" alt="Trang chủ Home" class="logo-shop"></a>
                     <form class="header__search-box" method="get" action="/search">
                         <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search" name="q">
                         <div class="icon__search">
@@ -29,6 +29,7 @@
                     </form>
                 <a href="/cart" class="cart">
                     <i class="ti-shopping-cart"></i>
+                    <span class="header-cart__number">{{productInCart}}</span>
                 </a>
             </div>
         </div>
@@ -59,15 +60,13 @@
                             </li>
                             <li class="pumaShoe"><a href="/search?q=Puma">Giày bóng đá Puma</a></li>
                             <li><a href="/search?q=Mizuno">Giày bóng đá Mizuno</a></li>
-                            <li><a href="">Giày bóng đá sân cỏ tự nhiên</a></li>
-                            <li><a href="">Giày bóng đá sân cỏ nhân tạo</a></li>
                         </ul>
                     </li>
-                    <li class="header__navbar-item"><a href="">Tin tức <i class="ti-angle-down"></i></a></li>
-                    <li class="header__navbar-item"><a href="">Hướng dẫn <i class="ti-angle-down"></i></a></li>
+                    <li class="header__navbar-item"><a href="/searchby?loaidinh=Cỏ+tự+nhiên">Giày sân cỏ tự nhiên</a></li>
+                    <li class="header__navbar-item"><a href="/searchby?loaidinh=Cỏ+nhân+tạo">Giày sân cỏ nhân tạo</a></li>
                 </ul>
                 <div class="hotline">Hotline:
-                    <a href="" class="number-phone">078.246.5555 - 0923.833.666</a>
+                    <a href="" class="number-phone">0999.666.888</a>
                 </div>
             </div>
         </nav>

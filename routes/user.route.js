@@ -9,14 +9,24 @@ router.get('/', async function(req, res) {
     res.render('home', {
         categories : list,
         empty : list.length === 0,
-        search : " "
+        search : ""
     });
 });
 
 router.get('/search', async function(req, res) {
     const name = req.query.q;
     const list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "'");
-    res.render('home', {
+    res.render('search', {
+        categories : list,
+        searchName: name,
+        empty : list.length === 0
+    });
+});
+
+router.get('/searchby', async function(req, res) {
+    const name = req.query.loaidinh;
+    const list = await db.load("SELECT * FROM products WHERE style LIKE '" + '%' + name + '%' + "'");
+    res.render('search', {
         categories : list,
         searchName: name,
         empty : list.length === 0
@@ -27,7 +37,7 @@ router.get('/search', async function(req, res) {
 router.get('/sortbyprice', async function(req, res) {
     const name = req.query.qr;
     const list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + "%' " + 'order by productPrice');
-    res.render('home', {
+    res.render('search', {
         categories : list,
         searchName: name,
         empty : list.length === 0
@@ -37,7 +47,7 @@ router.get('/sortbyprice', async function(req, res) {
 router.get('/sortbypricedesc', async function(req, res) {
     const name = req.query.qr;
     const list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + "%' " + 'order by productPrice desc');
-    res.render('home', {
+    res.render('search', {
         categories : list,
         searchName: name,
         empty : list.length === 0
@@ -45,8 +55,8 @@ router.get('/sortbypricedesc', async function(req, res) {
 });
 router.get('/mostsale', async function(req, res) {
     const name = req.query.qr;
-    const list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + "%' " + 'order by quantityOdered desc');
-    res.render('home', {
+    const list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + "%' " + 'order by quantityOrdered desc');
+    res.render('search', {
         categories : list,
         searchName: name,
         empty : list.length === 0

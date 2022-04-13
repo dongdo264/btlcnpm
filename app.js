@@ -2,7 +2,9 @@ const express = require('express');
 const numeral = require('numeral');
 const { engine } = require('express-handlebars');
 const cookieParser = require('cookie-parser');
+const db = require('./utils/database');
 const sessionMiddleware = require('./middleware/sessionMiddleware');
+const cartMiddleware = require('./middleware/cartMiddleware');
 
 const app = express();
 
@@ -25,6 +27,12 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 app.use(cookieParser('MY SECRET'));
 app.use(sessionMiddleware);
+
+app.use(async function(req, res, next) {
+    const list = await db.load('select count(*) as count from customercart where customerID = ' + req.signedCookies.sessionId);
+    res.locals.productInCart = list[0].count;
+    next();
+});
 
 const productRouter = require('./routes/product.route');
 const userRouter = require('./routes/user.route');
