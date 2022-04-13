@@ -1,0 +1,112 @@
+
+<div class="container">
+            <div id="content">
+                <div class="container_content">
+                    <div class="section_header">
+                        <div class="container_section_header">
+                            <h2 class="section_title">Thông tin đặt hàng</h2>
+                        </div>
+                    </div>
+
+                    <div class="list_orders">
+                        <table class="table_orders">
+                            <thead>
+                                <tr class="title-row">
+                                    <th>Sản phẩm</th>
+                                    <th></th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng tiền</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this.categories}}
+                                <tr class="order_detail">
+                                    <td><a class="image" href=""><img style="width:88px" src="/img/{{productID}}/main.jpg" alt=""></a></td>
+                                    <td class="describe_product">
+                                        <a href="/product/view/{{productID}}">{{productName}}</a>
+                                        <dl class="size_product">
+                                            <dt style="color: #b1b1b1">Size:</dt>
+                                            <dd style="margin:0 0">{{size}}</dd>
+                                        </dl>
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{format_number productPrice}}đ</span>
+                                    </td>
+                                    <td>
+                                        {{quantity}}
+                                    </td>
+                                    <td class="price_total">
+                                        <div class="cl--primary" style="color:#ffe11b">{{format_number total}}đ</div>
+                                    </td>
+                                    
+                                    <td class="recycle">
+                                        <a href="/cart/delete?id={{productID}}&size={{size}}">
+                                            <button class="btn btn-secondary" type="button">
+                                                <i class="ti-trash"></i><span>Xoá</span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="shop-total">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Tổng cộng: </td>
+                                    <td>{{format_number sum}}đ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="shop-back" id="button-showinfo">
+                        <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
+                    </div>
+
+                    <div class="section_header" id="header-info" style="display: none">
+                        <div class="container_section_header">
+                            <h2 class="section_title">Thông tin gửi hàng</h2>
+                        </div>
+                    </div>
+
+                    <div class="info-shipping" id="container-shipping" style="display: none">
+                        <form class="col col1" method="POST" action="/cart/payment">
+                            <div class="form-group">
+                                <label class="title-info">Họ tên
+                                    <span class="required">*</span>
+                                </label>
+                                <input class="form-control" type="text" name="name" value="">
+                            </div>
+                            <div class="form-group">
+                                <label class="title-info">Địa chỉ
+                                    <span class="required">*</span>
+                                </label>
+                                <input class="form-control" type="text" name="address">
+                            </div>
+                                <div class="form-group">
+                                    <label class="title-info">Số điện thoại
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input class="form-control" type="text" name="phone">
+                                </div>
+                                <div class="form-group note-shipping">
+                                    <label class="title-info">Ghi chú về đơn hàng</label>
+                                    <input class="form-control" type="text" name="note"></input>
+                                </div>
+
+                                 <div class="shop-back" id="button-payment" style="display: none" >
+                                    <button class="btn btn-secondary" type="submit"><i class="ti-shopping-cart"></i> Mua hàng</button>
+                                </div>
+                        </form>
+                    </div>
+
+                   
+                </div>
+            </div>
+       </div>

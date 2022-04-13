@@ -6,35 +6,42 @@ const router = express.Router();
 router.get('/view/:id', async function(req, res) {
     const id = req.params.id;
     const product = await db.load("SELECT * FROM products WHERE productID = " + id);
-    res.render('view', {
+    res.render('productDetail', {
        categories : product
     });
 });
 
 router.post('/view/:id', async function(req, res) {
-    var size = req.body.selectsize;
+    var size = req.body.variation;
+    var quantity = req.body.quantity;
     const id = req.params.id;
-    const obj = {
-        customerID : req.signedCookies.sessionId,
-        productId : id
+    const customerID = req.signedCookies.sessionId;
+    if (!size) {
+        size = 39;
     }
-    const tb = 'customerscart';
-    db.add(tb, obj);
-    //const url = '/product/view/' + id;
-    res.redirect('/');
-});
-
-router.get('/view/:id/addtocart', async function(req, res) {
-    console.log(req.body.selectsize);
-    const id = req.params.id;
-    const obj = {
-        customerID : req.signedCookies.sessionId,
-        productId : id
+    const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + customerID);
+    
+    var check = true;
+    for (var i = 0; i < product.length; i++) {
+        if(id == product[i].productID) {
+            if (size == product[i].size) {
+                quantity = parseInt(quantity) + parseInt(product[i].quantity);
+                db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
+                check = false;
+            }
+        }
     }
-    const tb = 'customerscart';
-    db.add(tb, obj);
-    //const url = '/product/view/' + id;
-    res.redirect('/');
+    if (check) {
+        const obj = {
+            customerID,
+            productId : id,
+            size,
+            quantity
+        }
+        const tb = 'customercart';
+        db.add(tb, obj);
+    }
+    res.redirect('/cart');
 });
 
 

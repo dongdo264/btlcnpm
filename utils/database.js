@@ -27,6 +27,29 @@ module.exports = {
             resolve(results);
             });
         });
+    },
+    detele : function(id) {
+        return new Promise(function(resolve, reject) {
+            var sql = 'delete from customercart where productId = ' + id;
+            pool.query(sql, function(error, results, fields) {
+            if (error) {
+                return reject(error);
+            }
+            resolve(results);
+            });
+        });
+    },
+    update : function(id) {
+        return new Promise(function(resolve, reject) {
+            var sql = 'delete from customercart where productId = ' + id;
+            pool.query(sql, function(error, results, fields) {
+            if (error) {
+                return reject(error);
+            }
+            resolve(results);
+            });
+        });
     }
+
 };
 

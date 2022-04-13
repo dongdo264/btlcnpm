@@ -1,55 +1,36 @@
-/*
-var slideIndex = 1;
- showSlides(slideIndex);
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
 function plusSlides(n) {
-   showSlides(slideIndex += n);
- }
+  showSlides(slideIndex += n);
+}
+
 function currentSlide(n) {
-   showSlides(slideIndex = n);
- }
+  showSlides(slideIndex = n);
+}
+
 function showSlides(n) {
-   var i;
-   var slides = document.getElementsByClassName("mySlides");
-   var dots = document.getElementsByClassName("dot");
-   if (n > slides.length) {slideIndex = 1}
-   if (n < 1) {slideIndex = slides.length}
-   for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";
-   }
-   for (i = 0; i < dots.length; i++) {
-       dots[i].className = dots[i].className.replace(" active", "");
-   }
-   slides[slideIndex-1].style.display = "block";
-   dots[slideIndex-1].className += " active";
- } */
- var mainImg = document.getElementById('mainImg');
- var viewImg = document.getElementsByClassName('small-img');
-
- viewImg[0].onclick = function() {
-   mainImg.src = viewImg[0].src;
- }
- viewImg[1].onclick = function() {
-  mainImg.src = viewImg[1].src;
-}
-viewImg[2].onclick = function() {
-  mainImg.src = viewImg[2].src;
-}
-viewImg[3].onclick = function() {
-  mainImg.src = viewImg[3].src;
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
 }
 
 
-// function selectOption() {
-//   var mySelect = document.getElementById('myselected');
-//   var element = mySelect.value;
-//   console.log(element);
-//   if (element == "") {
-//     mySelect.selectedIndex = 0;
-//   } else if(element == "mostsale") {
-//     mySelect.selectedIndex = 1;
-//   } else if (element == "asc") {
-//     mySelect.selectedIndex = 2;
-//   } else if (element == "desc") {
-//     mySelect.selectedIndex = 3;
-//   }
-// }
+
+function getPaymentInfo() {
+  document.getElementById('header-info').style.display=" block";
+  document.getElementById('container-shipping').style.display=" block";
+  document.getElementById('button-payment').style.display=" block";
+  document.getElementById('button-showinfo').style.display=" none";
+}

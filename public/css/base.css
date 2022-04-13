@@ -1,0 +1,129 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 55%;  /* 62.5% = 10px */
+    background-color: #1d1d1d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    /* font-size: 1.2rem; */
+    font-size: 100%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    /* line-height: 1.6rem; */
+    box-sizing: border-box;
+    margin: 0 0;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.grid__column {
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 15%;
+}
+.container {
+    background: #1d1d1d;
+}
+.home-product-item-img {
+    padding-top: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #888;  
+}
+.home-product-item-img:hover {
+    border-color: var(--while-color);
+}
+.home-product-item {
+    background-color: #1d1d1d;
+}
+.home-product-item-name {
+    color: #fff;
+    font-weight: 400;
+    
+}
+.home-product-item-name:hover {
+    color: yellow;
+}
+.home-product-item-price {
+    color: yellow;
+    font-size: 1.6rem;
+}
+.category {
+    background-color: #373a3c;
+    font-size: 1.6rem;
+    border-radius: 2px;
+}
+.trademark {
+    color: yellow;
+    font-weight: 200;
+    padding: 16px;
+    border-bottom: 1.5px solid #1d1d1d;
+    margin: 0;
+    
+}
+.list-trademark {
+    list-style: none;
+    text-align: none;
+    margin: 0;
+    padding: 16px;
+}
+.category .list-trademark a {  
+   margin: 0;
+   color: #fff;
+    padding: 16px 0;
+}
+.name-trademark a {
+    
+    text-decoration: none;
+
+}
+.name-trademark {
+    padding: 4px 0;
+    font-weight: 400;
+}
+.name-trademark a:hover {
+    color: yellow;
+}
+
+/* manh */
+.row {
+    /* margin-left: -15px;
+    margin-right: -15px; */
+    display: flex;
+}
+
+.cl--primary {
+    color: #ffe11b;
+}
+
+.row {
+    margin-bottom: 40px;
+}

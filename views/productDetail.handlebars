@@ -1,0 +1,111 @@
+<div id="content" class="site-content">
+            <div class="container">
+                {{#each this.categories}}
+                <div  class="row ">
+                    <div class="col-xs-12 col-md-5">
+                        <div class="single-product-img">
+                            <img style="" src="/img/{{productID}}/main.jpg">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-7">
+                        <div class="single-product-summary">
+                            <h1 class="single-product-title">
+                                {{productName}}
+                            </h1>
+                            
+                            <div class="clearfix single-price-tax">
+                                 <div class="single-product-price cl--primary">{{format_number productPrice}}đ</div> 
+                                 <dl class="single-product-tax"> 
+                                     <dt class="single-product-tax--top">Loại đinh: </dt> 
+                                     <dd class="single-product-tax--top"> 
+                                         {{style}}									
+                                    </dd> 
+                                </dl>
+                            </div>
+                            <div class="separator"></div>   
+                          
+
+                            <div style="text-align: justify;" class="single-product-excerpt">
+                            <p>{{productDescription}}</p>
+                            </div>
+                            <div class="separator"></div>  
+
+                        </div>
+
+                        <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST">
+                            <div style="justify-content: space-between  ;" class="clearfix">
+                                <div class="form-group single-product-size">
+                                    <strong>Chọn size</strong>
+                                        <label>
+                                            <input type="radio" name="variation" value="39" data-quantity="0">
+                                            <span>39</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="variation" value="40" data-quantity="0">
+                                            <span>40</span>
+                                        </label>
+                                       
+                                        <label>
+                                            <input type="radio" name="variation" value="41" data-quantity="0">
+                                            <span>41</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="variation" value="42" data-quantity="0">
+                                            <span>42</span>
+                                        </label>
+                                       
+                                        <label>
+                                            <input type="radio" name="variation" value="43" data-quantity="0">
+                                            <span>43</span>
+                                        </label>
+                                       
+                                        <div class="form-group single-product-quantity">
+                                            <strong>Số lượng</strong>
+                                            <input type="number" min="1" class="form-control quantity" name="quantity" value="1">
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <button class="btn btn-primary single-product-submit" type="submit">
+                            <i class="ti-shopping-cart"></i>
+                            Thêm vào giỏ hàng  
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Hình ảnh về sản phẩm</h2>
+                    </div>
+                    <div class="section-body">
+                        <div class="section-body-content">
+                            <div class="image">
+                                <p>
+                                    <img  src="/img/{{productID}}/view1.webp" alt="">
+                                    <p>{{productName}}</p>
+                                </p>
+
+                                <p>
+                                    <img  src="/img/{{productID}}/view2.webp" alt="">
+                                    <p>{{productName}}</p>
+                                </p>
+                                <p>
+                                    <img  src="/img/{{productID}}/view3.webp" alt="">
+                                    <p>{{productName}}</p>
+                                </p>
+
+                                <p>
+                                    <img  src="/img/{{productID}}/view4.webp" alt="">
+                                    <p>{{productName}}</p>
+                                </p>
+
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
