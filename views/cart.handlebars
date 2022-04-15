@@ -2,6 +2,13 @@
 <div class="container">
             <div id="content">
                 <div class="container_content">
+                    {{#if isEmptyCart}}
+                        <div class="section_header">
+                            <div class="container_section_header">
+                                <h2 class="section_title">Giỏ hàng trống, mời bạn bấm vào <a href="/">đây</a> để mua hàng!</h2>
+                            </div>
+                        </div>
+                    {{else}}
                     <div class="section_header">
                         <div class="container_section_header">
                             <h2 class="section_title">Thông tin đặt hàng</h2>
@@ -106,7 +113,7 @@
                         </form>
                     </div>
 
-                   
+                   {{/if}}
                 </div>
             </div>
        </div>

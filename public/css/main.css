@@ -643,6 +643,14 @@ label {
     padding-bottom: 14px;
     background-color: #252525;
 }
+.section_header .container_section_header a{
+    color: #c40e0e;
+}
+
+.section_header .container_section_header:hover > a{
+    color: #ffe11b;
+}
+
 
 .container .section_header .section_title {
     color: #ffe11b;

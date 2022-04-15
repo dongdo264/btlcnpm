@@ -29,7 +29,11 @@
                     </form>
                 <a href="/cart" class="cart">
                     <i class="ti-shopping-cart"></i>
+                    {{#if isNewSession}}
+                    <span class="header-cart__number">0</span>
+                    {{else}}
                     <span class="header-cart__number">{{productInCart}}</span>
+                    {{/if}}
                 </a>
             </div>
         </div>
