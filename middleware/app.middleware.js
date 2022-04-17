@@ -2,7 +2,7 @@ const db = require('../utils/database');
 
 module.exports = async function(req, res, next) {
     if(!req.signedCookies.sessionId) {
-        var sessionId = Math.floor(Math.random() * 10000000) + 1000000;
+        var sessionId = Math.floor(Math.random() * 100000000) + 10000000;
         res.cookie('sessionId', sessionId, {
             signed : true 
         });

@@ -31,11 +31,15 @@ app.use(appMiddleware);
 const productRouter = require('./routes/product.route');
 const userRouter = require('./routes/user.route');
 const cartRouter = require('./routes/cart.route');
+const adminRouter = require('./routes/admin.route');
 
 app.use('/', userRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
+app.use('/admin', adminRouter);
 
 
 const PORT = 3000;
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+});

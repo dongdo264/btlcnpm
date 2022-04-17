@@ -1,0 +1,85 @@
+
+<div class="container">
+            <div id="content">
+                <div class="container_content">
+                    <div class="section_header">
+                        <div class="container_section_header">
+                            <h2 class="section_title">Thông tin các đơn hàng</h2>
+                        </div>
+                    </div>
+
+                    <div class="list_orders">
+                        <table class="table_orders">
+                            <thead>
+                                <tr class="title-row">
+                                    <th>Tên khách hàng</th>
+                                    <th>Số ĐT</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Ghi chú</th>
+                                    <th>Trạng thái</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this.rows}}
+                                <tr class="order_detail">
+                                    <td class="describe_product">
+                                        {{customerName}}
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{phone}}</span>
+                                    </td>
+                                    <td>
+                                        {{address}}
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{orderDate}}</span>
+                                    </td>
+                                    <td class="price_total">
+                                        <div class="cl--primary" style="color:#ffe11b">{{comment}}</div>
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{status}}</span>
+                                    </td>
+                                    
+                                    <td class="recycle">
+                                        <a href="/admin/view?id={{orderNumber}}">
+                                            <button class="btn btn-secondary" type="button">
+                                                <i class="ti-pencil-alt" style="color:lime"></i><span style="color:lime"> Chi tiết</span>
+                                            </button>
+                                        </a>
+                                    </td>
+
+                                    <td class="recycle">
+                                        <a href="/admin/delete?id={{orderNumber}}">
+                                            <button class="btn btn-secondary" type="button">
+                                                <i class="ti-trash"></i><span>Xoá</span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {{!-- <div class="shop-total">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Tổng cộng: </td>
+                                    <td>{{format_number sum}}đ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> --}}
+
+                    {{!-- <div class="shop-back" id="button-showinfo">
+                        <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
+                    </div> --}}
+                </div>
+            </div>
+       </div>
