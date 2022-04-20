@@ -1,3 +1,27 @@
+ {{#section 'js'}}
+  <script>
+
+    $('#addtocart').on('submit', function(event) {
+        event.preventDefault();
+        if (validate()) {
+            $('#addtocart').off('submit').submit();
+        } else {
+            alert('Bạn chưa chọn size');
+        }
+    })
+    
+    function validate () {
+        var ele = document.getElementsByName('variation');
+        for (var i = 0; i < ele.length; i++) {
+            if (ele[i].checked) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script>
+{{/section}}
+
 <div id="content" class="site-content">
             <div class="container">
                 {{#each this.categories}}
@@ -32,31 +56,35 @@
                             <div class="separator"></div>  
 
                         </div>
-
-                        <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST">
+                        {{#if outOfStock}}   
+                            <div style="text-align: justify;" class="outofstock">
+                            <p>Sản phẩm này đã hết hàng</p>
+                            </div>                  
+                        {{else}}
+                        <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST" id="addtocart">
                             <div style="justify-content: space-between  ;" class="clearfix">
                                 <div class="form-group single-product-size">
                                     <strong>Chọn size</strong>
                                         <label>
-                                            <input type="radio" name="variation" value="39" data-quantity="0">
+                                            <input type="radio" name="variation" value="39" id="size" data-quantity="0">
                                             <span>39</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="variation" value="40" data-quantity="0">
+                                            <input type="radio" name="variation" value="40" id="size" data-quantity="0">
                                             <span>40</span>
                                         </label>
                                        
                                         <label>
-                                            <input type="radio" name="variation" value="41" data-quantity="0">
+                                            <input type="radio" name="variation" value="41" id="size" data-quantity="0">
                                             <span>41</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="variation" value="42" data-quantity="0">
+                                            <input type="radio" name="variation" value="42" id="size" data-quantity="0">
                                             <span>42</span>
                                         </label>
                                        
                                         <label>
-                                            <input type="radio" name="variation" value="43" data-quantity="0">
+                                            <input type="radio" name="variation" value="43" id="size" data-quantity="0">
                                             <span>43</span>
                                         </label>
                                        
@@ -72,6 +100,7 @@
                             Thêm vào giỏ hàng  
                             </button>
                         </form>
+                        {{/if}}
                     </div>
                 </div>
 

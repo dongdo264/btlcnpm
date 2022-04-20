@@ -914,3 +914,11 @@ label {
 .info-order .table_orders .number_product {
     display: flex;
 }
+.outofstock {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+.outofstock p {
+    font-size: 5rem;
+    color: red;
+}

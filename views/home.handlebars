@@ -1,3 +1,34 @@
+  {{#section 'js'}}
+  <script>
+  let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+{{/section}}
+  
        <div class="slideshow-container">
 
         <!-- Full-width images with number and caption text -->
@@ -48,17 +79,23 @@
                         <nav class="category">
                             <h3 class="trademark">Loại đinh</h3>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/searchby?loaidinh=Cỏ+nhân+tạo">Cỏ nhân tạo</a></li>
-                                <li class="name-trademark"><a href="/searchby?loaidinh=Cỏ+tự+nhiên">Cỏ tự nhiên</a></li>
+                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+nhân+tạo">Cỏ nhân tạo</a></li>
+                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+tự+nhiên">Cỏ tự nhiên</a></li>
                             </ul>
                         </nav>
 
                         <nav class="category">
                             <h3 class="trademark">Lọc sản phẩm</h3>
                             <ul class="list-trademark">
+                                {{#if searchbystyle}}
+                                <li class="name-trademark"><a href="/sortbyprice?loaidinh={{searchName}}">Giá tăng dần</a></li>
+                                <li class="name-trademark"><a href="/sortbypricedesc?loaidinh={{searchName}}">Giá giảm dần</a></li>
+                                <li class="name-trademark"><a href="/mostsale?loaidinh={{searchName}}">Bán chạy nhất</a></li>
+                                {{else}}
                                 <li class="name-trademark"><a href="/sortbyprice?qr={{searchName}}">Giá tăng dần</a></li>
                                 <li class="name-trademark"><a href="/sortbypricedesc?qr={{searchName}}">Giá giảm dần</a></li>
                                 <li class="name-trademark"><a href="/mostsale?qr={{searchName}}">Bán chạy nhất</a></li>
+                                {{/if}}
                             </ul>
                         </nav>
                     </div>
@@ -68,7 +105,7 @@
                         <div class="grid__column_2">
                             <div class="home-product-item">
                                 <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
-                                <a href="product/view/{{productID}}"><h2 class="home-product-item-name">{{productName}}</h2></a>
+                                <a href="product/view/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">{{productName}}</h2></a>
                                 <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
                             </div>
                         </div>

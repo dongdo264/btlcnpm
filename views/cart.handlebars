@@ -1,3 +1,42 @@
+  {{#section 'js'}}
+  <script>
+      function getPaymentInfo() {
+        document.getElementById('header-info').style.display=" block";
+        document.getElementById('container-shipping').style.display=" block";
+        document.getElementById('button-payment').style.display=" block";
+        document.getElementById('button-showinfo').style.display=" none";
+    }
+
+    $('#form-Payment').on('submit', function(event) {
+        event.preventDefault();
+        if (validate()) {
+            alert('Đặt hàng thành công');
+            $('#form-Payment').off('submit').submit();
+        } else {
+            alert('Không thành công! Vui lòng kiểm tra lại thông tin');
+        }
+    })
+    
+    function validate () {
+        var name = document.getElementById("name").value;
+        var address = document.getElementById("address").value;
+        var phone = document.getElementById("phone").value;
+        var note = document.getElementById("note").value;
+        if (!name || !address || !phone) {
+            return false;
+        }
+        if (phone.length > 11 || phone.length < 10) {
+            return false;
+        }
+        for (var i = 0; i < phone.length; i++) {
+            if (phone.charCodeAt(i) < 48 || phone.charCodeAt(i) > 58) {
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+{{/section}}
 
 <div class="container">
             <div id="content">
@@ -5,7 +44,7 @@
                     {{#if isEmptyCart}}
                         <div class="section_header">
                             <div class="container_section_header">
-                                <h2 class="section_title">Giỏ hàng trống, mời bạn bấm vào <a href="/">đây</a> để mua hàng!</h2>
+                                <h2 class="section_title" >Giỏ hàng trống, mời bạn bấm vào <a href="/" style="text-decoration: none">đây</a> để mua hàng!</h2>
                             </div>
                         </div>
                     {{else}}
@@ -83,28 +122,28 @@
                     </div>
 
                     <div class="info-shipping" id="container-shipping" style="display: none">
-                        <form class="col col1" method="POST" action="/cart/payment">
+                        <form class="col col1" method="POST" action="/cart/payment" id="form-Payment">
                             <div class="form-group">
                                 <label class="title-info">Họ tên
                                     <span class="required">*</span>
                                 </label>
-                                <input class="form-control" type="text" name="name" value="">
+                                <input class="form-control" id="name" type="text" name="name" value="">
                             </div>
                             <div class="form-group">
                                 <label class="title-info">Địa chỉ
                                     <span class="required">*</span>
                                 </label>
-                                <input class="form-control" type="text" name="address">
+                                <input class="form-control" id="address" type="text" name="address">
                             </div>
                                 <div class="form-group">
                                     <label class="title-info">Số điện thoại
                                         <span class="required">*</span>
                                     </label>
-                                    <input class="form-control" type="text" name="phone">
+                                    <input class="form-control" id="phone" type="text" name="phone">
                                 </div>
                                 <div class="form-group note-shipping">
                                     <label class="title-info">Ghi chú về đơn hàng</label>
-                                    <input class="form-control" type="text" name="note"></input>
+                                    <input class="form-control" id="note" type="text" name="note"></input>
                                 </div>
 
                                  <div class="shop-back" id="button-payment" style="display: none" >

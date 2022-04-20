@@ -6,6 +6,10 @@ const router = express.Router();
 router.get('/view/:id', async function(req, res) {
     const id = req.params.id;
     const product = await db.load("SELECT * FROM products WHERE productID = " + id);
+    product[0].outOfStock = false;
+    if (product[0].quantityInStock == 0) {
+        product[0].outOfStock = true;
+    }
     res.render('productDetail', {
        categories : product
     });
@@ -16,9 +20,6 @@ router.post('/view/:id', async function(req, res) {
     var quantity = req.body.quantity;
     const id = req.params.id;
     const customerID = req.signedCookies.sessionId;
-    if (!size) {
-        size = 39;
-    }
     const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + customerID);
     
     var check = true;

@@ -81,7 +81,7 @@ p {
 .home-product-item-name {
     color: #fff;
     font-weight: 400;
-    
+    font-size: 1.6rem;
 }
 .home-product-item-name:hover {
     color: yellow;

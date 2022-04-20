@@ -1,6 +1,7 @@
 const express = require('express');
 const numeral = require('numeral');
 const { engine } = require('express-handlebars');
+var express_handlebars_sections = require('express-handlebars-sections');
 const cookieParser = require('cookie-parser');
 const appMiddleware = require('./middleware/app.middleware');
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({
 
 app.engine('handlebars', engine({
     helpers: {
+        section : express_handlebars_sections(),
         format_number : function(value) {
             return numeral(value).format('0,0');
         }
