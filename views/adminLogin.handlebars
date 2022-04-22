@@ -1,0 +1,16 @@
+<div class="container-login">
+    <form class="myform" method="POST" action="/account/login">
+        <h2>Đăng nhập</h2>
+        {{#if err}}
+        <div class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
+        {{/if}}
+        <input type="text" placeholder="Admin name" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit">Đăng nhập</button>
+    </form>
+    <div class="image">
+        <img src="/img/logoo.png" width="300px">
+    </div>
+</div>

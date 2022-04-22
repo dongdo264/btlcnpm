@@ -27,7 +27,7 @@ router.post('/view/:id', async function(req, res) {
         if(id == product[i].productID) {
             if (size == product[i].size) {
                 quantity = parseInt(quantity) + parseInt(product[i].quantity);
-                db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
+                await db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
                 check = false;
             }
         }
@@ -40,7 +40,7 @@ router.post('/view/:id', async function(req, res) {
             quantity
         }
         const tb = 'customercart';
-        db.add(tb, obj);
+        await db.add(tb, obj);
     }
     res.redirect('/cart');
 });
