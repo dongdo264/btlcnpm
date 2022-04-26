@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const appMiddleware = require('./middleware/app.middleware');
 const loginMiddleware = require('./middleware/login.middleware');
+const adminMiddleware = require('./middleware/admin.middleware');
 
 const app = express();
 
@@ -51,11 +52,11 @@ const accountRouter = require('./routes/account.route');
 app.use('/', appMiddleware, userRouter);
 app.use('/product',appMiddleware, productRouter);
 app.use('/cart',appMiddleware, cartRouter);
-app.use('/admin', loginMiddleware, adminRouter);
+app.use('/admin', loginMiddleware, adminMiddleware, adminRouter);
 app.use('/account', accountRouter);
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
 });

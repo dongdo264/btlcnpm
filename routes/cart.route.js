@@ -46,9 +46,6 @@ router.post('/payment', async function(req, res) {
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     for(var i = 0; i < product.length; i++) {
         await db.load('insert into orderdetails values (' + orderNumber + ',' + product[i].productID + ',' + product[i].quantity + ','+ product[i].productPrice + ', ' + product[i].size + ')');
-        // var quantity = await db.load('select quantityOrdered from products where productID = ' + product[i].productID);
-        // var sl = parseInt(quantity[0].quantityOrdered) + parseInt(product[i].quantity);
-        // db.load('update products set quantityOrdered = ' + sl + ' where productID = ' + product[i].productID);
     }
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     await db.load('delete from customercart where customerID = ' + sessionId);

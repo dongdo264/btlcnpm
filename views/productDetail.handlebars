@@ -23,6 +23,10 @@
 {{/section}}
 
 <div id="content" class="site-content">
+    <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Thông tin sản phẩm</h2>
+    </div>
             <div class="container">
                 {{#each this.categories}}
                 <div  class="row ">
@@ -90,7 +94,7 @@
                                        
                                         <div class="form-group single-product-quantity">
                                             <strong>Số lượng</strong>
-                                            <input type="number" min="1" class="form-control quantity" name="quantity" value="1">
+                                            <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="{{quantityInStock}}">
                                         </div>
                                     </div>
                             </div>

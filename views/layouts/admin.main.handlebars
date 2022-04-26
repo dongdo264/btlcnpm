@@ -24,20 +24,6 @@
                         <a href="/admin">
                             Xin chào, Admin
                         </a>
-                        {{!-- <a href="/admin">
-                            Quản lý đơn hàng <i class="ti-angle-down"></i>
-                        </a>
-                        <ul class="subMenu">
-                            <li class="nikeShoe">
-                                <a href="">Đang xử lý</a>
-                            </li>
-                            <li class="adidasShoe">
-                                <a href="">Đang giao</a>
-                                
-                            </li>
-                            <li class="pumaShoe"><a href="">Đã hoàn tất</a></li>
-                            <li><a href="">Bị hủy</a></li>
-                        </ul> --}}
                     </li>
                 </ul>
             </div>
@@ -51,10 +37,12 @@
                         <nav class="category">
                             <h3 class="trademark">Quản lý đơn hàng</h3>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/search?q=Nike">Đang chờ xử lý</a></li>
-                                <li class="name-trademark"><a href="/search?q=Adidas">Đang giao</a></li>
+                                {{#each this.status_orders}}
+                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">{{status}} ({{count}})</a></li>
+                                {{!-- <li class="name-trademark"><a href="/search?q=Adidas">Đang giao</a></li>
                                 <li class="name-trademark"><a href="/search?q=Puma">Đã giao</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno">Bị hủy</a></li>
+                                <li class="name-trademark"><a href="/search?q=Mizuno">Bị hủy</a></li> --}}
+                                {{/each}}
                             </ul>
                         </nav>
 

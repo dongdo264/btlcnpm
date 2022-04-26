@@ -18,5 +18,7 @@ module.exports = async function(req, res, next) {
             res.locals.isEmptyCart = false;
         }
     }
+    const rows = await db.load('select productBrand, COUNT(*) as count from products group by productBrand');
+    res.locals.brand = rows;
     next();
 }

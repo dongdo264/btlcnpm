@@ -70,10 +70,12 @@ function showSlides(n) {
                         <nav class="category">
                             <h3 class="trademark">Thương hiệu</h3>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/search?q=Nike">Nike</a></li>
-                                <li class="name-trademark"><a href="/search?q=Adidas">Adidas</a></li>
+                              {{#each this.brand}}
+                                <li class="name-trademark"><a href="/search?q={{productBrand}}">{{productBrand}} ({{count}})</a></li>
+                                {{!-- <li class="name-trademark"><a href="/search?q=Adidas">Adidas</a></li>
                                 <li class="name-trademark"><a href="/search?q=Puma">Puma</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno">Mizuno</a></li>
+                                <li class="name-trademark"><a href="/search?q=Mizuno">Mizuno</a></li> --}}
+                                {{/each}}
                             </ul>
                         </nav>
                         <nav class="category">

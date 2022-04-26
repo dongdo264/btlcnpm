@@ -1,4 +1,11 @@
-
+  {{#section 'js'}}
+  <script>
+    var select = document.getElementsByClassName('form-control')[4].id;
+    var slt = document.getElementById(select);
+    slt.selectedIndex = select - 1;
+    
+</script>
+{{/section}}
 <div class="container">
     {{#each this.rows}}
             <form id="content" method="POST" action="/admin/vieworder/{{orderNumber}}">
@@ -31,6 +38,15 @@
                                 <div class="form-group note-shipping">
                                     <label class="title-info">Ghi chú về đơn hàng</label>
                                     <input class="form-control" id="note" type="text" name="note" value="{{note}}"></input>
+                                </div>
+                                <div class="form-group note-shipping">
+                                    <label class="title-info" for="{{sta}}">Trạng thái</label>
+                                    <select class="form-control" id="{{sta}}" style="background-color:  #1d1d1d; height : 30px" name="stt">
+                                        <option value="1">Đang xử lý</option>
+                                        <option value="2">Đang giao hàng</option>
+                                        <option value="3">Đã hoàn tất</option>
+                                        <option value="4">Bị hủy</option>
+                                    </select>
                                 </div>
                         </div>
                     </div>
@@ -94,8 +110,8 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Tổng cộng: </td>
-                                    <td>{{format_number sum}}đ</td>
+                                    <td>Tổng cần thanh toán: </td>
+                                    <td style="color: #ffe11b;">{{format_number sum}} đ</td>
                                 </tr>
                             </tbody>
                         </table>
