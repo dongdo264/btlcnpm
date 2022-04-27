@@ -63,31 +63,34 @@ function showSlides(n) {
         <span class="dot" onclick="currentSlide(3)"></span>
       </div>
        
-       <div class="container">
+       <div class="container" style="padding-top: 20px;">
             <div class="grid">
                 <div class="grid__row app-content">
-                    <div class="grid__column">
+                    <div class="grid__column_1">
                         <nav class="category">
-                            <h3 class="trademark">Thương hiệu</h3>
+                          <div class="trademark">
+                                Thương hiệu
+                          </div>
                             <ul class="list-trademark">
-                              {{#each this.brand}}
-                                <li class="name-trademark"><a href="/search?q={{productBrand}}">{{productBrand}} ({{count}})</a></li>
-                                {{!-- <li class="name-trademark"><a href="/search?q=Adidas">Adidas</a></li>
-                                <li class="name-trademark"><a href="/search?q=Puma">Puma</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno">Mizuno</a></li> --}}
+                                {{#each this.brand}}
+                                <li class="name-trademark"><a href="/search?q={{productBrand}}">{{productBrand}} ({{count}})</a></li>                 
                                 {{/each}}
                             </ul>
-                        </nav>
+                        </nav>                       
                         <nav class="category">
-                            <h3 class="trademark">Loại đinh</h3>
+                            <div class="trademark">
+                                Loại đinh
+                          </div>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+nhân+tạo">Cỏ nhân tạo</a></li>
-                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+tự+nhiên">Cỏ tự nhiên</a></li>
+                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+nhân+tạo">Sân cỏ nhân tạo</a></li>
+                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+tự+nhiên">Sân cỏ tự nhiên</a></li>
                             </ul>
                         </nav>
 
                         <nav class="category">
-                            <h3 class="trademark">Lọc sản phẩm</h3>
+                            <div class="trademark">
+                                Lọc sản phẩm
+                          </div>
                             <ul class="list-trademark">
                                 {{#if searchbystyle}}
                                 <li class="name-trademark"><a href="/sortbyprice?loaidinh={{searchName}}">Giá tăng dần</a></li>
@@ -102,17 +105,22 @@ function showSlides(n) {
                         </nav>
                     </div>
 
-                    <div class="grid__column_10">
-                        {{#each this.categories}}
-                        <div class="grid__column_2">
-                            <div class="home-product-item">
-                                <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
+                    <div class="grid__column_2">
+                        <div class="grid__row  grid__full-width">
+                            <h1 class="heading-product">Danh sách sản phẩm</h1>
+                        </div>
+                        <div class="grid__column_10">   
+                          {{#each this.categories}}              
+                            <div class="grid__column">
+                                <div class="home-product-item">
+                                    <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
                                 <a href="product/view/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">{{productName}}</h2></a>
                                 <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
-                            </div>
-                        </div>
-                        {{/each}}                                           
+                                </div>
+                            </div>  
+                          {{/each}}
                     </div>
+                    </div>  
                 </div>   
             </div>
 </div>

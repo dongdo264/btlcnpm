@@ -45,3 +45,12 @@
 .container-login .image img {
     width: 300px;
 }
+
+.outofstock {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+.outofstock p {
+    font-size: 5rem;
+    color: red;
+}

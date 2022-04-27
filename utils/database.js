@@ -1,8 +1,8 @@
 const mysql = require('mysql');
 const config = require('../config/default.json');
 
-const connection = mysql.createConnection(config.mysql);
-connection.connect();
+// const connection = mysql.createConnection(config.mysql);
+// connection.connect();
 
 const pool = mysql.createPool(config.mysql);
 

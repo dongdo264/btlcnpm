@@ -35,6 +35,11 @@
                     <span class="header-cart__number">{{productInCart}}</span>
                     {{/if}}
                 </a>
+                <ul class="site-hotline hidden-md-up">
+                    <li class="site-hotline__item">
+                        <a class="site-hotline__link" href="">0999.999.999</a>
+                    <li class="site-hotline__item">
+                </ul>
             </div>
         </div>
         <nav class="header__navbar">
@@ -72,12 +77,121 @@
                 <div class="hotline">Hotline:
                     <a href="" class="number-phone">0999.666.888</a>
                 </div>
+
+                <div class="nav__un-hidden-mobile">
+                    <button class="bar" type="button">
+                        <i class="ti-menu left__bar"></i>
+                    </button>
+
+                    <div class="right__nav__overlay">
+                        <div class="right__nav__mobile">
+                            <ul class="header__navbar-list">
+                                <li class="header__navbar-item">
+                                    <div class="title__header-navbar-item">
+                                        <a href="/">Sản Phẩm</a>
+                                        <div class="plus-minus">
+                                            <span class="plus js-plus"><i class="ti-plus"></i></span>
+                                            <span class="minus js-minus"><i class="ti-minus"></i></span>
+                                        </div>
+                                    </div>
+                                    <ul class="nav__mobile-subMenu js-subMenu">
+                                        <li class="nikeShoe">
+                                            <div class="row1">
+                                                <a href="/search?q=Nike">Giày bóng đá Nike</a>
+                                                <div class="plus-minus">
+                                                    <span class="plus js-plus-Nike"><i class="ti-plus"></i></span>
+                                                    <span class="minus js-minus-Nike"><i class="ti-minus"></i></span>
+                                                </div>
+                                            </div>
+                                            <ul class="subMenu1 list-Nike">
+                                                <li><a href="/search?q=Nike Mercurial">Nike Mercurial</a></li>
+                                                <li><a href="/search?q=Nike Phantom GT">Nike Phantom GT</a></li>
+                                                
+                                                <li><a href="/search?q=Nike Tiempo">Nike Tiempo</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="adidasShoe">
+                                            <div class="row1">
+                                                <a href="/search?q=Adidas">Giày bóng đá Adidas</a>
+                                                <div class="plus-minus">
+                                                    <span class="plus js-plus-Adidas"><i class="ti-plus"></i></span>
+                                                    <span class="minus js-minus-Adidas"><i class="ti-minus"></i></span>
+                                                </div>
+                                            </div>
+                                            <ul class="subMenu1 list-Adidas">
+                                                <li><a href="/search?q=Adidas Nemeziz">Adidas Nemeziz</a></li>
+                                                <li><a href="/search?q=Adidas X">Adidas X</a></li>
+                                                <li><a href="/search?q=Adidas Predator">Adidas Predator</a></li>
+                                                <li><a href="/search?q=Adidas Copa">Adidas Copa</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="pumaShoe"><a href="/search?q=Puma">Giày bóng đá Puma</a></li>
+                                        <li><a href="/search?q=Mizuno">Giày bóng đá Mizuno</a></li>
+                                        <li><a href="/searchbystyle?q=cỏ tự nhiên">Giày bóng đá sân cỏ tự nhiên</a></li>
+                                        <li><a href="/searchbystyle?q=cỏ nhân tạo">Giày bóng đá sân cỏ nhân tạo</a></li>
+                                    </ul>
+                                </li>
+                                <li class="header__navbar-item"><a href="/cart">Giỏ hàng</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <form class="header__search-box" method="get" action="/search">
+                        <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search" name="q">
+                        <div class="icon__search">
+                            <button type="submit"><i class="ti-search"></i></button>
+                        </div>
+                    </form>
+                    {{!-- <button class="bar" type="button">
+                        <i class="ti-menu right__bar"></i>
+                    </button> --}}
+                    {{!-- <div style="padding-top: 10px;">
+                    <a href="/cart" class="cart">
+                                <i class="ti-shopping-cart"></i>
+                                {{#if isNewSession}}
+                                <span class="header-cart__number">0</span>
+                                {{else}}
+                                <span class="header-cart__number">{{productInCart}}</span>
+                                {{/if}}
+                    </a>
+                    </div> --}}
+                    {{!-- <div class="left__nav__overlay">
+                        <div class="left__nav__mobile">
+                            
+                            <div class="list__trade-mark">
+                                <div class="title__header-navbar-item"><h1 class="container__title-header-navbar-item">Thương hiệu</a></div>
+                                <ul>
+                                    <li><a href="">Nike</a></li>
+                                    <li><a href="">Adidas</a></li>
+                                    <li><a href="">Puma</a></li>
+                                    <li><a href="">Mizuno</a></li>
+                                </ul>
+                            </div>
+                            <div class="list__line-shoe">
+                                <div class="title__header-navbar-item"><h1 class="container__title-header-navbar-item">Dòng giày</a></div>
+                                <ul>
+                                    <li><a href="">Adidas X</a></li>
+                                    <li><a href="">Adidas Predator</a></li>
+                                    <li><a href="">Adidas Copa</a></li>
+                                    <li><a href="">Adidas Nemeziz</a></li>
+                                    <li><a href="">Nike Mercurial</a></li>
+                                    <li><a href="">Nike Tiempo</a></li>
+                                    <li><a href="">Nike Phantom Vision</a></li>
+                                    <li><a href="">Nike Phantom GT</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
             </div>
         </nav>
        </header>
 
         {{{body}}}
 
+    <script src="/js/responsive.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

@@ -58,38 +58,40 @@
                         <table class="table_orders">
                             <thead>
                                 <tr class="title-row">
-                                    <th>Sản phẩm</th>
-                                    <th></th>
-                                    <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
-                                    <th></th>
+                                    <th class="col1">Sản phẩm</th>
+                                    <th class="col2">
+                                        <div class="title_show_mobile">Sản phẩm</div>
+                                    </th>
+                                    <th class="col3">Giá</th>
+                                    <th class="col4">Số lượng</th>
+                                    <th class="col5">Tổng tiền</th>
+                                    <th class="col6"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#each this.categories}}
                                 <tr class="order_detail">
-                                    <td><a class="image" href=""><img style="width:88px" src="/img/{{productID}}/main.jpg" alt=""></a></td>
-                                    <td class="describe_product">
+                                    <td class="col1"><a class="image" href=""><img style="width:88px" src="/img/{{productID}}/main.jpg" alt=""></a></td>
+                                    <td class="describe_product col2">
                                         <a href="/product/view/{{productID}}">{{productName}}</a>
                                         <dl class="size_product">
                                             <dt style="color: #b1b1b1">Size:</dt>
                                             <dd style="margin:0 0">{{size}}</dd>
                                         </dl>
                                     </td>
-                                    <td class="price_product">
+                                    <td class="price_product col3">
                                         <span>{{format_number productPrice}}đ</span>
                                     </td>
-                                    <td>
+                                    <td class="col4">
                                         {{quantity}}
                                     </td>
-                                    <td class="price_total">
+                                    <td class="price_total col5">
                                         <div class="cl--primary" style="color:#ffe11b">{{format_number total}}đ</div>
                                     </td>
                                     
-                                    <td class="recycle">
+                                    <td class="recycle col6">
                                         <a href="/cart/delete?id={{productID}}&size={{size}}">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-secondary" type="button" onclick="alert('Đã xóa')">
                                                 <i class="ti-trash"></i><span>Xoá</span>
                                             </button>
                                         </a>
