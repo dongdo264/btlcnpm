@@ -28,13 +28,13 @@
                           </div>
                             <ul class="list-trademark">
                                 {{#if searchbystyle}}
-                                <li class="name-trademark"><a href="/sortbyprice?loaidinh={{searchName}}">Giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/sortbypricedesc?loaidinh={{searchName}}">Giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/mostsale?loaidinh={{searchName}}">Bán chạy nhất</a></li>
+                                <li class="name-trademark"><a href="/sortbyprice?loaidinh={{searchName}}">Sắp xếp theo giá tăng dần</a></li>
+                                <li class="name-trademark"><a href="/sortbypricedesc?loaidinh={{searchName}}">Sắp xếp theo giá giảm dần</a></li>
+                                <li class="name-trademark"><a href="/mostsale?loaidinh={{searchName}}">Sắp xếp theo bán chạy nhất</a></li>
                                 {{else}}
-                                <li class="name-trademark"><a href="/sortbyprice?qr={{searchName}}">Giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/sortbypricedesc?qr={{searchName}}">Giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/mostsale?qr={{searchName}}">Bán chạy nhất</a></li>
+                                <li class="name-trademark"><a href="/sortbyprice?qr={{searchName}}">Sắp xếp theo giá tăng dần</a></li>
+                                <li class="name-trademark"><a href="/sortbypricedesc?qr={{searchName}}">Sắp xếp theo giá giảm dần</a></li>
+                                <li class="name-trademark"><a href="/mostsale?qr={{searchName}}">Sắp xếp theo bán chạy nhất</a></li>
                                 {{/if}}
                             </ul>
                         </nav>
@@ -57,5 +57,28 @@
                     </div>
                     </div>  
                 </div>   
+                <nav class="nav__pagination">
+                    <ul class="pagination">
+                        <li class="page_item btn_pre">
+                            <a class="page_link" href="">
+                                <i class="ti-angle-left"></i>
+                            </a>
+                        </li>
+                        <li class="page_item">
+                            <a class="page_link" href="">1</a>
+                        </li>
+                        <li class="page_item">
+                            <a class="page_link" href="">2</a>
+                        </li>
+                        <li class="page_item">
+                            <a class="page_link" href="">3</a>
+                        </li>
+                        <li class="page_item btn_next">
+                            <a class="page_link">
+                                <i class="ti-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 </div>

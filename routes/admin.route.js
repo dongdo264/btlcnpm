@@ -94,5 +94,12 @@ router.get('/vieworder', async function(req, res) {
         rows
     });
 });
-
+router.get('/search', async function(req, res) {
+    const query = req.query.q;
+    const rows = await db.load("select * from orders where customerName LIKE '%" + query + "%' OR phone LIKE '%" + query + "%'");
+    res.render('admin', {
+        layout : 'admin.main.handlebars',
+        rows
+    });
+});
 module.exports = router;

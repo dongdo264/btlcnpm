@@ -33,4 +33,33 @@ router.post('/login', async function(req, res) {
         });
     }
 });
+
+router.get('/changepassword', async function(req, res) {
+    res.render('changepassword',{
+        layout: 'login.handlebars'
+    });
+});
+router.post('/changepassword', async function(req, res) {
+    const old = req.body.oldpassword;
+    const newpass = req.body.newpassword;
+    const confirm = req.body.confirm;
+    const rows = await db.load('select * from accounts');
+    if (newpass.length < 5) {
+        return res.render('changepassword',{
+            layout: 'login.handlebars',
+            err : true,
+            msg : 'Mật khẩu chứa ít nhất 5 kí tư'
+        });
+    }
+    if (newpass !== confirm || bcrypt.compareSync(old, rows[0].password) === false) {
+        return res.render('changepassword',{
+            layout: 'login.handlebars',
+            err : true,
+            msg : 'Không thành công, vui lòng xem lại'
+        });
+    }
+    var pass = bcrypt.hashSync(newpass, 8);
+    await db.load("update accounts set password = '" + pass + "'");
+    res.redirect('/admin');
+});
 module.exports = router;

@@ -17,14 +17,36 @@
 
 <body>
        <header class="header">
+            <div class="header__row_1">
+            <div class="container">
+                    <form class="header__search-box" method="get" action="/admin/search">
+                        <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search" name="q">
+                        <div class="icon__search">
+                            <button type="submit"><i class="ti-search"></i></button>
+                        </div>
+                    </form>
+            </div>
+            
+        </div>
         <nav class="header__navbar">
             <div class="container">
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <a href="/admin">
-                            Xin chào, Admin
+                        <a href="">
+                            <i class="ti-user"></i>  Xin chào, Admin <i class="ti-angle-down"></i>
                         </a>
+                        <ul class="subMenu">
+                            <li class="nikeShoe">
+                                <a href="/account/changepassword">Đổi mật khẩu</a>
+                                {{!-- <ul class="subMenu1">
+                                    <li><a href="/search?q=Nike+Mercurial">Nike Mercurial</a></li>
+                                    <li><a href="/search?q=Nike+Phantom+GT">Nike Phantom GT</a></li>
+                                    <li><a href="/search?q=Nike+Tiempo">Nike Tiempo</a></li>
+                                </ul> --}}
+                            </li>
+                        </ul>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -33,16 +55,21 @@
         <div class="container">
             <div class="grid">
                 <div class="grid__row app-content">
-                    <div class="grid__column">
+                    <div class="grid__column_1">
                         <nav class="category">
                             <h3 class="trademark">Quản lý đơn hàng</h3>
                             <ul class="list-trademark">
                                 {{#each this.status_orders}}
                                 <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">{{status}} ({{count}})</a></li>
-                                {{!-- <li class="name-trademark"><a href="/search?q=Adidas">Đang giao</a></li>
-                                <li class="name-trademark"><a href="/search?q=Puma">Đã giao</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno">Bị hủy</a></li> --}}
                                 {{/each}}
+                            </ul>
+                        </nav>
+                        <nav class="category">
+                            <h3 class="trademark">Xem các đơn hàng</h3>
+                            <ul class="list-trademark">
+                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Trong ngày hôm nay</a></li>
+                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Trong 7 ngày vừa qua</a></li>
+                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Cũ hơn</a></li>
                             </ul>
                         </nav>
 
