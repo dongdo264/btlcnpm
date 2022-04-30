@@ -3,10 +3,12 @@
 
     $('#addtocart').on('submit', function(event) {
         event.preventDefault();
-        if (validate()) {
-            $('#addtocart').off('submit').submit();
-        } else {
+        if (sessionStorage.getItem('maxCart') > 3) {
+            alert('Bạn chỉ có thể mua 1 lần tối đa 4 sản phẩm');
+        } else if (!validate()) {
             alert('Bạn chưa chọn size');
+        } else {
+            $('#addtocart').off('submit').submit();
         }
     })
     
@@ -26,10 +28,10 @@
     <div class="section">
                     <div class="section-header">
                         <h2 class="section-title">Thông tin sản phẩm</h2>
-    </div>
+                    </div>
             <div class="container">
                 {{#each this.categories}}
-                <div  class="row ">
+                <div class="row ">
                     <div class="col-xs-12 col-md-5">
                         <div class="single-product-img">
                             <img style="" src="/img/{{productID}}/main.jpg">
@@ -141,5 +143,5 @@
                 </div>
                 {{/each}}
             </div>
-        </div>
+            </div>
     </div>

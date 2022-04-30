@@ -91,7 +91,7 @@ p {
 .home-product-item-name {
     color: #fff;
     font-weight: 400;
-    
+    font-size: 1.7rem;
 }
 .home-product-item-name:hover {
     color: yellow;
@@ -114,6 +114,7 @@ p {
     margin: 0;
     display: flex;
     justify-content: space-between;
+    font-size: 1.9rem;
 }
 .list-trademark {
     list-style: none;
@@ -125,6 +126,7 @@ p {
    margin: 0;
    color: #fff;
     padding: 16px 0;
+    font-size: 1.7rem;
 }
 .name-trademark a {
     
@@ -174,6 +176,10 @@ p {
     justify-content: center;
 }
 
+.pagination .number_page {
+    display: flex;
+}
+
 .pagination .page_item {
     list-style-type: none;
     padding: 10px 0;
@@ -193,6 +199,13 @@ p {
     text-decoration: none;
     color: #fff;
     
+}
+
+.pagination .btn_pre_top.close,
+.pagination .btn_pre.close,
+.pagination .btn_next.close,
+.pagination .btn_next_end.close {
+    display: none;
 }
 
 /* Mobile: width < 740px */

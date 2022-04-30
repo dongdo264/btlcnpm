@@ -72,9 +72,12 @@ function showSlides(n) {
                                 Thương hiệu
                           </div>
                             <ul class="list-trademark">
-                                {{#each this.brand}}
-                                <li class="name-trademark"><a href="/search?q={{productBrand}}">{{productBrand}} ({{count}})</a></li>                 
-                                {{/each}}
+                                
+                                <li class="name-trademark"><a href="/search?q=Nike&loaidinh={{loaidinh}}&type={{type}}&page=1">Nike</a></li>
+                                <li class="name-trademark"><a href="/search?q=Adidas&loaidinh={{loaidinh}}&type={{type}}&page=1">Adidas</a></li>
+                                <li class="name-trademark"><a href="/search?q=Puma&loaidinh={{loaidinh}}&type={{type}}&page=1">Puma</a></li>
+                                <li class="name-trademark"><a href="/search?q=Mizuno&loaidinh={{loaidinh}}&type={{type}}&page=1">Mizuno</a></li>                
+                                
                             </ul>
                         </nav>                       
                         <nav class="category">
@@ -82,25 +85,21 @@ function showSlides(n) {
                                 Loại đinh
                           </div>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+nhân+tạo">Sân cỏ nhân tạo</a></li>
-                                <li class="name-trademark"><a href="/searchbystyle?loaidinh=Cỏ+tự+nhiên">Sân cỏ tự nhiên</a></li>
+                              
+                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ nhân tạo&type={{type}}&page=1">Sân cỏ nhân tạo</a></li>
+                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ tự nhiêntype={{type}}&page=1">Sân cỏ tự nhiên</a></li>
                             </ul>
                         </nav>
 
                         <nav class="category">
                             <div class="trademark">
-                                Lọc sản phẩm
+                                 Sắp xếp sản phẩm
                           </div>
                             <ul class="list-trademark">
-                                {{#if searchbystyle}}
-                                <li class="name-trademark"><a href="/sortbyprice?loaidinh={{searchName}}">Sắp xếp theo giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/sortbypricedesc?loaidinh={{searchName}}">Sắp xếp theo giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/mostsale?loaidinh={{searchName}}">Sắp xếp theo bán chạy nhất</a></li>
-                                {{else}}
-                                <li class="name-trademark"><a href="/sortbyprice?qr={{searchName}}">Sắp xếp theo giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/sortbypricedesc?qr={{searchName}}">Sắp xếp theo giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/mostsale?qr={{searchName}}">Sắp xếp theo bán chạy nhất</a></li>
-                                {{/if}}
+                                
+                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=asc&page=1">Sắp xếp theo giá tăng dần</a></li>
+                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=desc&page=1">Sắp xếp theo giá giảm dần</a></li>
+                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=mostsale&page=1">Sắp xếp theo bán chạy nhất</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -114,7 +113,7 @@ function showSlides(n) {
                             <div class="grid__column">
                                 <div class="home-product-item">
                                     <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
-                                <a href="product/view/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">{{productName}}</h2></a>
+                                <a href="/product/view/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">{{productName}}</h2></a>
                                 <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
                                 </div>
                             </div>  
@@ -124,25 +123,34 @@ function showSlides(n) {
                 </div>
                 <nav class="nav__pagination">
                     <ul class="pagination">
-                        <li class="page_item btn_pre">
-                            <a class="page_link" href="">
-                                <i class="ti-angle-left"></i>
-                            </a>
-                        </li>
-                        <li class="page_item">
-                            <a class="page_link" href="">1</a>
-                        </li>
-                        <li class="page_item">
-                            <a class="page_link" href="">2</a>
-                        </li>
-                        <li class="page_item">
-                            <a class="page_link" href="">3</a>
-                        </li>
-                        <li class="page_item btn_next">
-                            <a class="page_link">
-                                <i class="ti-angle-right"></i>
-                            </a>
-                        </li>
+                        
+                        {{#if home}}
+                            {{#each this.page_number}}
+                              {{#if active}}
+                              <li class="page_item" style="background: #ffe11b;">
+                                  <a class="page_link" href="/?page={{value}}">{{value}}</a>
+                              </li>
+                              {{else}}
+                              <li class="page_item">
+                                  <a class="page_link" href="/?page={{value}}">{{value}}</a>
+                              </li>
+                              {{/if}}
+                            {{/each}}
+
+                        {{else}}
+                            {{#each this.page_number}}
+                              {{#if active}}
+                              <li class="page_item" style="background: #ffe11b;">
+                                  <a class="page_link" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                              </li>
+                              {{else}}
+                              <li class="page_item">
+                                  <a class="page_link" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                              </li>
+                              {{/if}}
+                            {{/each}}
+                        {{/if}}
+                        
                     </ul>
                 </nav>   
             </div>

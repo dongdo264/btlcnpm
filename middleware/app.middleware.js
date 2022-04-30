@@ -1,10 +1,11 @@
 const db = require('../utils/database');
-
+var sessionStorage = require('sessionstorage');
 module.exports = async function(req, res, next) {
     if(!req.signedCookies.sessionId) {
         var sessionId = Math.floor(Math.random() * 100000000) + 10000000;
         res.cookie('sessionId', sessionId, {
-            signed : true 
+            signed : true,
+            expires: new Date(Date.now() + 60*60*1000*24*3)
         });
         res.locals.isNewSession = true;
     }
@@ -18,7 +19,6 @@ module.exports = async function(req, res, next) {
             res.locals.isEmptyCart = false;
         }
     }
-    const rows = await db.load('select productBrand, COUNT(*) as count from products group by productBrand');
-    res.locals.brand = rows;
+
     next();
 }
