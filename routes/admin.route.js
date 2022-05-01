@@ -5,10 +5,25 @@ const db = require('../utils/database');
 const router = express.Router();
 
 router.get('/', async function(req, res) {
-    const rows = await db.load('select * from orders order by orderDate desc');
+    var status = req.query.status;
+    var day = req.query.day;
+    if (!status) {
+        status = "";
+    }
+    var rows;
+    if (!day || day == 'all') {
+        day = "all";
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' order by orderDate desc");
+    } else if (day == 'today') {
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and DAY(orderDate) = DAY(CURDATE()) order by orderDate desc");
+    } else if (day == '7day') {
+        rows = await db.load("select * from orders where status LIKE '%" + status + "&' and orderDate >= DATE_ADD(CURDATE(), INTERVAL -7 DAY) order by orderDate desc");
+    }
     res.render('admin', {
         layout : 'admin.main.handlebars',
-        rows
+        rows,
+        status,
+        day
     });
 });
 router.get('/delete', async function(req, res) {
@@ -86,14 +101,14 @@ router.get('/delorder', async function(req, res) {
     var url = '/admin/vieworder/' + orderNumber;
     res.redirect(url);
 });
-router.get('/vieworder', async function(req, res) {
-    const query = req.query.q;
-    const rows = await db.load("select * from orders where status = '" + query + "'");
-    res.render('admin', {
-        layout : 'admin.main.handlebars',
-        rows
-    });
-});
+// router.get('/vieworder', async function(req, res) {
+//     const query = req.query.q;
+//     const rows = await db.load("select * from orders where status = '" + query + "'");
+//     res.render('admin', {
+//         layout : 'admin.main.handlebars',
+//         rows
+//     });
+// });
 router.get('/search', async function(req, res) {
     const query = req.query.q;
     const rows = await db.load("select * from orders where customerName LIKE '%" + query + "%' OR phone LIKE '%" + query + "%'");

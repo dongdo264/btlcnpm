@@ -32,7 +32,7 @@
             <div class="container">
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <a href="">
+                        <a href="/admin">
                             <i class="ti-user"></i>  Xin chào, Admin <i class="ti-angle-down"></i>
                         </a>
                         <ul class="subMenu">
@@ -59,17 +59,18 @@
                         <nav class="category">
                             <h3 class="trademark">Quản lý đơn hàng</h3>
                             <ul class="list-trademark">
-                                {{#each this.status_orders}}
-                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">{{status}} ({{count}})</a></li>
-                                {{/each}}
+                                <li class="name-trademark"><a href="/admin/?status=Đang xử lý&day={{day}}">Đang xử lý</a></li>
+                                <li class="name-trademark"><a href="/admin/?status=Đang giao hàng&day={{day}}">Đang giao hàng</a></li>
+                                <li class="name-trademark"><a href="/admin/?status=Đã hoàn tất&day={{day}}">Đã hoàn tất</a></li>
+                                <li class="name-trademark"><a href="/admin/?status=Bị hủy&day={{day}}">Bị hủy</a></li>
                             </ul>
                         </nav>
                         <nav class="category">
                             <h3 class="trademark">Xem các đơn hàng</h3>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Trong ngày hôm nay</a></li>
-                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Trong 7 ngày vừa qua</a></li>
-                                <li class="name-trademark"><a href="/admin/vieworder?q={{status}}">Cũ hơn</a></li>
+                                <li class="name-trademark"><a href="/admin/?status={{status}}&day=today">Trong ngày hôm nay</a></li>
+                                <li class="name-trademark"><a href="/admin/?status={{status}}&day=7day">Trong 7 ngày vừa qua</a></li>
+                                <li class="name-trademark"><a href="/admin/?status={{status}}&day=all">Cũ hơn</a></li>
                             </ul>
                         </nav>
 

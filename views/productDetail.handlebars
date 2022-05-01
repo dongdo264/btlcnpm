@@ -62,50 +62,56 @@
                             <div class="separator"></div>  
 
                         </div>
-                        {{#if outOfStock}}   
+                        {{#if maxCart}} 
                             <div style="text-align: justify;" class="outofstock">
-                            <p>Sản phẩm này đã hết hàng</p>
-                            </div>                  
-                        {{else}}
-                        <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST" id="addtocart">
-                            <div style="justify-content: space-between  ;" class="clearfix">
-                                <div class="form-group single-product-size">
-                                    <strong>Chọn size</strong>
-                                        <label>
-                                            <input type="radio" name="variation" value="39" id="size" data-quantity="0">
-                                            <span>39</span>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="variation" value="40" id="size" data-quantity="0">
-                                            <span>40</span>
-                                        </label>
-                                       
-                                        <label>
-                                            <input type="radio" name="variation" value="41" id="size" data-quantity="0">
-                                            <span>41</span>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="variation" value="42" id="size" data-quantity="0">
-                                            <span>42</span>
-                                        </label>
-                                       
-                                        <label>
-                                            <input type="radio" name="variation" value="43" id="size" data-quantity="0">
-                                            <span>43</span>
-                                        </label>
-                                       
-                                        <div class="form-group single-product-quantity">
-                                            <strong>Số lượng</strong>
-                                            <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="{{quantityInStock}}">
-                                        </div>
-                                    </div>
+                            <p>Bạn chỉ mua tối đa 4 sản phẩm 1 lần</p>
                             </div>
+                        {{else}}
+                            {{#if outOfStock}}   
+                                <div style="text-align: justify;" class="outofstock">
+                                <p>Sản phẩm này đã hết hàng</p>
+                                </div>                  
+                            {{else}}
+                            <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST" id="addtocart">
+                                <div style="justify-content: space-between  ;" class="clearfix">
+                                    <div class="form-group single-product-size">
+                                        <strong>Chọn size</strong>
+                                            <label>
+                                                <input type="radio" name="variation" value="39" id="size" data-quantity="0">
+                                                <span>39</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="variation" value="40" id="size" data-quantity="0">
+                                                <span>40</span>
+                                            </label>
+                                        
+                                            <label>
+                                                <input type="radio" name="variation" value="41" id="size" data-quantity="0">
+                                                <span>41</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="variation" value="42" id="size" data-quantity="0">
+                                                <span>42</span>
+                                            </label>
+                                        
+                                            <label>
+                                                <input type="radio" name="variation" value="43" id="size" data-quantity="0">
+                                                <span>43</span>
+                                            </label>
+                                        
+                                            <div class="form-group single-product-quantity">
+                                                <strong>Số lượng</strong>
+                                                <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="{{quantityInStock}}">
+                                            </div>
+                                        </div>
+                                </div>
 
-                            <button class="btn btn-primary single-product-submit" type="submit">
-                            <i class="ti-shopping-cart"></i>
-                            Thêm vào giỏ hàng  
-                            </button>
-                        </form>
+                                <button class="btn btn-primary single-product-submit" type="submit">
+                                <i class="ti-shopping-cart"></i>
+                                Thêm vào giỏ hàng  
+                                </button>
+                            </form>
+                            {{/if}}
                         {{/if}}
                     </div>
                 </div>

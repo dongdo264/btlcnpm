@@ -114,7 +114,11 @@
                     </div>
 
                     <div class="shop-back" id="button-showinfo">
+                        {{#if isOrder}}
                         <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
+                        {{else}}
+                            <h2 style="font-size: 2rem; color:red">Bạn chỉ có thể tạo tối đa 2 đơn 1 ngày</h2>
+                        {{/if}}
                     </div>
 
                     <div class="section_header" id="header-info" style="display: none">

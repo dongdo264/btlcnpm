@@ -21,15 +21,15 @@
        <header class="header">
         <div class="header__row_1">
             <div class="container">
-                <a href="/"><img src="/img/logoo.png" alt="Trang chủ Home" class="logo-shop"></a>
+                <a href="/"><img src="/img/logoo.png" alt="Trang chủ Home" class="logo-shop" title="Trang chủ home"></a>
                     <form class="header__search-box" method="get" action="/search">
                         <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search" name="q">
-                        <div class="icon__search">
+                        <div class="icon__search"  title="Tìm kiếm">
                             <button type="submit"><i class="ti-search"></i></button>
                         </div>
                     </form>
                 <a href="/cart" class="cart">
-                    <i class="ti-shopping-cart"></i>
+                    <i class="ti-shopping-cart" title="Giỏ hàng"></i>
                     {{#if isNewSession}}
                     <span class="header-cart__number">0</span>
                     {{else}}

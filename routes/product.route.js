@@ -6,7 +6,12 @@ const router = express.Router();
 router.get('/view/:id', async function(req, res) {
     const id = req.params.id;
     const product = await db.load("SELECT * FROM products WHERE productID = " + id);
+    const list = await db.load('select count(*) as count from customercart where customerID = ' + req.signedCookies.sessionId);
     product[0].outOfStock = false;
+    product[0].maxCart = false;
+    if (list[0].count >= 4) {
+        product[0].maxCart = true;
+    }
     if (product[0].quantityInStock == 0) {
         product[0].outOfStock = true;
     }

@@ -52,7 +52,7 @@ const accountRouter = require('./routes/account.route');
 app.use('/', appMiddleware, userRouter);
 app.use('/product',appMiddleware, productRouter);
 app.use('/cart',appMiddleware, cartRouter);
-app.use('/admin', loginMiddleware, adminMiddleware, adminRouter);
+app.use('/admin', loginMiddleware, adminRouter);
 app.use('/account', accountRouter);
 
 

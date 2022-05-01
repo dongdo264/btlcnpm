@@ -1,5 +1,4 @@
 const db = require('../utils/database');
-var sessionStorage = require('sessionstorage');
 module.exports = async function(req, res, next) {
     if(!req.signedCookies.sessionId) {
         var sessionId = Math.floor(Math.random() * 100000000) + 10000000;
