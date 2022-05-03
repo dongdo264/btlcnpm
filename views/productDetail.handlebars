@@ -76,32 +76,15 @@
                                 <div style="justify-content: space-between  ;" class="clearfix">
                                     <div class="form-group single-product-size">
                                         <strong>Chọn size</strong>
+                                        {{#each productDetail}}
                                             <label>
-                                                <input type="radio" name="variation" value="39" id="size" data-quantity="0">
-                                                <span>39</span>
+                                                <input type="radio" name="variation" value={{size}} id="size" data-quantity="0">
+                                                <span>{{size}}</span>
                                             </label>
-                                            <label>
-                                                <input type="radio" name="variation" value="40" id="size" data-quantity="0">
-                                                <span>40</span>
-                                            </label>
-                                        
-                                            <label>
-                                                <input type="radio" name="variation" value="41" id="size" data-quantity="0">
-                                                <span>41</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="variation" value="42" id="size" data-quantity="0">
-                                                <span>42</span>
-                                            </label>
-                                        
-                                            <label>
-                                                <input type="radio" name="variation" value="43" id="size" data-quantity="0">
-                                                <span>43</span>
-                                            </label>
-                                        
+                                        {{/each}}
                                             <div class="form-group single-product-quantity">
                                                 <strong>Số lượng</strong>
-                                                <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="{{quantityInStock}}">
+                                                <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="3">
                                             </div>
                                         </div>
                                 </div>

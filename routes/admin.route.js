@@ -77,7 +77,8 @@ router.post('/vieworder/:id', async function(req, res) {
         status = 'Đã hoàn tất';
         const rows = await db.load('select * from orderdetails where orderNumber = ' + id);
         for (var i = 0; i < rows.length; i++) {
-            await db.load('update products set quantityInStock = quantityInStock - ' + rows[i].quantity + ", quantityOrdered = quantityOrdered + " + rows[i].quantity + " where productID = " + rows[i].productID);
+            await db.load('update productdetails set quantityInStock = quantityInStock - ' + rows[i].quantity  + " where productID = " + rows[i].productID + " and size = " + rows[i].size);
+            await db.load('update products set quantitySold = quantitySold + ' + rows[i].quantity + " where productID = " + rows[i].productID);
         }
     } else if (stt == 4) {
         status = 'Bị hủy';

@@ -79,7 +79,7 @@ router.get('/search', async function(req, res) {
     } else if (type == 'desc') {
         list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by productPrice desc limit 12 offset " + offset);
     } else if (type == 'mostsale') {
-        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by quantityOrdered limit 12 offset " + offset);
+        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by quantitySold limit 12 offset " + offset);
     }
     res.render('search', {
         categories : list,
