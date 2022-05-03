@@ -187,8 +187,14 @@
     font-size: 1.6rem;
 }
 
+.header__search-box .icon__search button {
+    background: none;
+    border: none;
+    color: #fff;
+}
+
 .header .ti-search {
-    line-height: 2.5;
+    line-height: 2.7;
 }
 
 .header .header__row_1 .site-hotline {
@@ -209,6 +215,7 @@
 .header .header__navbar-item a {
     text-decoration: none;
     color: #fff;
+    font-size: 1.6rem;
 }
 
 .header .header__navbar-item .ti-angle-down {
@@ -230,17 +237,15 @@
     position: relative;
 }
 
-.header__navbar .subMenu {
+.header__navbar-list .subMenu {
     display: none;
     list-style-type: none;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 0;
+    padding: 8px 5px;
     text-transform: uppercase;
     max-width: 202px;
     background-color: #272727;
     position: absolute;
-    top: calc(100% - 20px);
+    /* top: calc(100% - 20px); */
     z-index: 3;
 }
 
@@ -1023,6 +1028,16 @@ label {
     .header .header__search-box,
     .header .header__row_1 .cart {
         display: none;
+    }
+
+    .header .header__navbar-list {
+        display: none;
+    }
+
+    .header .header__search-box.admin {
+        display: flex;
+        min-width: 280px;
+        margin: 0 25%;
     }
 
     .header .header__row_1 .site-hotline.hidden-md-up {
