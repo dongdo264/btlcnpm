@@ -17,7 +17,7 @@ router.get('/', async function(req, res) {
     } else if (day == 'today') {
         rows = await db.load("select * from orders where status LIKE '%" + status + "%' and DAY(orderDate) = DAY(CURDATE()) order by orderDate desc");
     } else if (day == '7day') {
-        rows = await db.load("select * from orders where status LIKE '%" + status + "&' and orderDate >= DATE_ADD(CURDATE(), INTERVAL -7 DAY) order by orderDate desc");
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and orderDate >= DATE_ADD(CURDATE(), INTERVAL -7 DAY) order by orderDate desc");
     }
     res.render('admin', {
         layout : 'admin.main.handlebars',
@@ -36,8 +36,18 @@ router.get('/delete', async function(req, res) {
 });
 router.get('/vieworder/:id', async function(req, res) {
     const id = req.params.id;
+    var isUpdate = true;
     const rows = await db.load('select * from orders where orderNumber = ' + id);
     const order_list = await db.load('select o.productID, o.orderNumber, o.quantity, o.priceEach, p.productID,o.size, p.productName,(o.quantity * o.priceEach) as total from orderdetails as o, products as p where orderNumber = ' + id + ' and o.productID = p.productID');
+    for (var i = 0; i < order_list.length; i++) {
+        const stt = await db.load('select * from productdetails where productID = ' + order_list[i].productID + " and size = " + order_list[i].size);
+        order_list[i].status = 'Đủ hàng';
+        if (order_list[i].quantity > stt[0].quantityInStock) {
+            order_list[i].danger = true;
+            order_list[i].status = 'Không đủ hàng';
+            isUpdate = false;
+        }
+    }
     var sum = 0;
     for (var i = 0;i < order_list.length; i++) {
         sum += order_list[i].total;
@@ -58,7 +68,8 @@ router.get('/vieworder/:id', async function(req, res) {
         layout : 'admin.main.handlebars',
         rows,
         order_list,
-        sum
+        sum,
+        isUpdate
     });
 });
 router.post('/vieworder/:id', async function(req, res) {
@@ -75,10 +86,13 @@ router.post('/vieworder/:id', async function(req, res) {
         status = 'Đang giao hàng';
     } else if (stt == 3) {
         status = 'Đã hoàn tất';
-        const rows = await db.load('select * from orderdetails where orderNumber = ' + id);
-        for (var i = 0; i < rows.length; i++) {
-            await db.load('update productdetails set quantityInStock = quantityInStock - ' + rows[i].quantity  + " where productID = " + rows[i].productID + " and size = " + rows[i].size);
-            await db.load('update products set quantitySold = quantitySold + ' + rows[i].quantity + " where productID = " + rows[i].productID);
+        const check = await db.load("select * from orders where orderNumber = " + id);
+        if (check[0].status != status) {
+            const rows = await db.load('select * from orderdetails where orderNumber = ' + id);
+            for (var i = 0; i < rows.length; i++) {
+                await db.load('update productdetails set quantityInStock = quantityInStock - ' + rows[i].quantity  + " where productID = " + rows[i].productID + " and size = " + rows[i].size);
+                await db.load('update products set quantitySold = quantitySold + ' + rows[i].quantity + " where productID = " + rows[i].productID);
+            }
         }
     } else if (stt == 4) {
         status = 'Bị hủy';

@@ -69,6 +69,7 @@
                                     <th>Giá</th>
                                     <th>Size</th>
                                     <th>Số lượng</th>
+                                    <th>Trong kho</th>
                                     <th>Tổng tiền</th>
                                     <th></th>
                                 </tr>
@@ -89,6 +90,15 @@
                                     <td>
                                         {{quantity}}
                                     </td>
+                                    {{#if danger}}
+                                    <td style="color: red;">
+                                        {{status}}
+                                    </td>
+                                    {{else}}
+                                        <td>
+                                        {{status}}
+                                    </td>
+                                    {{/if}}
                                     <td class="price_total">
                                         <div class="cl--primary" style="color:#ffe11b">{{format_number total}}đ</div>
                                     </td>
@@ -117,10 +127,11 @@
                         </table>
                     </div>
 
+                    {{#if isUpdate}}
                     <div class="shop-back" id="button-showinfo">
-                        <button class="btn btn-secondary"><i class="ti-shopping-cart"></i> Cập nhật</button>
+                        <button class="btn btn-secondary"><i class="ti-loop"></i> Cập nhật</button>
                     </div>
-
+                    {{/if}}
                 </div>
             </form>
        </div>

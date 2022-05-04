@@ -10,10 +10,10 @@
     $('#form-Payment').on('submit', function(event) {
         event.preventDefault();
         if (validate()) {
-            alert('Đặt hàng thành công');
+            alert('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng');
             $('#form-Payment').off('submit').submit();
         } else {
-            alert('Không thành công! Vui lòng kiểm tra lại thông tin');
+            alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
         }
     })
     
@@ -115,6 +115,7 @@
 
                     <div class="shop-back" id="button-showinfo">
                         {{#if isOrder}}
+                        <a class="btn btn-first" href="/">Tiếp tục mua hàng</a>
                         <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
                         {{else}}
                             <h2 style="font-size: 2rem; color:red">Bạn chỉ có thể tạo tối đa 2 đơn 1 ngày</h2>
@@ -153,7 +154,7 @@
                                 </div>
 
                                  <div class="shop-back" id="button-payment" style="display: none" >
-                                    <button class="btn btn-secondary" type="submit"><i class="ti-shopping-cart"></i> Mua hàng</button>
+                                    <button class="btn btn-secondary" type="submit"><i class="ti-shopping-cart"></i> Gửi đơn hàng</button>
                                 </div>
                         </form>
                     </div>
