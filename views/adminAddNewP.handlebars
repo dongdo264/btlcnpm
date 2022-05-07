@@ -1,0 +1,58 @@
+<div class="container" >
+    <form id="content" method="post">
+        <div class="container_content">
+            <div class="section_header">
+                <div class="container_section_header">
+                    <h2 class="section_title">Thêm sản phẩm</h2>
+                </div>
+            </div>
+            
+            <div class="add_product">
+                <div class="col col1">                   
+                    <div class="form-group">
+                        <label class="product-info">Tên sản phẩm :</label>
+                        <input type="text" class="form-control" id="nameP" name="nameP">
+                    </div>
+                    <div class="form-group note-shipping">
+                        <label class="title-info">Thương hiệu sản phẩm</label>
+                                <select class="form-control" id="brandP" name="brandP" style="background-color:  #1d1d1d; height : 30px" name="stt">
+                                    <option value="Nike" id="brandP" name="brandP">Nike</option>
+                                    <option value="Adidas" id="brandP" name="brandP">Adidas</option>
+                                    <option value="Mizuno" id="brandP" name="brandP">Mizuno</option>
+                                    <option value="Puma" id="brandP" name="brandP">Puma</option>
+                                </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="product-info">Miêu tả về sản phẩm :</label>
+                        <input type="text" class="form-control" id="descP" name="descP">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="product-info">Giá sản phẩm :</label>
+                        <input type="text" class="form-control" id="priceP" name ="priceP">
+                    </div>
+                    <div class="form-group note-shipping">
+                        <label class="title-info">Loại đinh :</label>
+                                <select class="form-control" id="styleP" name="styleP" style="background-color:  #1d1d1d; height : 30px" name="stt">
+                                    <option value="TF, Cỏ nhân tạo" id="styleP" name="styleP">TF, Cỏ nhân tạo</option>
+                                    <option value="FG, Cỏ tự nhiên" id="styleP" name="styleP">FG, Cỏ tự nhiên</option>
+                                </select>
+                    </div>
+                    
+                    
+                    {{!-- <div class="img-group">Tải hình ảnh :
+                        <input class="img-control" type="file" name="myImage" accept="image/*">
+                        <input class="img-control" type="file" name="myImage" accept="image/*">
+                        <input class="img-control" type="file" name="myImage" accept="image/*">
+                        <input class="img-control" type="file" name="myImage" accept="image/*">
+                        <input class="img-control" type="file" name="myImage" accept="image/*">
+                        <input type="submit" value="Upload Photo">
+                    </div> --}}
+                </div>
+            </div>
+
+            <div class="button_add">
+                <button class="btn-add">Thêm</button>
+            </div>
+        </div>
+    </form>
+</div>

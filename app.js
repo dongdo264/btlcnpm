@@ -8,6 +8,8 @@ const appMiddleware = require('./middleware/app.middleware');
 const loginMiddleware = require('./middleware/login.middleware');
 const adminMiddleware = require('./middleware/admin.middleware');
 
+
+
 const app = express();
 
 // lay du lieu tu form gui ve
@@ -35,6 +37,7 @@ app.engine('handlebars', engine({
 }
 ));
 app.set('view engine', 'handlebars');
+
 
 
 app.use(express.static('public'));

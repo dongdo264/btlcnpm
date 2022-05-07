@@ -1,0 +1,38 @@
+<div class="container" >
+        <div class="container_content">
+            <div class="section_header">
+                <div class="container_section_header">
+                    <h2 class="section_title">Sản phẩm</h2>
+                </div>
+            </div>
+            
+            <div class="edit_product">
+                    {{#each this.categories}}
+                        <div class="col">
+                            <div class="home-product-item">
+                                <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
+                                
+                                <h2 class="edit-item-name">{{productName}}</h2>
+                                <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
+                                
+                            </div>
+                            <div class="button-product">
+                                <a href="/admin/editProduct/{{productID}}">
+                                    <button class="edit-button">Sửa</button>
+                                </a>
+
+                                <a href="/admin/delproduct/{{productID}}">
+                                    <button class="edit-button-2">Xoá</button>
+                                </a>
+
+                                <a href="/admin/addquantity/{{productID}}">
+                                    <button class="edit-button-3">Thêm số lượng sản phẩm</button>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    {{/each}}                                           
+            </div>
+            
+        </div>
+</div>

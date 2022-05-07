@@ -1448,3 +1448,177 @@ label {
         margin-right: 30px;
     }
 }
+
+
+
+/* them san pham */
+
+.container_content .add_product {
+    color: #ddd;
+    font-size: 1.6rem;
+    display: flex;
+    margin-bottom: 45px;
+}
+
+.add_product .form-control {
+    background: none;
+    border-radius: 2px;
+    border: 1px solid #3b3b3b;
+    padding: 5px 15px;
+    color: #fff;
+    
+    line-height: 28px;
+}
+
+.add_product .col {
+    width: 100%;
+}
+
+.add_product .col1 {
+    padding-right: 15px;
+}
+
+.add_product .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.add_product .form-group .product-info {
+    line-height: calc(22 / 14);
+    margin-bottom: 8px;
+}
+
+.add_product .img-group .img-control {
+    display: flex;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.button_add {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button_add .btn-add {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.7rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    border-radius: 4px;
+    min-width: 216px;
+    line-height: 34px;
+    text-align: center;
+}
+
+.button_add .btn-add:hover {
+    opacity: 0.9;
+    background-color: rgb(198, 252, 198);
+}
+
+.size-form {
+    display: flex;
+}
+
+.form-group-2 {
+    display: grid;
+    width: 50px
+}
+
+.form-group-3 {
+    display: grid;
+    margin-left: 20px;
+}
+
+.add-size {
+    padding: 5px;
+    margin: 2px;
+    background: none;
+    border-radius: 2px;
+    border: 1px solid #3b3b3b;
+    color: #fff;
+    width: 100%
+}
+
+.form-size-control {
+    padding: 5px;
+    margin: 2px;
+    background: none;
+    border-radius: 2px;
+    border: 1px solid #3b3b3b;
+    color: #fff;
+    
+}
+
+/* edit san pham */
+
+.edit_product {
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit_product .col {
+    padding: 10px 13px;
+    width: 21.5%;
+    border: 1px solid rgb(0, 0, 0);
+} 
+
+.edit-item-name {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+.edit-button {
+    background-color: #555;
+  color: white;
+  font-size: 12px;
+  padding: 12px 20px;
+  margin: 3px;
+  
+}
+
+.edit-button-2 {
+    background-color: #555;
+  color: red;
+  font-size: 12px;
+  padding: 12px 20px;
+  margin: 3px;
+  
+}
+
+.edit-button-3 {
+    background-color: #555;
+  color: white;
+  /* font-size: 12px; */
+  padding: 12px 20px;
+  margin: 3px;
+}
+
+.edit-button:hover, .edit-button-2:hover, .edit-button-3:hover {
+    background-color: rgb(131, 129, 129);
+}
+
+
+
+/* them size cho san pham */
+
+.form-add-quantity {
+    display: grid;
+    margin-bottom: 40px;
+}
+
+.form-add-quantity .product-info {
+    font-size: 16px;
+    padding: 2px;
+    border: 2px;
+    
+}
+
+.size-form {
+    font-size: 16px;
+}
