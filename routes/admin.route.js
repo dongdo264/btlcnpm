@@ -132,4 +132,98 @@ router.get('/search', async function(req, res) {
         rows
     });
 });
+
+
+router.get('/addNewProd', async function(req, res) {
+    res.render('adminAddNewP', {
+        layout : 'admin.main.handlebars'
+    });
+});
+
+router.post('/addNewProd', async function(req, res) {
+    const name = req.body.nameP;
+    const brand = req.body.brandP;
+    const desc = req.body.descP;
+    const price = req.body.priceP;
+    const style = req.body.styleP;
+
+    await db.load("insert into products (productName, productBrand, productDescription, productPrice, style) values ('" + name + "', '" + brand + "', '" + desc + "', '" + price + "', '" + style + "') ");
+    
+    const url = '/admin/addNewProd';
+    res.redirect(url);
+});
+
+router.get('/editProduct', async function(req, res) {
+    const list = await db.load('select * from products');
+    res.render('adminEdit', {
+        layout : 'admin.main.handlebars',
+        categories : list,
+        empty : list.length === 0,
+        searchName : "",
+        searchbystyle : false
+    });
+});
+
+router.get('/editProduct/:id' ,async function(req, res) {
+    const id = req.params.id;
+    const rows = await db.load('select * from products where productID = ' + id);
+    res.render('adminAlterProd', {
+        layout : 'admin.main.handlebars',
+        categories : rows
+    });
+});
+
+
+router.post('/editProduct/:id', async function(req, res) {
+    const id = req.params.id;
+    const productName = req.body.editNameP;
+    const productBrand = req.body.editBrandP;
+    const productDescription = req.body.editDescP;
+    const productPrice = req.body.editPriceP;
+    const style = req.body.editStyleP;
+
+    await db.load("update products set productName = '" + productName + "', productBrand = '" + productBrand + "', productDescription = '" + productDescription + "', productPrice = '" + productPrice + "', style = '" + style + "' where productID = " + id); 
+    const url = '/admin/editProduct';
+    res.redirect(url);
+});
+
+router.get('/delproduct/:id', async function(req, res) {
+    const id = req.params.id;
+    await db.load('delete from products where productID = ' + id );
+    var url = '/admin/editProduct';
+    res.redirect(url);
+});
+
+router.get('/addquantity/:id', async function(req, res) {
+    const id = req.params.id;
+    const rows = await db.load('select * from products where productID = ' + id);
+    res.render('adminAddQUantity', {
+        layout : 'admin.main.handlebars',
+        categories : rows
+    });
+});
+
+router.post('/addquantity/:id', async function(req, res) {
+    const id = req.params.id;
+    const size38 = req.body.size38;
+    const size39 = req.body.size39;
+    const size40 = req.body.size40;
+    const size41 = req.body.size41;
+    const size42 = req.body.size42;
+    const aSize38 = req.body.aSize38;
+    const aSize39 = req.body.aSize39;
+    const aSize40 = req.body.aSize40;
+    const aSize41 = req.body.aSize41;
+    const aSize42 = req.body.aSize42;
+
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', '" + size38 + "', '" + aSize38 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', '" + size39 + "', '" + aSize39 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', '" + size40 + "', '" + aSize40 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', '" + size41 + "', '" + aSize41 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', '" + size42 + "', '" + aSize42 + "') ");
+
+    const url = '/admin/editProduct';
+    res.redirect(url);
+});
+
 module.exports = router;

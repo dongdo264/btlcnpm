@@ -70,6 +70,7 @@ p {
 
 .container {
     background: #1d1d1d;
+    width: -webkit-fill-available;
 }
 .home-product-item-img {
     padding-top: 100%;
@@ -231,4 +232,41 @@ p {
     .grid__column {
         width: calc(33% - 38px);
     }
+}
+
+
+
+.product_mgmt {
+    color: yellow;
+    font-weight: 200;
+    padding: 16px;
+    border-bottom: 1.5px solid #1d1d1d;
+    border-top: 50px solid #1d1d1d;
+    margin: 0;
+}
+
+.list_prod_mgmt {
+    list-style: none;
+    text-align: none;
+    margin: 0;
+    padding: 16px;
+}
+
+.list_prod_mgmt a {
+    margin: 0;
+   color: #fff;
+    padding: 16px 0;
+}
+
+.name_prod_mgmt {
+    padding: 8px 0;
+    font-weight: 400;
+}
+
+.name_prod_mgmt a {
+    text-decoration: none;
+}
+
+.name_prod_mgmt a:hover {
+    color: #ffe11b;
 }
