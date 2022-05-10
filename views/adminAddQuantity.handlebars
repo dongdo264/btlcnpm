@@ -9,36 +9,56 @@
                 </div>
 
                 <div class="form-add-quantity">
+                    <label class="product-info">Mã sản phẩm : {{productID}}</label>
                     <label class="product-info">Tên sản phẩm : {{productName}}</label>
                     <label class="product-info">Thương hiệu : {{productBrand}}</label>
                     <label class="product-info">Mô tả : {{productDescription}}</label>
-                    <label class="product-info">giá : {{productPrice}}</label>
+                    <label class="product-info">Giá : {{productPrice}}</label>
                     <label class="product-info">Loại : {{style}}</label>
                 </div>
 
                 <div class="size-form">
                             <div class="form-group-2">
-                                <label class="product-info">Size</label>
-                                    <input type="text" class="add-size" id="size38" name="size38" value="38"></input>
+                                <label class="product-info" style="color: yellow;">Size</label>
+                                <label class="product-info">38</label>
+                                <label class="product-info">39</label>
+                                <label class="product-info">40</label>
+                                <label class="product-info">41</label>
+                                <label class="product-info">42</label>
+                                <label class="product-info">43</label>
+
+
+                                    {{!-- <input type="text" class="add-size" id="size38" name="size38" value="38"></input>
                                     <input type="text" class="add-size" id="size39" name="size39" value="39"></input>
                                     <input type="text" class="add-size" id="size40" name="size40" value="40"></input>
                                     <input type="text" class="add-size" id="size41" name="size41" value="41"></input>
-                                    <input type="text" class="add-size" id="size42" name="size42" value="42"></input>
+                                    <input type="text" class="add-size" id="size42" name="size42" value="42"></input> --}}
                             </div>
                             <div class="form-group-3">
-                                <label class="product-info">Số lượng</label>
-                                    <input type="text" class="form-size-control" id="aSize38" name="aSize38">
-                                    <input type="text" class="form-size-control" id="aSize39" name="aSize39">
+                                <label class="product-info" style="color: yellow;">Số lượng trong kho</label>
+                                 {{#each list_size}}
+                                <input class="form-size-control" type="number" min="0" max="100" name="size{{size}}" value={{quantity}}>
+                                 {{/each}}
+
+                                {{!-- <input class="form-size-control" type="number" min="0" name="quantity" value="aSize39">
+                                <input class="form-size-control" type="number" min="0" name="quantity" value="aSize40">
+                                <input class="form-size-control" type="number" min="0" name="quantity" value="aSize41">
+                                <input class="form-size-control" type="number" min="0" name="quantity" value="aSize42">
+                                <input class="form-size-control" type="number" min="0" name="quantity" value="aSize43"> --}}
+                                    {{!-- <input type="text" class="form-size-control" id="aSize38" name="aSize38">
+                                    <input type="text" class="" id="aSize39" name="aSize39">
                                     <input type="text" class="form-size-control" id="aSize40" name="aSize40">
                                     <input type="text" class="form-size-control" id="aSize41" name="aSize41">
                                     <input type="text" class="form-size-control" id="aSize42" name="aSize42">
+                                    <input type="text" class="form-size-control" id="aSize43" name="aSize43"> --}}
                             </div>
+                           
                 </div>
                 
                 
 
                 <div class="button_add">
-                    <button class="btn-add">Thêm</button>
+                    <button class="btn-add">Cập nhật kho hàng</button>
                 </div>
             </div>
         </form>

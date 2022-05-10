@@ -10,8 +10,9 @@
     $('#form-Payment').on('submit', function(event) {
         event.preventDefault();
         if (validate()) {
-            alert('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng');
+            if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
             $('#form-Payment').off('submit').submit();
+            }
         } else {
             alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
         }

@@ -1,25 +1,42 @@
+ {{#section 'css'}}
+<style>
+.grid__column_2 {
+    width: 100%;
+}
+</style>
+
+ {{/section}}
  <div class="container" style="padding-top: 20px;">
             <div class="grid">
                 <div class="grid__row app-content">
-                    <div class="grid__column_1">
+                    {{!-- <div class="grid__column_1">
                         <nav class="category">
                           <div class="trademark">
-                                Lọc theo thương hiệu
+                                Thương hiệu
                           </div>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/search?q=Nike&loaidinh={{loaidinh}}&type={{type}}&page=1">Nike</a></li>
-                                <li class="name-trademark"><a href="/search?q=Adidas&loaidinh={{loaidinh}}&type={{type}}&page=1">Adidas</a></li>
-                                <li class="name-trademark"><a href="/search?q=Puma&loaidinh={{loaidinh}}&type={{type}}&page=1">Puma</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno&loaidinh={{loaidinh}}&type={{type}}&page=1">Mizuno</a></li>
+                                {{#each list_brand}}
+                                    {{#if active}}
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{value}}&loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
+                                    {{else}}
+                                        <li class="name-trademark"><a href="/search?q={{value}}&loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
+                                    {{/if}}
+                                {{/each}}
+                                
                             </ul>
                         </nav>                       
                         <nav class="category">
                             <div class="trademark">
-                                Lọc theo loại đinh
+                                Loại đinh
                           </div>
                             <ul class="list-trademark">
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ nhân tạo&type={{type}}&page=1">Sân cỏ nhân tạo</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ tự nhiên&type={{type}}&page=1">Sân cỏ tự nhiên</a></li>
+                                {{#each list_style}}
+                                    {{#if active}}
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{searchName}}&loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
+                                    {{else}}
+                                        <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </nav>
 
@@ -28,18 +45,21 @@
                                 Sắp xếp sản phẩm
                           </div>
                             <ul class="list-trademark">
-                               
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type=asc&page=1">Sắp xếp theo giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type=desc&page=1">Sắp xếp theo giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type=mostsale&page=1">Sắp xếp theo bán chạy nhất</a></li>
+                               {{#each list_sort}}
+                                {{#if active}}
+                                    <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{value2}}&page=1">{{value}}</a></li>
+                                    {{else}}
+                                    <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{value2}}&page=1">{{value}}</a></li>
+                                    {{/if}}
+                                {{/each}}
                                 
                             </ul>
                         </nav>
-                    </div>
+                    </div> --}}
 
                     <div class="grid__column_2">
                         <div class="grid__row  grid__full-width">
-                            <h1 class="heading-product">Danh sách sản phẩm</h1>
+                            <h1 class="heading-product">Có {{numberOfProduct}} kết quả tìm kiếm cho "{{searchName}}"</h1>
                         </div>
                         <div class="grid__column_10">   
                           {{#each this.categories}}              

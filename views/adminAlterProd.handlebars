@@ -4,18 +4,18 @@
             <div class="container_content">
                 <div class="section_header">
                     <div class="container_section_header">
-                        <h2 class="section_title">Sửa sản phẩm</h2>
+                        <h2 class="section_title">Thông tin mã sản phẩm {{productID}}</h2>
                     </div>
                 </div>
                 
                 <div class="add_product">
                     <div class="col col1">
                         <div class="form-group">
-                            <label class="product-info">Tên sản phẩm :</label>
+                            <label class="product-info" style="color: yellow;">Tên sản phẩm :</label>
                             <input type="text" class="form-control" id="editNameP" name="editNameP" value="{{productName}}">
                         </div>
                         <div class="form-group note-shipping">
-                        <label class="title-info">Thương hiệu sản phẩm</label>
+                        <label class="title-info" style="color: yellow;">Thương hiệu sản phẩm</label>
                                 <select class="form-control" id="editBrandP" name="editBrandP" style="background-color:  #1d1d1d; height : 30px" name="stt">
                                     <option value="Nike" id="editBrandP" name="editBrandP">Nike</option>
                                     <option value="Adidas" id="editBrandP" name="editBrandP">Adidas</option>
@@ -24,26 +24,51 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                            <label for="" class="product-info">Miêu tả về sản phẩm :</label>
+                            <label for="" class="product-info" style="color: yellow;">Miêu tả về sản phẩm :</label>
                             <input type="text" class="form-control" id="editDescP" name="editDescP" value="{{productDescription}}">
                         </div>
                         <div class="form-group">
-                            <label for="" class="product-info">Giá sản phẩm :</label>
+                            <label for="" class="product-info" style="color: yellow;">Giá sản phẩm :</label>
                             <input type="text" class="form-control" id="editPriceP" name ="editPriceP" value="{{productPrice}}">
                         </div>
                         <div class="form-group note-shipping">
-                        <label class="title-info">Loại đinh :</label>
+                        <label class="title-info" style="color: yellow;">Loại đinh :</label>
                                 <select class="form-control" id="editStyleP" name="editStyleP" style="background-color:  #1d1d1d; height : 30px" name="stt">
                                     <option value="TF, Cỏ nhân tạo" id="editStyleP" name="editStyleP">TF, Cỏ nhân tạo</option>
                                     <option value="FG, Cỏ tự nhiên" id="editStyleP" name="editStyleP">FG, Cỏ tự nhiên</option>
                                 </select>
                         </div>
-                        
+
+
+                    <div class="list_orders" style="width:300px">
+                        <table class="table_orders">
+                            <thead>
+                                <tr class="title-row">
+                                    <th class="col1" style="color:yellow">Size</th>
+                                    <th class="col6" style="color:yellow">Số lượng trong kho</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each list_size}}
+                                <tr class="order_detail">
+                                    <td class="">
+                                        <span>{{size}}</span>
+                                    </td>
+                                    <td class="">
+                                        <input class="form-size-control" type="number" min="0" max="100" name="size{{size}}" value={{quantity}}>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                
                     </div>
                 </div>
 
                 <div class="button_add">
-                    <button class="btn-add">Sửa</button>
+                    <button class="btn-add">Cập nhật</button>
                 </div>
             </div>
         </form>
