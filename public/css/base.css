@@ -184,7 +184,7 @@ p {
 .pagination .page_item {
     list-style-type: none;
     padding: 10px 0;
-    width: 40px;
+    /* width: 40px; */
     background-color: #373737;
     margin-right: 10px;
     border-radius: 4px;
@@ -199,6 +199,7 @@ p {
 .pagination .page_link {
     text-decoration: none;
     color: #fff;
+    padding: 15px;
     
 }
 
