@@ -135,8 +135,8 @@ router.get('/search', async function(req, res) {
 
 router.get('/thuong-hieu/:brand', async function(req, res) {
     var brand = req.params.brand;
-    const type = req.query.type;
-    const loaidinh = req.query.loaidinh;
+    var type = req.query.type;
+    var loaidinh = req.query.loaidinh;
     var page = req.query.page;
     if (!page) {
         page = 1;
@@ -144,7 +144,10 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     if (brand == 'all') {
         brand = ''
     }
-    const countP = await db.load("select count(*) as count from products where productBrand LIKE '%" + brand + "%'");
+    if (!loaidinh) {
+        loaidinh = '';
+    }
+    const countP = await db.load("select count(*) as count from products where productBrand LIKE '%" + brand + "%' and style LIKE '%" + loaidinh + "%'");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
@@ -152,19 +155,20 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
         numberPage += 1;
     }
     const offset = (parseInt(page) - 1) * limit;
+    if (brand == '') {
+        brand = 'all';
+    }
     var page_number = [];
     for (var i = 1; i <= numberPage; i++) {
         const item = {
             value : i,
-            active: i == page
+            active: i == page,
+            brand,
+            loaidinh,
+            type
         }
         page_number.push(item);
     }
-
-    if(brand == '') {
-        brand = 'all';
-    }
-
     var tmp = ['Nike', 'Adidas', 'Puma', 'Mizuno', 'Kamito'];
     const list_brand = [];
     for (var i = 0; i < tmp.length; i++) {
@@ -188,8 +192,10 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
         }
         list_style.push(item);
     }
-
-    const list = await db.load('select * from products limit ' + limit + " offset " + offset);
+    if (brand == 'all') {
+        brand = ''
+    }
+    const list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
     res.render('home', {
         categories : list,
         empty : list.length === 0,

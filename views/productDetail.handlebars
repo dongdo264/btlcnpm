@@ -23,6 +23,15 @@
     }
 </script>
 {{/section}}
+ {{#section 'css'}}
+<style>
+.grid__column_2 {
+    width: 100%;
+}
+</style>
+
+ {{/section}}
+
 <div id="content" class="site-content">
     <div class="container">
     <div class="section">
@@ -63,7 +72,7 @@
                         </div>
                         {{#if maxCart}} 
                             <div style="text-align: justify;" class="outofstock">
-                            <p>Bạn chỉ mua tối đa 4 sản phẩm 1 lần</p>
+                            <p>Giỏ hàng đã đầy</p>
                             </div>
                         {{else}}
                             {{#if outOfStock}}   
@@ -131,5 +140,27 @@
                     </div>
                 </div>
                 {{/each}}
+                 <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Có thể bạn thích</h2>
+                    </div>
+                     <div class="grid" style="padding-bottom: 30px;">
+                <div class="grid__row app-content">
+                    <div class="grid__column_2">
+                        <div class="grid__column_10">   
+                          {{#each this.related_product}}              
+                            <div class="grid__column">
+                                <div class="home-product-item">
+                                <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
+                                <a href="/product/view/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">{{productName}}</h2></a>
+                                <div class="home-product-item-price">{{format_number productPrice}}đ</div>
+                                </div>
+                            </div>  
+                          {{/each}}
+                    </div>
+                    </div>  
+                </div>   
+            </div>
+                </div>
             </div>
             </div>

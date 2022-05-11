@@ -10,15 +10,23 @@ router.get('/view/:id', async function(req, res) {
     const productDetail = await db.load('select * from productdetails where productID = + ' + id + " and quantityInStock != 0");
     product[0].outOfStock = false;
     product[0].maxCart = false;
-    if (list[0].count >= 4) {
+    if (list[0].count >= 5) {
         product[0].maxCart = true;
     }
     if (productDetail.length == 0) {
         product[0].outOfStock = true;
     }
+    const related_product = [];
+    const list2 = await db.load('select * from products where productID != ' + id);
+    for (var i = 0; i < 4; i++) {
+        var rand = Math.floor(Math.random()*list2.length);
+        related_product.push(list2[rand]);
+        list2.splice(rand,1);
+    }
     product[0].productDetail = productDetail;
     res.render('productDetail', {
         categories : product,
+        related_product
     });
 });
 

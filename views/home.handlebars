@@ -22,7 +22,7 @@ function showSlides() {
 </script>
 {{/section}}
   
-    <div class="slideshow-container">
+    <div class="slideshow-container" style="padding-top: 30px;">
 
     <div class="mySlides fade">
       <img src="/img/brand_banner_3.webp" style="width:100%">
@@ -71,18 +71,12 @@ function showSlides() {
                               {{else}}
                               {{#each list_brand}}
                                     {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{value}}?loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{value}}?type={{type}}&page=1">{{value}}</a></li>
                                     {{else}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/{{value}}?loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/{{value}}?type={{type}}&page=1">{{value}}</a></li>
                                     {{/if}}
                                 {{/each}}
-                              {{/if}}
-                                
-                                {{!-- <li class="name-trademark"><a href="/search?q=Nike&loaidinh={{loaidinh}}&type={{type}}&page=1">Nike</a></li>
-                                <li class="name-trademark"><a href="/search?q=Adidas&loaidinh={{loaidinh}}&type={{type}}&page=1">Adidas</a></li>
-                                <li class="name-trademark"><a href="/search?q=Puma&loaidinh={{loaidinh}}&type={{type}}&page=1">Puma</a></li>
-                                <li class="name-trademark"><a href="/search?q=Mizuno&loaidinh={{loaidinh}}&type={{type}}&page=1">Mizuno</a></li>                 --}}
-                                
+                              {{/if}}                        
                             </ul>
                         </nav>                       
                         <nav class="category">
@@ -157,11 +151,11 @@ function showSlides() {
                             {{#each this.page_number}}
                               {{#if active}}
                               <li class="page_item" style="background: #ffe11b;">
-                                  <a class="page_link" href="/thuong-hieu/{{value}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
                               </li>
                               {{else}}
                               <li class="page_item">
-                                  <a class="page_link" href="/thuong-hieu/{{value}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
                               </li>
                               {{/if}}
                             {{/each}}
