@@ -12,7 +12,7 @@
                 <div class="container_content">
                     <div class="section_header" id="header-info">
                         <div class="container_section_header">
-                            <h2 class="section_title">Thông tin khách hàng</h2>
+                            <h2 class="section_title">Thông tin đơn hàng mã {{orderNumber}}</h2>
                         </div>
                     </div>
                     <div class="info-shipping" id="container-shipping">
@@ -55,7 +55,7 @@
 
                     <div class="section_header">
                         <div class="container_section_header">
-                            <h2 class="section_title">Thông tin đơn hàng mã {{orderNumber}}</h2>
+                            <h2 class="section_title">Thông tin các sản phẩm đặt hàng</h2>
                         </div>
                     </div>
             {{/each}}
@@ -79,7 +79,7 @@
                                 <tr class="order_detail">
                                     <td><a class="image" href=""><img style="width:88px" src="/img/{{productID}}/main.jpg" alt=""></a></td>
                                     <td class="describe_product">
-                                        <a href="/product/view/{{productID}}">{{productName}}</a>
+                                        <a href="/admin/editProduct/{{productID}}">{{productName}}</a>
                                     </td>
                                     <td class="price_product">
                                         <span>{{format_number priceEach}}đ</span>
@@ -105,7 +105,7 @@
                                     
                                     <td class="recycle">
                                         <a href="/admin/delorder?productID={{productID}}&orderNumber={{orderNumber}}&size={{size}}">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-secondary" type="button" id="deleteOrder" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi đơn hàng?')">
                                                 <i class="ti-trash"></i><span>Xoá</span>
                                             </button>
                                         </a>
@@ -129,7 +129,7 @@
 
                     {{#if isUpdate}}
                     <div class="shop-back" id="button-showinfo">
-                        <button class="btn btn-secondary"><i class="ti-loop"></i> Cập nhật</button>
+                        <button class="btn btn-secondary">Cập nhật đơn hàng</button>
                     </div>
                     {{/if}}
                 </div>

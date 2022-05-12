@@ -271,3 +271,11 @@ p {
 .name_prod_mgmt a:hover {
     color: #ffe11b;
 }
+
+.custom-select {
+    position: relative;
+    font-size: 16px;
+}
+.sort-product {
+    display: flex;
+}

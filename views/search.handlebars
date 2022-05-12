@@ -9,57 +9,21 @@
  <div class="container" style="padding-top: 20px;">
             <div class="grid">
                 <div class="grid__row app-content">
-                    {{!-- <div class="grid__column_1">
-                        <nav class="category">
-                          <div class="trademark">
-                                Thương hiệu
-                          </div>
-                            <ul class="list-trademark">
-                                {{#each list_brand}}
-                                    {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{value}}&loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
-                                    {{else}}
-                                        <li class="name-trademark"><a href="/search?q={{value}}&loaidinh={{loaidinh}}&type={{type}}&page=1">{{value}}</a></li>
-                                    {{/if}}
-                                {{/each}}
-                                
-                            </ul>
-                        </nav>                       
-                        <nav class="category">
-                            <div class="trademark">
-                                Loại đinh
-                          </div>
-                            <ul class="list-trademark">
-                                {{#each list_style}}
-                                    {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{searchName}}&loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
-                                    {{else}}
-                                        <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
-                                    {{/if}}
-                                {{/each}}
-                            </ul>
-                        </nav>
-
-                        <nav class="category">
-                            <div class="trademark">
-                                Sắp xếp sản phẩm
-                          </div>
-                            <ul class="list-trademark">
-                               {{#each list_sort}}
-                                {{#if active}}
-                                    <li class="name-trademark"><a style="color: #ffe11b;" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{value2}}&page=1">{{value}}</a></li>
-                                    {{else}}
-                                    <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{value2}}&page=1">{{value}}</a></li>
-                                    {{/if}}
-                                {{/each}}
-                                
-                            </ul>
-                        </nav>
-                    </div> --}}
-
                     <div class="grid__column_2">
                         <div class="grid__row  grid__full-width">
                             <h1 class="heading-product">Có {{numberOfProduct}} kết quả tìm kiếm cho "{{searchName}}"</h1>
+                            <div class="sort-product">
+                                <div class="custom-select" style="width:200px;">
+                                    <select onchange="window.location.href=this.value">
+                                      <option >Sắp xếp sản phẩm</option>
+                                      <option value="/search?q={{searchName}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option value="/search?q={{searchName}}&sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option value="/search?q={{searchName}}&sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option value="/search?q={{searchName}}&sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option value="/search?q={{searchName}}&sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                    </select>
+                                  </div>
+                            </div>
                         </div>
                         <div class="grid__column_10">   
                           {{#each this.categories}}              
@@ -76,33 +40,17 @@
                 </div>   
                 <nav class="nav__pagination">
                     <ul class="pagination">
-                        
-                        {{#if home}}
-                            {{#each this.page_number}}
-                                {{#if active}}
-                                <li class="page_item" style="background: #ffe11b;">
-                                    <a class="page_link" href="/?page={{value}}">{{value}}</a>
-                                </li>
-                                {{else}}
-                                <li class="page_item">
-                                    <a class="page_link" href="/?page={{value}}">{{value}}</a>
-                                </li>
-                                {{/if}}
-                            {{/each}}
-                        {{else}}
                             {{#each this.page_number}} 
                                 {{#if active}}
                                 <li class="page_item" style="background: #ffe11b;">
-                                    <a class="page_link" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                    <a class="page_link" href="/search?q={{searchName}}&sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                                 </li>
                                 {{else}}
                                 <li class="page_item">
-                                    <a class="page_link" href="/search?q={{searchName}}&loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                    <a class="page_link" href="/search?q={{searchName}}&sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                                 </li>
                                 {{/if}}
                             {{/each}}
-                        {{/if}}
-                        
                     </ul>
                 </nav>
             </div>

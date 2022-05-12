@@ -1,3 +1,76 @@
+.container_content .section_header_tutorial h1,
+.container_content .list_order_tutorial h2,
+.container_content .section_header_tutorial i {
+    color: #ffe11b;
+}
+
+.container_content .section_header_tutorial h1 {
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 12px;
+}
+
+.container_content .section_header_tutorial i {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.container_content .section_header_tutorial {
+    margin-bottom: 26px;
+}
+
+.list_order_tutorial h2 {
+    font-weight: 700;
+    font-size: 1.7rem
+}
+
+.container_content .list_order_tutorial p {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.list_order_tutorial .item_2 {
+    margin-bottom: 6px;
+}
+
+.list_order_tutorial .para_1 {
+    line-height: 2;
+}
+
+.list_order_tutorial p a {
+    color: #ddd;
+}
+
+.list_order_tutorial p a:hover {
+    color: #ffe11b;
+}
+
+.list_order_tutorial table {
+    width: 100%; 
+    border-radius: 2px; 
+    border: 1px solid #ddd; 
+    border-collapse: collapse; 
+    margin-bottom: 14px;
+}
+
+.list_order_tutorial table th,
+.list_order_tutorial table td {
+    width: 50%;
+    border-top: 1px solid #ddd; 
+    border-right: 1px solid #ddd;
+}
+
+.list_order_tutorial table p {
+    line-height: 1.8;
+    margin: 0 0;
+}
+
+.list_order_tutorial li {
+    line-height: 2;
+}
+
+
 /* .header {
     margin-left: auto;
     margin-right: auto;
@@ -362,6 +435,7 @@
     margin-right: 32px;
     margin-bottom: 18px;
     margin-left: 30px;
+    width: 100%;
 }
 
 .single-product-size strong {

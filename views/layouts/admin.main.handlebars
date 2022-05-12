@@ -20,13 +20,23 @@
     <header class="header">
         <div class="header__row_1">
             <div class="container" style="justify-content: center; justify-content: right">
-                <form class="header__search-box admin" method="get" action="/admin/search">
+                {{#if adminSearchProduct}}
+                <form class="header__search-box admin" method="get" action="/admin/searchbyproduct">  
+                    <input class="input-search" type="search" placeholder="Nhập mã sản phẩm hoặc tên sản phẩm cần tìm" aria-label="Search"
+                        name="q">
+                    <div class="icon__search">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </div>
+                </form>
+                {{else}}
+                <form class="header__search-box admin" method="get" action="/admin/search">  
                     <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search"
                         name="q">
                     <div class="icon__search">
                         <button type="submit"><i class="ti-search"></i></button>
                     </div>
                 </form>
+                {{/if}}
                 <ul class="header__navbar-list" style="padding-left: 20%;">
                     <li class="header__navbar-item">
                         <a href="/admin">
