@@ -19,6 +19,8 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
+
+
 </script>
 {{/section}}
   
@@ -28,12 +30,6 @@ function showSlides() {
       <img src="/img/brand_banner_3.webp" style="width:100%">
       <div class="text">Giày bóng đá Puma</div>
     </div>
-
-    <div class="mySlides fade">
-      <img src="/img/brand_banner_4.webp" style="width:100%">
-      <div class="text">Giày bóng đá Mizuno</div>
-    </div>
-
     <div class="mySlides fade">
       <img src="/img/slideshow_2.webp" style="width:100%">
       <div class="text">Giày bóng đá Adidas</div>
@@ -42,15 +38,18 @@ function showSlides() {
       <img src="/img/slideshow_3.webp" style="width:100%">
       <div class="text">Giày bóng đá Nike</div>
     </div>
-
+    <div class="mySlides fade">
+      <img src="/img/brand_banner_6.webp" style="width:100%">
+      <div class="text">Giày bóng đá Kamito</div>
+    </div>
     </div>
     <br>
 
-    <div style="text-align:center">
-  <span class="dot" onclick="showSlides(0)"></span>
-  <span class="dot" onclick="showSlides(1)"></span>
-  <span class="dot" onclick="showSlides(2)"></span>
-  <span class="dot" onclick="showSlides(3)"></span>
+  <div style="text-align:center">
+  <span class="dot" ></span>
+  <span class="dot" ></span>
+  <span class="dot" ></span>
+  <span class="dot" ></span>
 </div>
        
        <div class="container" style="padding-top: 20px;">
@@ -71,9 +70,9 @@ function showSlides() {
                               {{else}}
                               {{#each list_brand}}
                                     {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{value}}?type={{type}}&page=1">{{value}}</a></li>
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{value}}?sort_by=&page=1">{{value}}</a></li>
                                     {{else}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/{{value}}?type={{type}}&page=1">{{value}}</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/{{value}}?sort_by=&page=1">{{value}}</a></li>
                                     {{/if}}
                                 {{/each}}
                               {{/if}}                        
@@ -90,34 +89,42 @@ function showSlides() {
                               {{else}}
                               {{#each list_style}}
                                     {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
                                     {{else}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&type={{type}}&page=1">Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
                                     {{/if}}
                                 {{/each}}
                                 {{/if}}
-                                {{!-- <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ nhân tạo&type={{type}}&page=1">Sân cỏ nhân tạo</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&loaidinh=Cỏ tự nhiêntype={{type}}&page=1">Sân cỏ tự nhiên</a></li> --}}
-                            </ul>
-                        </nav>
-
-                        <nav class="category">
-                            <div class="trademark">
-                                 Sắp xếp sản phẩm
-                          </div>
-                            <ul class="list-trademark">
-                                
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=asc&page=1">Sắp xếp theo giá tăng dần</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=desc&page=1">Sắp xếp theo giá giảm dần</a></li>
-                                <li class="name-trademark"><a href="/search?q={{searchName}}&type=mostsale&page=1">Sắp xếp theo bán chạy nhất</a></li>
                             </ul>
                         </nav>
                     </div>
 
                     <div class="grid__column_2">
                         <div class="grid__row  grid__full-width">
-                            <h1 class="heading-product">Danh sách sản phẩm</h1>
+                            <h1 class="heading-product">Hàng mới về</h1>
+                            <div class="sort-product">
+                                <div class="custom-select" style="width:200px;">
+                                    <select onchange="window.location.href=this.value">
+                                      {{#if home}}
+                                      <option >Sắp xếp sản phẩm</option>
+                                      <option value="/?sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option value="/?sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option value="/?sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option value="/?sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option value="/?sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                      {{else}}
+                                      <option >Sắp xếp sản phẩm</option>
+                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                      {{/if}}
+                                    </select>
+                                  </div>
+                            </div>
                         </div>
+
                         <div class="grid__column_10" id="products">   
                           {{#each this.categories}}              
                             <div class="grid__column">
@@ -138,11 +145,11 @@ function showSlides() {
                             {{#each this.page_number}}
                               {{#if active}}
                               <li class="page_item" style="background: #ffe11b;">
-                                  <a class="page_link" href="/?page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/?sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                               </li>
                               {{else}}
                               <li class="page_item">
-                                  <a class="page_link" href="/?page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/?sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                               </li>
                               {{/if}}
                             {{/each}}
@@ -151,11 +158,11 @@ function showSlides() {
                             {{#each this.page_number}}
                               {{#if active}}
                               <li class="page_item" style="background: #ffe11b;">
-                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                               </li>
                               {{else}}
                               <li class="page_item">
-                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&type={{type}}&page={{value}}">{{value}}</a>
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                               </li>
                               {{/if}}
                             {{/each}}

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/', async function(req, res) {
     var page = req.query.page;
+    var sort_by = req.query.sort_by;
     if (!page) {
         page = 1;
     }
@@ -21,11 +22,23 @@ router.get('/', async function(req, res) {
     for (var i = 1; i <= numberPage; i++) {
         const item = {
             value : i,
-            active: i == page
+            active: i == page,
+            sort_by
         }
         page_number.push(item);
     }
-    const list = await db.load('select * from products limit ' + limit + " offset " + offset);
+    var list = await db.load('select * from products limit ' + limit + " offset " + offset);
+    if (sort_by == 'price-asc') {
+        list = await db.load("select * from products order by productPrice limit " + limit + " offset " + offset);
+    } else if (sort_by == 'price-desc') {
+        list = await db.load("select * from products order by productPrice desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-asc') {
+        list = await db.load("select * from products order by productName limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-desc') {
+        list = await db.load("select * from products  order by productName desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'best-selling') {
+        list = await db.load("select * from products order by quantitySold desc limit " + limit + " offset " + offset);
+    }
     res.render('home', {
         categories : list,
         empty : list.length === 0,
@@ -36,17 +49,16 @@ router.get('/', async function(req, res) {
 
 router.get('/search', async function(req, res) {
     var name = req.query.q;
-    var type = req.query.type;
+    var sort_by = req.query.sort_by;
     var page = req.query.page;
-    loaidinh='';
     if (!name) {
         name = "";
     }
     if (!page) {
         page = 1;
     }
-    if (!type) {
-        type = "";
+    if (!sort_by) {
+        sort_by = "";
     }
     const countP = await db.load("SELECT count(*) as count FROM products WHERE productName LIKE '" + '%' + name + '%' + "'");
     const numberOfProduct = countP[0].count;
@@ -61,81 +73,36 @@ router.get('/search', async function(req, res) {
         const item = {
             value : i,
             searchName : name,
-            loaidinh,
-            type,
+            sort_by,
             active: i == page
         }
         page_number.push(item);
     }
-    const list_sort = [];
-    var tmp = ['Sắp xếp theo giá tăng dần', 'Sắp xếp theo giá giảm dần', 'Sắp xếp theo bán chạy nhất'];
-    for (var i = 0; i < tmp.length; i++) {
-        const item = {
-            value : tmp[i],
-            value2 : '',
-            searchName: name,
-            loaidinh,
-            active : false
-        }
-        list_sort.push(item);
-    }
-    list_sort[0].value2 = 'asc';
-    list_sort[1].value2 = 'desc';
-    list_sort[2].value2 = 'mostsale';
-    var list;
-    if (!type) {
-        type = "";
-        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' limit 12 offset " + offset);
-    } else if (type == 'asc') {
-        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by productPrice limit 12 offset " + offset);
-        list_sort[0].active = true;
-    } else if (type == 'desc') {
-        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by productPrice desc limit 12 offset " + offset);
-        list_sort[1].active = true;
-    } else if (type == 'mostsale') {
-        list = await db.load("SELECT * FROM products WHERE productName LIKE '" + '%' + name + '%' + "' and style LIKE '% " + loaidinh + "%' order by quantitySold limit 12 offset " + offset);
-        list_sort[2].active = true;
-    }
-    tmp = ['Nike', 'Adidas', 'Puma', 'Mizuno', 'Kamito'];
-    const list_brand = [];
-    for (var i = 0; i < tmp.length; i++) {
-        const item = {
-            value : tmp[i],
-            active : tmp[i] == name,
-            type,
-            loaidinh
-        }
-        list_brand.push(item);
-    }
-    tmp = ['cỏ nhân tạo', 'cỏ tự nhiên'];
-    const list_style = [];
-    for (var i = 0; i < tmp.length; i++) {
-        const item = {
-            value : tmp[i],
-            active : tmp[i] == loaidinh,
-            searchName : name,
-            type
-        }
-        list_style.push(item);
+    var list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' limit " + limit + " offset " + offset);
+    if (sort_by == 'price-asc') {
+        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice limit " + limit + " offset " + offset);
+    } else if (sort_by == 'price-desc') {
+        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-asc') {
+        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-desc') {
+        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'best-selling') {
+        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     res.render('search', {
         categories : list,
         page_number,
         searchName: name,
-        loaidinh,
-        type,
+        sort_by,
         empty : list.length === 0,
-        home: false,
-        list_brand,
-        list_style,
-        list_sort,
         numberOfProduct
     });
 });
 
 router.get('/thuong-hieu/:brand', async function(req, res) {
     var brand = req.params.brand;
-    var type = req.query.type;
+    var sort_by = req.query.sort_by;
     var loaidinh = req.query.loaidinh;
     var page = req.query.page;
     if (!page) {
@@ -165,7 +132,7 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
             active: i == page,
             brand,
             loaidinh,
-            type
+            sort_by
         }
         page_number.push(item);
     }
@@ -175,7 +142,7 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
         const item = {
             value : tmp[i],
             active : tmp[i] == brand,
-            type,
+            sort_by,
             loaidinh
         }
         list_brand.push(item);
@@ -188,21 +155,37 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
             value : tmp[i],
             active : tmp[i] == loaidinh,
             brand,
-            type
+            sort_by
         }
         list_style.push(item);
     }
     if (brand == 'all') {
         brand = ''
     }
-    const list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
+    var list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
+    if (sort_by == 'price-asc') {
+        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice limit " + limit + " offset " + offset);
+    } else if (sort_by == 'price-desc') {
+        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-asc') {
+        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName limit " + limit + " offset " + offset);
+    } else if (sort_by == 'title-desc') {
+        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName desc limit " + limit + " offset " + offset);
+    } else if (sort_by == 'best-selling') {
+        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by quantitySold desc limit " + limit + " offset " + offset);
+    }
+    if (brand == '') {
+        brand = 'all';
+    }
     res.render('home', {
         categories : list,
         empty : list.length === 0,
         page_number,
         list_brand,
         list_style,
-        home: false
+        home: false,
+        brand,
+        loaidinh
     });
 });
 

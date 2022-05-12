@@ -116,14 +116,7 @@ router.get('/delorder', async function(req, res) {
     var url = '/admin/vieworder/' + orderNumber;
     res.redirect(url);
 });
-// router.get('/vieworder', async function(req, res) {
-//     const query = req.query.q;
-//     const rows = await db.load("select * from orders where status = '" + query + "'");
-//     res.render('admin', {
-//         layout : 'admin.main.handlebars',
-//         rows
-//     });
-// });
+
 router.get('/search', async function(req, res) {
     const query = req.query.q;
     const rows = await db.load("select * from orders where customerName LIKE '%" + query + "%' OR phone LIKE '%" + query + "%'");
@@ -136,7 +129,8 @@ router.get('/search', async function(req, res) {
 
 router.get('/addNewProd', async function(req, res) {
     res.render('adminAddNewP', {
-        layout : 'admin.main.handlebars'
+        layout : 'admin.main.handlebars',
+        adminSearchProduct : true
     });
 });
 
@@ -157,7 +151,8 @@ router.get('/editProduct', async function(req, res) {
     const list = await db.load('select * from products');
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',
-        categories : list
+        categories : list,
+        adminSearchProduct : true
     });
 });
 
@@ -166,7 +161,7 @@ router.get('/editProduct/:id' ,async function(req, res) {
     const rows = await db.load('select * from products where productID = ' + id);
     const size_ = [];
     const rows_size = await db.load('select size, quantityInStock from productdetails where productID = ' + id)
-    for (var j = 38; j <= 43; j++) {
+    for (var j = 37; j <= 44; j++) {
         var check = true;
         for (var i = 0; i<rows_size.length;i++) {
             if (rows_size[i].size == j) {
@@ -190,7 +185,8 @@ router.get('/editProduct/:id' ,async function(req, res) {
     rows[0].list_size = size_;
     res.render('adminAlterProd', {
         layout : 'admin.main.handlebars',
-        categories : rows
+        categories : rows,
+        adminSearchProduct : true
     });
 });
 
@@ -202,21 +198,24 @@ router.post('/editProduct/:id', async function(req, res) {
     const productDescription = req.body.editDescP;
     const productPrice = req.body.editPriceP;
     const style = req.body.editStyleP;
+    const size37 = req.body.size37;
     const size38 = req.body.size38;
     const size39 = req.body.size39;
     const size40 = req.body.size40;
     const size41 = req.body.size41;
     const size42 = req.body.size42;
     const size43 = req.body.size43;
-
+    const size44 = req.body.size44;
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     await db.load('delete from productdetails where productID = ' + id);
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 37, '" + size37 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 38, '" + size38 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 39, '" + size39 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 40, '" + size40 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 41, '" + size41 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 44, '" + size44 + "') ");
     await db.load("update products set productName = '" + productName + "', productBrand = '" + productBrand + "', productDescription = '" + productDescription + "', productPrice = '" + productPrice + "', style = '" + style + "' where productID = " + id); 
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     const url = '/admin/editProduct';
@@ -230,59 +229,18 @@ router.get('/delproduct/:id', async function(req, res) {
     res.redirect(url);
 });
 
-router.get('/addquantity/:id', async function(req, res) {
-    const id = req.params.id;
-    const rows = await db.load('select * from products where productID = ' + id);
-    const size_ = [];
-    const rows_size = await db.load('select size, quantityInStock from productdetails where productID = ' + id)
-    for (var j = 38; j <= 43; j++) {
-        var check = true;
-        for (var i = 0; i<rows_size.length;i++) {
-            if (rows_size[i].size == j) {
-                const item = {
-                    size : j,
-                    quantity : rows_size[i].quantityInStock
-                }
-                size_.push(item);
-                check = false;
-                break;
-            }
-        }
-        if (check) {
-            const item = {
-                size : j,
-                quantity : 0
-            }
-            size_.push(item);
-        }
+router.get('/searchbyproduct', async function(req, res) {
+    const q = req.query.q;
+    var rows;
+    if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
+        rows = await db.load('select * from products where productID = ' + q);
+    } else {
+        rows = await db.load("select * from products where productName LIKE '%" + q + "%'");
     }
-    rows[0].list_size = size_;
-    res.render('adminAddQUantity', {
+    res.render('adminEdit', {
         layout : 'admin.main.handlebars',
-        categories : rows
-    });
+        categories : rows,
+        adminSearchProduct : true
+    })
 });
-
-router.post('/addquantity/:id', async function(req, res) {
-    const id = req.params.id;
-    const size38 = req.body.size38;
-    const size39 = req.body.size39;
-    const size40 = req.body.size40;
-    const size41 = req.body.size41;
-    const size42 = req.body.size42;
-    const size43 = req.body.size43;
-
-    await db.load('SET FOREIGN_KEY_CHECKS = 0');
-    await db.load('delete from productdetails where productID = ' + id);
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 38, '" + size38 + "') ");
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 39, '" + size39 + "') ");
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 40, '" + size40 + "') ");
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 41, '" + size41 + "') ");
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
-    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
-    await db.load('SET FOREIGN_KEY_CHECKS = 1');
-    const url = '/admin/editProduct';
-    res.redirect(url);
-});
-
 module.exports = router;
