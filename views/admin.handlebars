@@ -1,13 +1,28 @@
 <div class="container">
             <div id="content">
                 <div class="container_content">
-                    <div class="section_header">
-                        <div class="container_section_header">
-                            <h2 class="section_title">Thông tin các đơn hàng</h2>
+                    <div class="grid__row  grid__full-width">
+                        {{#if empty}}
+                            <h1 class="heading-product" style="color: white;">Không có đơn hàng nào</h1>
+                        {{else}}
+                            <h1 class="heading-product">Danh sách đơn hàng</h1>
+                        {{/if}}
+                            <div class="sort-product">
+                                <div class="custom-select" style="width:200px;">
+                                    <select class="select-box" onchange="window.location.href=this.value">
+                                      <option value="/admin?day={{day}}">Tất cả đơn hàng</option>
+                                      <option value="/admin?status=đang xử lý&day={{day}}">Đang xử lý</option>
+                                      <option value="/admin?status=đang giao hàng&day={{day}}">Đang giao hàng</option>
+                                      <option value="/admin?status=đã hoàn tất&day={{day}}">Đã hoàn tất</option>
+                                      <option value="/admin?status=bị hủy&day={{day}}">Bị hủy</option>
+                                    </select>
+                                  </div>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="list_orders">
+                        {{#if empty}}
+                        {{else}}
                         <table class="table_orders">
                             <thead>
                                 <tr class="title-row">
@@ -63,6 +78,7 @@
                                 {{/each}}
                             </tbody>
                         </table>
+                        {{/if}}
                     </div>
                 </div>
             </div>

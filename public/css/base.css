@@ -276,7 +276,7 @@ p {
 
 .custom-select {
     position: relative;
-    font-size: 20px;
+    font-size: 18px;
     background: #1d1d1d;
 }
 .sort-product {
@@ -285,4 +285,7 @@ p {
 .select-box {
     background-color: #373737;
     color: #fff;
+    outline: none;
+    height: 30px;
+    border-radius: 5px;
 }

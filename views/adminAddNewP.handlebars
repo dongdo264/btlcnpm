@@ -24,7 +24,8 @@
                     </div>
                     <div class="form-group">
                         <label for="" class="product-info">Miêu tả về sản phẩm :</label>
-                        <input type="text" class="form-control" id="descP" name="descP">
+                        <textarea type="text" class="form-control" id="DescP" name="DescP"></textarea>
+                        {{!-- <input type="text" class="form-control" id="descP" name="descP"> --}}
                     </div>
                     <div class="form-group">
                         <label for="" class="product-info">Giá sản phẩm :</label>
@@ -37,7 +38,28 @@
                                     <option value="FG, Cỏ tự nhiên" id="styleP" name="styleP">FG, Cỏ tự nhiên</option>
                                 </select>
                     </div>
-                    
+                    <div class="list_orders" style="width:300px">
+                        <table class="table_orders">
+                            <thead>
+                                <tr class="title-row">
+                                    <th class="col1" style="color:yellow">Size</th>
+                                    <th class="col6" style="color:yellow">Số lượng trong kho</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each list_size}}
+                                <tr class="order_detail">
+                                    <td class="">
+                                        <span>{{size}}</span>
+                                    </td>
+                                    <td class="">
+                                        <input class="form-size-control" type="number" min="0" max="100" name="size{{size}}" value={{quantity}}>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                     
                     {{!-- <div class="img-group">Tải hình ảnh :
                         <input class="img-control" type="file" name="myImage" accept="image/*">

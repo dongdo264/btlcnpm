@@ -22,6 +22,7 @@ router.get('/', async function(req, res) {
     res.render('admin', {
         layout : 'admin.main.handlebars',
         rows,
+        empty : rows.length == 0,
         status,
         day
     });
@@ -128,9 +129,18 @@ router.get('/search', async function(req, res) {
 
 
 router.get('/addNewProd', async function(req, res) {
+    const list_size = [];
+    for (var j = 37; j <= 45; j++) {
+        const item = {
+            size : j,
+            quantity : 0
+        }
+        list_size.push(item);
+    }
     res.render('adminAddNewP', {
         layout : 'admin.main.handlebars',
-        adminSearchProduct : true
+        adminSearchProduct : true,
+        list_size
     });
 });
 
@@ -140,15 +150,33 @@ router.post('/addNewProd', async function(req, res) {
     const desc = req.body.descP;
     const price = req.body.priceP;
     const style = req.body.styleP;
-
-    await db.load("insert into products (productName, productBrand, productDescription, productPrice, style) values ('" + name + "', '" + brand + "', '" + desc + "', '" + price + "', '" + style + "') ");
-    
-    const url = '/admin/addNewProd';
+    const size37 = req.body.size37;
+    const size38 = req.body.size38;
+    const size39 = req.body.size39;
+    const size40 = req.body.size40;
+    const size41 = req.body.size41;
+    const size42 = req.body.size42;
+    const size43 = req.body.size43;
+    const size44 = req.body.size44;
+    const check = await db.load("select max(productID) as id from products");
+    const id = check[0].id + 1;
+    await db.load('SET FOREIGN_KEY_CHECKS = 0');
+    await db.load("insert into products (productID, productName, productBrand, productDescription, productPrice, style) values (" + id + ",'" + name + "', '" + brand + "', '" + desc + "', '" + price + "', '" + style + "') ");  
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 37, '" + size37 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 38, '" + size38 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 39, '" + size39 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 40, '" + size40 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 41, '" + size41 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 44, '" + size44 + "') ");
+    await db.load('SET FOREIGN_KEY_CHECKS = 1');
+    const url = '/admin/editProduct/' + id;
     res.redirect(url);
 });
 
 router.get('/editProduct', async function(req, res) {
-    const list = await db.load('select * from products');
+    const list = await db.load("select * from products where status = 'SELLING'");
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',
         categories : list,
@@ -158,7 +186,7 @@ router.get('/editProduct', async function(req, res) {
 
 router.get('/editProduct/:id' ,async function(req, res) {
     const id = req.params.id;
-    const rows = await db.load('select * from products where productID = ' + id);
+    const rows = await db.load("select * from products where status ='SELLING' and productID = " + id);
     const size_ = [];
     const rows_size = await db.load('select size, quantityInStock from productdetails where productID = ' + id)
     for (var j = 37; j <= 44; j++) {
@@ -224,7 +252,11 @@ router.post('/editProduct/:id', async function(req, res) {
 
 router.get('/delproduct/:id', async function(req, res) {
     const id = req.params.id;
-    await db.load('delete from products where productID = ' + id );
+    await db.load('SET FOREIGN_KEY_CHECKS = 0');
+    await db.load('delete from productdetails where productID = ' + id);
+    await db.load('delete from customercart where productID = ' + id)
+    await db.load("update products set status = 'DELETE' where productID = " + id );
+    await db.load('SET FOREIGN_KEY_CHECKS = 1');
     var url = '/admin/editProduct';
     res.redirect(url);
 });
@@ -233,9 +265,9 @@ router.get('/searchbyproduct', async function(req, res) {
     const q = req.query.q;
     var rows;
     if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
-        rows = await db.load('select * from products where productID = ' + q);
+        rows = await db.load("select * from products where status ='SELLING' and productID = " + q);
     } else {
-        rows = await db.load("select * from products where productName LIKE '%" + q + "%'");
+        rows = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + q + "%'");
     }
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',

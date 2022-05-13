@@ -108,7 +108,7 @@
                             <tbody>
                                 <tr>
                                     <td>Tổng cộng: </td>
-                                    <td>{{format_number sum}}đ</td>
+                                    <td style="color: yellow;">{{format_number sum}}đ</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -116,10 +116,10 @@
 
                     <div class="shop-back" id="button-showinfo">
                         {{#if isOrder}}
-                        <a class="btn btn-first" href="/">Tiếp tục mua hàng</a>
+                        <button class="btn btn-first" onclick="window.location.href='/'">Tiếp tục mua hàng</button>
                         <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
                         {{else}}
-                            <h2 style="font-size: 2rem; color:red">Bạn chỉ có thể tạo tối đa 2 đơn 1 ngày</h2>
+                            <h2 style="font-size: 2rem; color:red">Bạn chỉ có thể tạo tối đa 3 đơn 1 ngày</h2>
                         {{/if}}
                     </div>
 
