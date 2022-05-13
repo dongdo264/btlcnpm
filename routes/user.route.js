@@ -27,17 +27,17 @@ router.get('/', async function(req, res) {
         }
         page_number.push(item);
     }
-    var list = await db.load('select * from products limit ' + limit + " offset " + offset);
+    var list = await db.load("select * from products where status = 'SELLING' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
-        list = await db.load("select * from products order by productPrice limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
-        list = await db.load("select * from products order by productPrice desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
-        list = await db.load("select * from products order by productName limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
-        list = await db.load("select * from products  order by productName desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING'  order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
-        list = await db.load("select * from products order by quantitySold desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     res.render('home', {
         categories : list,
@@ -60,7 +60,7 @@ router.get('/search', async function(req, res) {
     if (!sort_by) {
         sort_by = "";
     }
-    const countP = await db.load("SELECT count(*) as count FROM products WHERE productName LIKE '" + '%' + name + '%' + "'");
+    const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and productName LIKE '" + '%' + name + '%' + "'");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
@@ -78,17 +78,17 @@ router.get('/search', async function(req, res) {
         }
         page_number.push(item);
     }
-    var list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' limit " + limit + " offset " + offset);
+    var list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
-        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
-        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
-        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
-        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
-        list = await db.load("select * from products where productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by quantitySold desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     res.render('search', {
         categories : list,
@@ -114,7 +114,7 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     if (!loaidinh) {
         loaidinh = '';
     }
-    const countP = await db.load("select count(*) as count from products where productBrand LIKE '%" + brand + "%' and style LIKE '%" + loaidinh + "%'");
+    const countP = await db.load("select count(*) as count from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' and style LIKE '%" + loaidinh + "%'");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
@@ -162,17 +162,17 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     if (brand == 'all') {
         brand = ''
     }
-    var list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
+    var list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
-        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
-        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
-        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
-        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
-        list = await db.load("select * from products where productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by quantitySold desc limit " + limit + " offset " + offset);
+        list = await db.load("select * from products where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     if (brand == '') {
         brand = 'all';

@@ -45,11 +45,9 @@
                         <ul class="subMenu">
                             <li class="nikeShoe">
                                 <a href="/account/changepassword">Đổi mật khẩu</a>
-                                {{!-- <ul class="subMenu1">
-                                    <li><a href="/search?q=Nike+Mercurial">Nike Mercurial</a></li>
-                                    <li><a href="/search?q=Nike+Phantom+GT">Nike Phantom GT</a></li>
-                                    <li><a href="/search?q=Nike+Tiempo">Nike Tiempo</a></li>
-                                </ul> --}}
+                            </li>
+                            <li class="nikeShoe">
+                                <a href="/account/logout">Đăng xuất</a>
                             </li>
                         </ul>
                     </li>
@@ -67,11 +65,6 @@
                         <ul class="subMenu">
                             <li class="nikeShoe">
                                 <a href="/account/changepassword">Đổi mật khẩu</a>
-                                {{!-- <ul class="subMenu1">
-                                    <li><a href="/search?q=Nike+Mercurial">Nike Mercurial</a></li>
-                                    <li><a href="/search?q=Nike+Phantom+GT">Nike Phantom GT</a></li>
-                                    <li><a href="/search?q=Nike+Tiempo">Nike Tiempo</a></li>
-                                </ul> --}}
                             </li>
                         </ul>
                     </li>
@@ -86,40 +79,25 @@
             <div class="grid__row app-content">
                 <div class="grid__column_1">
                     <nav class="category">
-                        <h3 class="trademark">Quản lý đơn hàng</h3>
+                        <a href="/admin" style="text-decoration: none;"><h3 class="trademark">Quản lý đơn hàng</h3></a>
                         <ul class="list-trademark">
-                            <li class="name-trademark"><a href="/admin/?status=Đang xử lý&day={{day}}">Đang xử lý</a>
-                            </li>
-                            <li class="name-trademark"><a href="/admin/?status=Đang giao hàng&day={{day}}">Đang giao
-                                    hàng</a></li>
-                            <li class="name-trademark"><a href="/admin/?status=Đã hoàn tất&day={{day}}">Đã hoàn tất</a>
-                            </li>
-                            <li class="name-trademark"><a href="/admin/?status=Bị hủy&day={{day}}">Bị hủy</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=today">Trong ngày hôm
+                                    nay</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=7day">Trong 7 ngày vừa
+                                    qua</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=all">Cũ hơn</a></li>
                         </ul>
-
-                        <h3 class="product_mgmt">Quản lý sản phẩm</h3>
-                            <ul class="list_prod_mgmt">
-                                <li class="name_prod_mgmt"><a href="/admin/addNewProd">Thêm sản phẩm</a></li>
-                                <li class="name_prod_mgmt"><a href="/admin/editProduct">Sửa sản phẩm</a></li>
-                            </ul>
-
                     </nav>
                     <nav class="category">
-                        <h3 class="trademark">Xem các đơn hàng</h3>
-                        <ul class="list-trademark">
-                            <li class="name-trademark"><a href="/admin/?status={{status}}&day=today">Trong ngày hôm
-                                    nay</a></li>
-                            <li class="name-trademark"><a href="/admin/?status={{status}}&day=7day">Trong 7 ngày vừa
-                                    qua</a></li>
-                            <li class="name-trademark"><a href="/admin/?status={{status}}&day=all">Cũ hơn</a></li>
+                        <a href="/admin/editProduct" style="text-decoration: none;"><h3 class="trademark">Quản lý sản phẩm</h3></a>
+                        <ul class="list-trademark">  
+                            <li class="name-trademark"><a href="/admin/editProduct">Danh sách sản phẩm</a></li>
                         </ul>
                     </nav>
 
                 </div>
-
-                <div class="grid__column_10">
+     
                     {{{body}}}
-                </div>
             </div>
         </div>
     </div>

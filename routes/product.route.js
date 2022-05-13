@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get('/view/:id', async function(req, res) {
     const id = req.params.id;
-    const product = await db.load("SELECT * FROM products WHERE productID = " + id);
-    const list = await db.load('select count(*) as count from customercart where customerID = ' + req.signedCookies.sessionId);
-    const productDetail = await db.load('select * from productdetails where productID = + ' + id + " and quantityInStock != 0");
+    const product = await db.load("SELECT * FROM products WHERE status = 'SELLING' and productID = " + id);
+    const list = await db.load("select count(*) as count from customercart where customerID = " + req.signedCookies.sessionId);
+    const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock != 0");
     product[0].outOfStock = false;
     product[0].maxCart = false;
     if (list[0].count >= 5) {
@@ -17,7 +17,7 @@ router.get('/view/:id', async function(req, res) {
         product[0].outOfStock = true;
     }
     const related_product = [];
-    const list2 = await db.load('select * from products where productID != ' + id);
+    const list2 = await db.load("select * from products where status = 'SELLING' and productID != " + id);
     for (var i = 0; i < 4; i++) {
         var rand = Math.floor(Math.random()*list2.length);
         related_product.push(list2[rand]);

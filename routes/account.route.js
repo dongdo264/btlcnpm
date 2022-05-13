@@ -51,7 +51,7 @@ router.post('/changepassword', async function(req, res) {
             msg : 'Mật khẩu chứa ít nhất 5 kí tư'
         });
     }
-    if (newpass !== confirm || bcrypt.compareSync(old, rows[0].password) === false) {
+    if (newpass != confirm || bcrypt.compareSync(old, rows[0].password) == false) {
         return res.render('changepassword',{
             layout: 'login.handlebars',
             err : true,
@@ -60,6 +60,10 @@ router.post('/changepassword', async function(req, res) {
     }
     var pass = bcrypt.hashSync(newpass, 8);
     await db.load("update accounts set password = '" + pass + "'");
+    res.redirect('/admin');
+});
+router.get('/logout', async function(req, res) {
+    req.session.isAuthenticated = false;
     res.redirect('/admin');
 });
 module.exports = router;

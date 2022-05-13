@@ -1,38 +1,25 @@
-<div class="container" >
-        <div class="container_content">
+    <div class="grid__column_2">
             <div class="section_header">
                 <div class="container_section_header">
-                    <h2 class="section_title">Sản phẩm</h2>
+                    <h2 class="section_title">Danh sách sản phẩm <br> 
+                    <a href="/admin/addNewProd" style="text-decoration: none; color : red">Thêm sản phẩm mới</a></h2>
                 </div>
             </div>
             
-            <div class="edit_product">
+            <div class="grid__column_10">
                     {{#each this.categories}}
-                        <div class="col">
-                            <div class="home-product-item">
+                    <div class="grid__column">
+                                <div class="home-product-item">
                                 <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
-                                
-                                <a href="/admin/editProduct/{{productID}}" style="text-decoration:none;"><h2 class="home-product-item-name">Mã sản phẩm : {{productID}} <br>{{productName}}</h2> </a>
+                                <a href="/admin/editProduct/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">Mã sản phẩm : {{productID}} <br>{{productName}}</h2></a>
                                 <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
-                                
-                            </div>
-                            <div class="button-product">
-                                {{!-- <a href="/admin/editProduct/{{productID}}">
-                                    <button class="edit-button">Sửa</button>
-                                </a> --}}
-
                                 <a href="/admin/delproduct/{{productID}}">
-                                    <button class="edit-button-2" style="color: yellow;">Xoá</button>
+                                    <button class="edit-button-2" style="color: yellow;" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">Xoá</button>
                                 </a>
-
-                                {{!-- <a href="/admin/addquantity/{{productID}}">
-                                    <button class="edit-button-3">Thêm số lượng sản phẩm</button>
-                                </a> --}}
-                            </div>
-                            
-                        </div>
+                                </div>
+                            </div>  
+                        
                     {{/each}}                                           
             </div>
             
         </div>
-</div>

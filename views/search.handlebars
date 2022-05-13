@@ -14,7 +14,7 @@
                             <h1 class="heading-product">Có {{numberOfProduct}} kết quả tìm kiếm cho "{{searchName}}"</h1>
                             <div class="sort-product">
                                 <div class="custom-select" style="width:200px;">
-                                    <select onchange="window.location.href=this.value">
+                                    <select class="select-box" onchange="window.location.href=this.value">
                                       <option >Sắp xếp sản phẩm</option>
                                       <option value="/search?q={{searchName}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
                                       <option value="/search?q={{searchName}}&sort_by=price-desc&page=1">Giá: Giảm dần</option>
