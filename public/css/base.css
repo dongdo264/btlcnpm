@@ -144,6 +144,8 @@ p {
 }
 .grid__row .grid__full-width {
     margin: 0;
+    display: flex;
+    justify-content: space-between;
 }
 .heading-product {
     margin: 0 0 20px 0;
@@ -274,8 +276,13 @@ p {
 
 .custom-select {
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
+    background: #1d1d1d;
 }
 .sort-product {
     display: flex;
+}
+.select-box {
+    background-color: #373737;
+    color: #fff;
 }
