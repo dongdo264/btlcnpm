@@ -3,61 +3,77 @@ const db = require('../utils/database');
 
 const router = express.Router();
 
+// xem chi tiết sản phẩm
 router.get('/view/:id', async function(req, res) {
-    const id = req.params.id;
-    const product = await db.load("SELECT * FROM products WHERE status = 'SELLING' and productID = " + id);
-    const list = await db.load("select count(*) as count from customercart where customerID = " + req.signedCookies.sessionId);
-    const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock != 0");
-    product[0].outOfStock = false;
-    product[0].maxCart = false;
-    if (list[0].count >= 5) {
-        product[0].maxCart = true;
+    const id = req.params.id;       // lấy ra id
+    const sessionId = req.signedCookies.sessionId;
+    if (!sessionId) {
+        return res.redirect('/');
+    } else {
+        // lấy sản phẩm -> lấy thông tin các size trong kho hàng
+        const product = await db.load("SELECT * FROM products WHERE status = 'SELLING' and productID = " + id);
+        const list = await db.load("select count(*) as count from customercart where customerID = " + sessionId);
+        const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock != 0");
+        product[0].outOfStock = false;
+        product[0].maxCart = false;
+        // check xem giỏ hàng ở mức tối đa chưa ( 5 sản phẩm )
+        if (list[0].count >= 5) {
+            product[0].maxCart = true;
+        }
+        // check xem hết hàng chưa (không còn size nào trong kho là hết!)
+        if (productDetail.length == 0) {
+            product[0].outOfStock = true;
+        }
+        // lấy ngẫu nhiên 4 sản phẩm random cho khách ở cuối trang
+        const related_product = [];
+        const list2 = await db.load("select * from products where status = 'SELLING' and productID != " + id);
+        for (var i = 0; i < 4; i++) {
+            var rand = Math.floor(Math.random()*list2.length);
+            related_product.push(list2[rand]);
+            list2.splice(rand,1);
+        }
+        product[0].productDetail = productDetail;
+        return res.render('productDetail', {
+            categories : product,
+            related_product
+        });
     }
-    if (productDetail.length == 0) {
-        product[0].outOfStock = true;
-    }
-    const related_product = [];
-    const list2 = await db.load("select * from products where status = 'SELLING' and productID != " + id);
-    for (var i = 0; i < 4; i++) {
-        var rand = Math.floor(Math.random()*list2.length);
-        related_product.push(list2[rand]);
-        list2.splice(rand,1);
-    }
-    product[0].productDetail = productDetail;
-    res.render('productDetail', {
-        categories : product,
-        related_product
-    });
 });
 
+// thêm sản phẩm vào giỏ hàng
 router.post('/view/:id', async function(req, res) {
-    var size = req.body.variation;
-    var quantity = req.body.quantity;
-    const id = req.params.id;
-    const customerID = req.signedCookies.sessionId;
-    const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + customerID);
-    
-    var check = true;
-    for (var i = 0; i < product.length; i++) {
-        if(id == product[i].productID) {
-            if (size == product[i].size) {
-                quantity = parseInt(quantity) + parseInt(product[i].quantity);
-                await db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
-                check = false;
+    var size = req.body.variation;                      // lấy size
+    var quantity = req.body.quantity;                   // lấy số lượng
+    const id = req.params.id;                           // id sản phẩm
+    const customerID = req.signedCookies.sessionId;     // id khách hàng
+    if (!customerID) {
+        return res.redirect('/');
+    } else {
+        // khi thêm vào giỏ kiểm tra xem trong giỏ ban đầu đã có sản phẩm đó chưa? nếu check có rồi thì tăng số lượng lên
+        const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + customerID); 
+        var check = true;
+        for (var i = 0; i < product.length; i++) {
+            if(id == product[i].productID) {
+                if (size == product[i].size) {
+                    quantity = parseInt(quantity) + parseInt(product[i].quantity);
+                    await db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
+                    check = false;
+                }
             }
         }
-    }
-    if (check) {
-        const obj = {
-            customerID,
-            productId : id,
-            size,
-            quantity
+        // chưa có thì thêm vào giỏ như bình thường
+        if (check) {
+            const obj = {
+                customerID,
+                productId : id,
+                size,
+                quantity
+            }
+            const tb = 'customercart';
+            await db.addToCart(tb, obj);
         }
-        const tb = 'customercart';
-        await db.add(tb, obj);
+        return res.redirect('/cart');
     }
-    res.redirect('/cart');
 });
 
 

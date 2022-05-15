@@ -4,12 +4,14 @@ const db = require('../utils/database');
 
 const router = express.Router();
 
+// user truy cập vào trang chủ, lấy ra tất cả sản phẩm cho user xem
 router.get('/', async function(req, res) {
     var page = req.query.page;
     var sort_by = req.query.sort_by;
     if (!page) {
         page = 1;
     }
+    // đếm số lượng sản phẩm
     const countP = await db.load('select count(*) as count from products');
     const numberOfProduct = countP[0].count;
     const limit = 12
@@ -27,6 +29,7 @@ router.get('/', async function(req, res) {
         }
         page_number.push(item);
     }
+    // lấy các sản phẩm theo yêu cầu (sắp xếp)
     var list = await db.load("select * from products where status = 'SELLING' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
         list = await db.load("select * from products where status = 'SELLING' order by productPrice limit " + limit + " offset " + offset);
@@ -47,10 +50,11 @@ router.get('/', async function(req, res) {
     });
 });
 
+// user tìm kiếm sản phầm
 router.get('/search', async function(req, res) {
-    var name = req.query.q;
-    var sort_by = req.query.sort_by;
-    var page = req.query.page;
+    var name = req.query.q;             // lấy ra query user nhập tìm kiếm
+    var sort_by = req.query.sort_by;    // kiểu sắp xếp
+    var page = req.query.page;          // trang hiển thị
     if (!name) {
         name = "";
     }
@@ -60,6 +64,7 @@ router.get('/search', async function(req, res) {
     if (!sort_by) {
         sort_by = "";
     }
+    // đếm số lượng sp thỏa mãn
     const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and productName LIKE '" + '%' + name + '%' + "'");
     const numberOfProduct = countP[0].count;
     const limit = 12
@@ -100,11 +105,12 @@ router.get('/search', async function(req, res) {
     });
 });
 
+// phân loại thương hiệu
 router.get('/thuong-hieu/:brand', async function(req, res) {
-    var brand = req.params.brand;
-    var sort_by = req.query.sort_by;
-    var loaidinh = req.query.loaidinh;
-    var page = req.query.page;
+    var brand = req.params.brand;       // lấy tên thương hiệu
+    var sort_by = req.query.sort_by;    // kiểu sắp xếp
+    var loaidinh = req.query.loaidinh;  // loại đinh giày
+    var page = req.query.page;          // trang hiển thị
     if (!page) {
         page = 1;
     }
@@ -189,14 +195,17 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     });
 });
 
+// hướng dẫn mua hàng
 router.get('/order-tutorial', async function(req, res) {
     res.render('order-tutorial');
 });
 
+// chính sách bán hàng
 router.get('/sales-policy', async function(req, res) {
     res.render('sales-policy');
 });
 
+// chính sách bảo hành
 router.get('/warranty-policy', async function(req, res) {
     res.render('warranty-policy');
 });
