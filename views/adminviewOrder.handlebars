@@ -3,6 +3,21 @@
     var select = document.getElementsByClassName('form-control')[4].id;
     var slt = document.getElementById(select);
     slt.selectedIndex = select - 1;
+
+    $('#content').on('submit', function(event) {
+        event.preventDefault();
+        if (validateOrder()) {
+            if (validatePhone()) {
+                if (confirm('Chỉnh sửa xong rồi à?')) {
+                $('#content').off('submit').submit();
+                }
+            } else {
+                alert('Không thành công! Số điện thoại không lợp lệ!');
+            }
+        } else {
+            alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
+        }
+    })
     
 </script>
 {{/section}}
@@ -50,9 +65,6 @@
                                 </div>
                         </div>
                     </div>
-                    
-
-
                     <div class="section_header">
                         <div class="container_section_header">
                             <h2 class="section_title">Thông tin các sản phẩm đặt hàng</h2>
@@ -129,7 +141,7 @@
 
                     {{#if isUpdate}}
                     <div class="shop-back" id="button-showinfo">
-                        <button class="btn btn-secondary">Cập nhật đơn hàng</button>
+                        <button class="btn btn-secondary" type="submit">Cập nhật đơn hàng</button>
                     </div>
                     {{/if}}
                 </div>

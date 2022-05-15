@@ -17,7 +17,7 @@ module.exports = {
             });
         });
     },
-    add : function(table, obj) {
+    addToCart : function(table, obj) {
         return new Promise(function(resolve, reject) {
             var sql = 'insert into ' + table + ' set ?';
             pool.query(sql, obj, function(error, results, fields) {
@@ -28,9 +28,9 @@ module.exports = {
             });
         });
     },
-    detele : function(id) {
+    deleteProductInCart : function(table, cusID, productId, size) {
         return new Promise(function(resolve, reject) {
-            var sql = 'delete from customercart where productId = ' + id;
+            var sql = 'delete from ' + table + ' where customerID = ' + cusID + ' and productId = ' + productId + ' and size = ' + size;
             pool.query(sql, function(error, results, fields) {
             if (error) {
                 return reject(error);
@@ -39,9 +39,9 @@ module.exports = {
             });
         });
     },
-    update : function(id) {
+    update : function(table, obj) {
         return new Promise(function(resolve, reject) {
-            var sql = 'delete from customercart where productId = ' + id;
+            var sql = 'update ' + table + 'set ? where ?';
             pool.query(sql, function(error, results, fields) {
             if (error) {
                 return reject(error);

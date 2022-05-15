@@ -1,3 +1,21 @@
+{{#section 'js'}}
+<script>
+    var price = document.getElementById("priceP").value;
+    var name = document.getElementById("nameP").value;
+    $('#content').on('submit', function(event) {
+        event.preventDefault();
+        if (!name || !price ) {
+            alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
+        } else {
+            if (isNumber(price) && price > 0) {
+                $('#content').off('submit').submit();
+            } else {
+                alert('Không thành công! Kiểm tra lại giá');
+            }
+        }
+    })
+</script>
+{{/section}}
 <div class="container" >
     <form id="content" method="post">
         <div class="container_content">
@@ -73,7 +91,7 @@
             </div>
 
             <div class="button_add">
-                <button class="btn-add">Thêm</button>
+                <button class="btn-add" type="submit">Thêm</button>
             </div>
         </div>
     </form>

@@ -9,33 +9,18 @@
 
     $('#form-Payment').on('submit', function(event) {
         event.preventDefault();
-        if (validate()) {
-            if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
-            $('#form-Payment').off('submit').submit();
+        if (validateOrder()) {
+            if (validatePhone()) {
+                if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
+                $('#form-Payment').off('submit').submit();
+                }
+            } else {
+                alert('Không thành công! Số điện thoại không lợp lệ!');
             }
         } else {
             alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
         }
     })
-    
-    function validate () {
-        var name = document.getElementById("name").value;
-        var address = document.getElementById("address").value;
-        var phone = document.getElementById("phone").value;
-        var note = document.getElementById("note").value;
-        if (!name || !address || !phone) {
-            return false;
-        }
-        if (phone.length > 11 || phone.length < 10) {
-            return false;
-        }
-        for (var i = 0; i < phone.length; i++) {
-            if (phone.charCodeAt(i) < 48 || phone.charCodeAt(i) > 58) {
-                return false;
-            }
-        }
-        return true;
-    }
 </script>
 {{/section}}
 
