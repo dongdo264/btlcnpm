@@ -1,0 +1,54 @@
+<div class="container">
+    {{#each this.categories}}
+        <form method="post" enctype="multipart/form-data">
+            <div class="container_content">
+                <div class="section_header">
+                    <div class="container_section_header">
+                        <h2 class="section_title">Hình ảnh mã sản phẩm {{productID}}</h2>
+                    </div>
+                </div>
+
+                <div class="product-image-main">
+                        <div class="product-image-0" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
+                        <div class="product-image-main-2">
+                            <div class="product-image-name">{{productName}}</div>
+                            <input class="img-main" type="file" name="myImage">
+                        </div> 
+                </div>
+
+
+                <div class="section-body">
+                        <div class="section-body-content">
+                            <div class="image">
+                                <p>
+                                    <img src="/img/{{productID}}/view1.webp" alt="">
+                                    <input class="img-control" type="file" name="myImage">
+                                </p>
+
+                                <p>
+                                    <img src="/img/{{productID}}/view2.webp" alt="">
+                                    <input class="img-control" type="file" name="myImage">
+                                </p>
+                                <p>
+                                    <img src="/img/{{productID}}/view3.webp" alt="">
+                                    <input class="img-control" type="file" name="myImage">
+                                </p>
+
+                                <p>
+                                    <img src="/img/{{productID}}/view4.webp" alt="">
+                                    <input class="img-control" type="file" name="myImage">
+                                </p>
+
+                            </div>
+                
+                        </div>
+                    </div>
+
+                <div class="button_update">
+                    <button class="btn-add">Cập nhật</button>
+                </div>
+               
+            </div>
+        </form>
+    {{/each}}
+</div>

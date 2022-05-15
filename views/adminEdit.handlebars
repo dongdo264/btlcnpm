@@ -11,7 +11,9 @@
                         <div class="col">
                             <div class="home-product-item">
                                 <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
-                                
+                                <a href="/admin/editProduct/{{productID}}/imageEdit" class="btn-image">
+                                    <div>chỉnh sửa ảnh sản phẩm</div>
+                                </a>
                                 <a href="/admin/editProduct/{{productID}}" style="text-decoration:none;"><h2 class="home-product-item-name">Mã sản phẩm : {{productID}} <br>{{productName}}</h2> </a>
                                 <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
                                 
@@ -24,6 +26,7 @@
                                 <a href="/admin/delproduct/{{productID}}">
                                     <button class="edit-button-2" style="color: yellow;">Xoá</button>
                                 </a>
+                                
 
                                 {{!-- <a href="/admin/addquantity/{{productID}}">
                                     <button class="edit-button-3">Thêm số lượng sản phẩm</button>
