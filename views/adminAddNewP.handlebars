@@ -1,19 +1,29 @@
 {{#section 'js'}}
 <script>
-    var price = document.getElementById("priceP").value;
-    var name = document.getElementById("nameP").value;
+    
     $('#content').on('submit', function(event) {
         event.preventDefault();
-        if (!name || !price ) {
-            alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
+        if ((validate()) ) {
+            $('#content').off('submit').submit();
         } else {
-            if (isNumber(price) && price > 0) {
-                $('#content').off('submit').submit();
-            } else {
-                alert('Không thành công! Kiểm tra lại giá');
-            }
+            alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
+             //$('#content').off('submit').submit();
+            //if (isNumber(price) && price > 0) {
+            //    $('#content').off('submit').submit();
+            //} else {
+            //    alert('Không thành công! Kiểm tra lại giá');
+            //}
         }
     })
+
+    function validate() {
+    var price = document.getElementById("priceP").value;
+    var name = document.getElementById("nameP").value;
+    if (!name || !price) {
+        return false;
+    }
+    return true;
+    }
 </script>
 {{/section}}
 <div class="container" >

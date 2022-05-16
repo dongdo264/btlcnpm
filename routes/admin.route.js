@@ -4,6 +4,12 @@ const db = require('../utils/database');
 
 const router = express.Router();
 
+const fs = require('fs');
+const path = require('path');
+
+var multer = require('multer');
+
+
 router.get('/', async function(req, res) {
     var status = req.query.status;
     var day = req.query.day;
@@ -249,6 +255,54 @@ router.post('/editProduct/:id', async function(req, res) {
     const url = '/admin/editProduct';
     res.redirect(url);
 });
+
+router.get('/editProduct/:id/imageEdit', async function(req, res) {
+    const id = req.params.id;
+    const list = await db.load('select * from products where productID = ' + id);
+    
+    fs.mkdir(path.join('public', 'img', id),
+    { recursive: true }, (err) => {
+        if (err) {
+        return console.error(err);
+        }
+    });
+
+    res.render('adminImageEdit', {
+        layout : 'admin.main.handlebars',
+        categories : list
+    });
+   
+});
+
+router.post('/editProduct/:id/imageEdit', multer({storage:multer.diskStorage({
+            destination: function(req, file, cb){
+                cb(null, path.join('public', 'img', req.params.id))
+            },
+            filename: function(req,file,cb){
+                cb(null,file.originalname)
+            }
+            
+            })}).array('myImage', 5), async function(req, res) {
+    // const id = req.params.id;
+
+    // var storage = multer.diskStorage({
+    //     destination:function(req,file,cb){
+    //         cb(null, path.join('public', 'img'))
+    //     },
+    //     filename:function(req,file,cb){
+    //         cb(null,file.originalname)
+    //     }
+        
+    // })
+
+    // var upload = multer({storage:storage});
+
+    // upload.single('myImage0');
+
+    const url = '/admin/editProduct';
+    res.redirect(url);
+});
+
 
 router.get('/delproduct/:id', async function(req, res) {
     const id = req.params.id;

@@ -1606,3 +1606,67 @@ label {
 .size-form {
     font-size: 16px;
 }
+
+/* chinh anh san pham */
+
+.btn-image {
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.btn-image:hover {
+    color: yellow;
+}
+
+.product-image-0 {
+    width: 320px;
+    height: 320px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #888;
+    margin-left: 32.859px;
+}
+
+.product-image-main {
+    display: flex;
+}
+
+.img-main {
+    margin: 1rem;
+    font-size: 16px;
+    height: 22px;
+    color: #ffffff;
+}
+
+.product-image-name {
+    color: #ffffff;
+    margin: 1rem;
+    font-size: 12px;
+}
+
+.img-control {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.button_update {
+    margin-top: 100px;
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 34px;
+    text-align: center;
+
+}
+
+.button_update .btn-add {
+    padding: 10px 25px; 
+    text-transform: uppercase;
+}
+
+.button_update .btn-add:hover {
+    background-color: #a5a5a5;
+}
