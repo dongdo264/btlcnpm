@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 var multer = require('multer');
+const { route } = require('express/lib/application');
 
 
 router.get('/', async function(req, res) {
@@ -274,34 +275,49 @@ router.get('/editProduct/:id/imageEdit', async function(req, res) {
    
 });
 
-router.post('/editProduct/:id/imageEdit', multer({storage:multer.diskStorage({
-            destination: function(req, file, cb){
-                cb(null, path.join('public', 'img', req.params.id))
-            },
-            filename: function(req,file,cb){
-                cb(null,file.originalname)
-            }
-            
-            })}).array('myImage', 5), async function(req, res) {
-    // const id = req.params.id;
-
-    // var storage = multer.diskStorage({
-    //     destination:function(req,file,cb){
-    //         cb(null, path.join('public', 'img'))
-    //     },
-    //     filename:function(req,file,cb){
-    //         cb(null,file.originalname)
-    //     }
-        
-    // })
-
-    // var upload = multer({storage:storage});
-
-    // upload.single('myImage0');
-
-    const url = '/admin/editProduct';
-    res.redirect(url);
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, path.join('public', 'img', req.params.id))
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + path.extname(file.originalname))
+    }
+})
+var upload = multer({
+    storage: storage
+})
+var multiUpload = upload.fields([{name: 'main', maxCount: 10}, {name: 'view1', maxCount: 10}, {name: 'view2', maxCount: 10}, {name: 'view3', maxCount: 10}, {name: 'view4', maxCount: 10}]);
+router.post('/editProduct/:id/imageEdit', multiUpload, async function(req, res) {
+    res.redirect('/admin/editProduct');
 });
+// router.post('/editProduct/:id/imageEdit', multer({storage:multer.diskStorage({
+//             destination: function(req, file, cb){
+//                 cb(null, path.join('public', 'img', req.params.id))
+//             },
+//             filename: function(req,file,cb){
+//                 cb(null,file.originalname)
+//             }
+            
+//             })}).array('myImage', 5), async function(req, res) {
+//     // const id = req.params.id;
+
+//     // var storage = multer.diskStorage({
+//     //     destination:function(req,file,cb){
+//     //         cb(null, path.join('public', 'img'))
+//     //     },
+//     //     filename:function(req,file,cb){
+//     //         cb(null,file.originalname)
+//     //     }
+        
+//     // })
+
+//     // var upload = multer({storage:storage});
+
+//     // upload.single('myImage0');
+
+//     const url = '/admin/editProduct';
+//     res.redirect(url);
+// });
 
 
 router.get('/delproduct/:id', async function(req, res) {
