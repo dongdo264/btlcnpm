@@ -1,6 +1,6 @@
 <div class="container">
     {{#each this.categories}}
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="/admin/editProduct/{{productID}}/imageEdit">
             <div class="container_content">
                 <div class="section_header">
                     <div class="container_section_header">
@@ -12,7 +12,7 @@
                         <div class="product-image-0" style="background-image: url(/img/{{productID}}/main.jpg)"></div>
                         <div class="product-image-main-2">
                             <div class="product-image-name">{{productName}}</div>
-                            <input class="img-main" type="file" name="myImage">
+                            <input class="img-main" type="file" required multiple name="main">
                         </div> 
                 </div>
 
@@ -21,21 +21,21 @@
                             <div class="image">
                                 <p>
                                     <img src="/img/{{productID}}/view1.webp" alt="">
-                                    <input class="img-control" type="file" name="myImage">
+                                    <input class="img-control" type="file" required multiple name="view1">
                                 </p>
 
                                 <p>
                                     <img src="/img/{{productID}}/view2.webp" alt="">
-                                    <input class="img-control" type="file" name="myImage">
+                                    <input class="img-control" type="file" required multiple name="view2">
                                 </p>
                                 <p>
                                     <img src="/img/{{productID}}/view3.webp" alt="">
-                                    <input class="img-control" type="file" name="myImage">
+                                    <input class="img-control" type="file" required multiple name="view3">
                                 </p>
 
                                 <p>
                                     <img src="/img/{{productID}}/view4.webp" alt="">
-                                    <input class="img-control" type="file" name="myImage">
+                                    <input class="img-control" type="file" required multiple name="view4">
                                 </p>
 
                             </div>
