@@ -83,14 +83,14 @@
             left_modal.classList.add('open')
         }
 
-        right_bar.addEventListener('click', showLeftModal)
+        //right_bar.addEventListener('click', showLeftModal)
 
         function hiddenLeftModal() {
             left_modal.classList.remove('open')
         }
 
-        left_modal.addEventListener('click', hiddenLeftModal)
+        //left_modal.addEventListener('click', hiddenLeftModal)
 
-        left_modalContainer.addEventListener('click', function (event) {
-            event.stopPropagation()
-        })
+        // left_modalContainer.addEventListener('click', function (event) {
+        //     event.stopPropagation()
+        // })
