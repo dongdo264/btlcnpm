@@ -22,6 +22,7 @@ html {
 .container-login .myform h2 {
     color: rgb(5, 9, 9);
     margin-bottom: 20px;
+    font-size: 22px;
 }
 .container-login .myform input {
     border: none;

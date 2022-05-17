@@ -3,11 +3,11 @@
         <h2>Đăng nhập</h2>
         {{#if err}}
         <div class="alert alert-danger" role="alert">
-            {{msg}}
+            <h2 style="font-size: 16px;">{{msg}}</h2>
         </div>
         {{/if}}
-        <input type="text" placeholder="Admin name" name="username">
-        <input type="password" placeholder="Password" name="password">
+        <input type="text" placeholder="Admin name" name="username" style="padding-left: 20px;">
+        <input type="password" placeholder="Password" name="password" style="padding-left: 20px;">
         <button type="submit">Đăng nhập</button>
     </form>
     <div class="image">

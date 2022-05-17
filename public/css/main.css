@@ -1567,12 +1567,13 @@ label {
 }
 
 .edit-button-2 {
-    background-color: #555;
-  color: red;
-  font-size: 12px;
-  padding: 12px 20px;
-  margin: 3px;
-  
+    background-color: #ebfaaa;
+    color: red;
+    font-size: 12px;
+    padding: 12px 20px;
+    margin: 3px;
+    cursor: pointer;
+    outline: none;
 }
 
 .edit-button-3 {
@@ -1584,7 +1585,7 @@ label {
 }
 
 .edit-button:hover, .edit-button-2:hover, .edit-button-3:hover {
-    background-color: rgb(131, 129, 129);
+    background-color: rgb(238, 243, 110);
 }
 
 

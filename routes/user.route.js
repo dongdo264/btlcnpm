@@ -12,7 +12,7 @@ router.get('/', async function(req, res) {
         page = 1;
     }
     // đếm số lượng sản phẩm
-    const countP = await db.load('select count(*) as count from products');
+    const countP = await db.load("select count(*) as count from products where status = 'SELLING'");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
