@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 15, 2022 lúc 12:44 PM
+-- Thời gian đã tạo: Th5 17, 2022 lúc 01:04 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -52,6 +52,15 @@ CREATE TABLE `customercart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `customercart`
+--
+
+INSERT INTO `customercart` (`customerID`, `productId`, `size`, `quantity`) VALUES
+(48263746, 65, 44, 2),
+(48263746, 12, 42, 1),
+(48263746, 67, 38, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +77,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customerID`, `accessDate`) VALUES
-(80571211, '2022-05-15 17:44:15');
+(48263746, '2022-05-17 08:30:45');
 
 -- --------------------------------------------------------
 
@@ -98,7 +107,9 @@ INSERT INTO `orderdetails` (`orderNumber`, `productID`, `quantity`, `priceEach`,
 (36742581, 11, 3, 1400000, 43),
 (36742581, 12, 3, 2200000, 42),
 (36742581, 14, 3, 2600000, 38),
-(25880056, 12, 1, 2200000, 42);
+(25880056, 12, 1, 2200000, 42),
+(62555872, 12, 1, 2200000, 42),
+(62555872, 12, 1, 2200000, 43);
 
 -- --------------------------------------------------------
 
@@ -124,6 +135,7 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`orderNumber`, `customerID`, `customerName`, `phone`, `address`, `orderDate`, `comment`, `status`) VALUES
 (25880056, 90692353, 'Quách Văn Quẹ', '0999999999', 'Ba Vì - Hà Nội', '2022-05-09', 'Không', 'Đã hoàn tất'),
 (36742581, 50833011, 'Tạ Văn Tấn', '0999999999', 'Gò Vấp', '2022-05-01', 'Không', 'Đã hoàn tất'),
+(62555872, 80571211, 'Quách Văn Quẹ', '0963712656', 'ba vi', '2022-05-15', 'Không', 'Đang xử lý'),
 (81989779, 73109347, 'Nguyễn Văn A', '0963712656', 'Hà Nội', '2022-04-21', 'Không', 'Đã hoàn tất'),
 (88073331, 79964888, 'Nguyễn Văn A', '0963712222', 'Ba Vì - Hà Nội', '2022-04-25', 'Không', 'Đang giao hàng'),
 (88549843, 82788225, 'Quách Văn Quẹ', '0963712656', 'Ba Vì - Hà Nội', '2022-05-01', 'Không', 'Đang xử lý');
@@ -417,7 +429,109 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (11, 41, 10),
 (11, 42, 0),
 (11, 43, 10),
-(11, 44, 0);
+(11, 44, 0),
+(65, 37, 3),
+(65, 38, 3),
+(65, 39, 0),
+(65, 40, 0),
+(65, 41, 0),
+(65, 42, 2),
+(65, 43, 1),
+(65, 44, 1),
+(66, 37, 3),
+(66, 38, 2),
+(66, 39, 2),
+(66, 40, 4),
+(66, 41, 6),
+(66, 42, 7),
+(66, 43, 7),
+(66, 44, 6),
+(67, 37, 6),
+(67, 38, 7),
+(67, 39, 6),
+(67, 40, 6),
+(67, 41, 6),
+(67, 42, 7),
+(67, 43, 7),
+(67, 44, 8),
+(68, 37, 2),
+(68, 38, 2),
+(68, 39, 2),
+(68, 40, 2),
+(68, 41, 0),
+(68, 42, 2),
+(68, 43, 0),
+(68, 44, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `productimages`
+--
+
+CREATE TABLE `productimages` (
+  `productID` int(11) NOT NULL,
+  `main` varchar(100) DEFAULT NULL,
+  `view1` varchar(100) DEFAULT NULL,
+  `view2` varchar(100) DEFAULT NULL,
+  `view3` varchar(100) DEFAULT NULL,
+  `view4` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `productimages`
+--
+
+INSERT INTO `productimages` (`productID`, `main`, `view1`, `view2`, `view3`, `view4`) VALUES
+(10, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(11, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(12, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(14, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(15, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(16, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(17, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(18, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(19, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(20, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(21, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(22, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(23, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(24, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(27, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(28, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(29, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(30, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(31, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(32, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(33, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(34, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(35, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(36, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(37, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(38, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(39, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(40, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(41, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(42, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(43, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(44, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(45, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(46, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(47, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(48, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(49, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(50, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(51, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(52, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(53, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(54, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(55, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(56, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(57, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(65, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(66, 'main.jpg', 'view1.webp', 'view2.webp', 'view3.webp', 'view4.webp'),
+(67, 'main-1652783335221.png', 'view1-1652783335234.webp', 'view2-1652783335235.webp', 'view3-1652783335238.webp', 'view4-1652783335241.webp'),
+(68, 'main-1652784874460.png', 'view1-1652784874483.webp', 'view2-1652784874487.webp', 'view3-1652784874492.webp', 'view4-1652784874497.webp');
 
 -- --------------------------------------------------------
 
@@ -487,7 +601,16 @@ INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDesc
 (56, 'Nike', 'Adidas Nemeziz .4 TF- Team Royal Blue/ Solar Yellow/ Core Black', 'Adidas Nemeziz .4 TF- Team Royal Blue/ Solar Yellow/ Core Black, giày đá bóng chính hãng, giày đá bóng sân cỏ nhân tạo, giày đá bóng Adidas chính hãng, giày đá bóng Adidas Nemeziz .4 TF, đế TF đá trên sân cỏ nhân tạo, upper làm từ da tổng hợp', 1800000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (57, 'Adidas', 'Adidas Nemeziz 19.3 FG InFlight- Signal Coral/ Core Black/ Glory Red', 'Adidas Nemeziz 19.3 FG InFlight- Signal Coral/ Core Black/ Glory Red, nằm trong bộ sưu tập giày Adidas InFlight 2020 cực đẹp,  giày đá bóng chính hãng, giày Adidas Nemeziz 19.3 FG, upper làm từ sợi và da tổng hợp, đế giày kiểu FG phù hợp chơi bóng trên sân cỏ tự nhiên', 1400000, 'FG,Cỏ tự nhiên', 0, 'SELLING'),
 (58, 'Nike', 'Nike Mercurial Superfly 8 Academy AG Impulse pack- Dynamic Turquoise/ Lime Glow', 'undefined', 2600000, 'FG, Cỏ tự nhiên', 0, 'DELETE'),
-(59, 'Nike', 'Nike Mercurial Superfly 8 Academy AG Impulse pack- Dynamic Turquoise/ Lime Glow', 'undefined', 2600000, 'TF, Cỏ nhân tạo', 0, 'DELETE');
+(59, 'Nike', 'Nike Mercurial Superfly 8 Academy AG Impulse pack- Dynamic Turquoise/ Lime Glow', 'undefined', 2600000, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(60, 'Adidas', 'Adidas X Speedflow .1 TF – Cloud White / Legacy Indigo / Sky Rush – GW7473', 'undefined', 2850000, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(61, 'Nike', 'Adidas X Speedflow .1 TF – Cloud White / Legacy Indigo / Sky Rush – GW7473', 'undefined', 0, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(62, 'Nike', 'Adidas X Speedflow .1 TF – Cloud White / Legacy Indigo / Sky Rush – GW7473', 'undefined', 0, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(63, 'Nike', 'Adidas X Speedflow .1 TF – Cloud White / Legacy Indigo / Sky Rush – GW7473', 'undefined', 2600000, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(64, 'Nike', 'dong do', 'undefined', 12345678, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
+(65, 'Adidas', 'Giày bóng đá Adidas X SpeedFlow .1 TF Numbers Up', 'Giày bóng đá Adidas X SpeedFlow .1 TF Numbers Up,  mã sản phẩm GX3771, nằm trong bộ sưu tập Adidas Numbers Up cực đẹp và cực độc, siêu phẩm cao cấp nhất dành cho sân tạo, sản phẩm đỉnh cao nhất của dòng giày Adidas X SpeedFlow ….Giày Adidas X SpeedFlow .1 TF chính hãng, phiên khúc dành cho sân cỏ nhân tạo cao cấp với đầy đủ công nghệ đỉnh cao nhất của hãng, sự lựa chọn duy nhất ở phân khúc cao cấp. Tiếp nối truyền thống thành công, mẫu X SpeedFlow .1 TF mở ra một chương mới của dòng giày tốc độ, trọng lượng nhẹ nhưng lại cực kỳ êm ái. Upper của giày sử dụng công nghệ Primeknit mà chúng ta đã quen thuộc, nó gồm vô số sợi dệt cực mỏng nhưng đàn hồi, giúp tạo cảm giác ôm chân tối đa, bên ngoài được phủ một lớp da tổng hợp giúp chống nước và hỗ trợ kiểm soát bóng.', 2800000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(66, 'Mizuno', 'Mizuno Morelia Sala Classic TF – Cloud White / Black / Light Blue', 'Giày Mizuno Morelia Sala Classic TF – Cloud White / Black / Light Blue – Q1GB220209, giày bóng đá chính hãng, giày đá bóng Mizuno Nhật Bản, upper làm từ da tổng hợp, đế giày kiểu TF phù hợp chơi bóng trên sân cỏ nhân tạo', 1950000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(67, 'Nike', 'Nike Mercurial Vapor 14 Academy TF kids Impulse pack- Dynamic Turquoise/ Lime Glow', 'Giày đá bóng Nike Mercurial Vapor 14 Academy TF kids Impulse pack- Dynamic Turquoise/ Lime Glow  mã sản phẩm CV0822-403, giày đá bóng chính hãng Nike Mercurial Vapor 14 Academy TF mới nhất, dòng sản phẩm mới ra mắt 2021, model giày Nike Mercurial Vapor 14 mới, được thiết kế lại với nhiều nâng cấp đáng tiền hơn thế hệ trước… Upper được làm từ da tổng hợp kết hợp sợi dệt, tuy nhiên lại mềm mại hơn và êm ái hơn. Lưỡi gà kiểu liền mảnh giúp ôm chặt chân, phần gót giày được lót nỉ rất mềm, đế giày kiểu TF phù hợp chơi bóng trên sân cỏ nhân tạo, làm từ chất liệu cao su trọng lượng nhẹ và độ bền cao, đảm bảo chơi bóng trời mưa cũng không trơn trượt và luôn bám sân.', 1850000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(68, 'Adidas', 'Adidas Copa Sense .4 TF – Diamond Edge White / Blue', 'Giày bóng đá Adidas Copa Sense .4 TF – Diamond Edge White / Blue – GW7389, giày đá bóng chính hãng, giày đá bóng sân cỏ nhân tạo, giày đá bóng Adidas chính hãng, giày Adidas 2020, bộ sưu tập giày Adidas copa cực đẹp… upper làm từ da tổng hợp, đế giày kiểu TF phù hợp chơi bóng trên sân cỏ nhân tạo', 1400000, 'TF, Cỏ nhân tạo', 0, 'SELLING');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -532,6 +655,12 @@ ALTER TABLE `productdetails`
   ADD KEY `fk_productdetails_products` (`productID`);
 
 --
+-- Chỉ mục cho bảng `productimages`
+--
+ALTER TABLE `productimages`
+  ADD PRIMARY KEY (`productID`);
+
+--
 -- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
@@ -551,7 +680,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -576,6 +705,12 @@ ALTER TABLE `orderdetails`
 --
 ALTER TABLE `productdetails`
   ADD CONSTRAINT `fk_productdetails_products` FOREIGN KEY (`productID`) REFERENCES `products` (`productID`) ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `productimages`
+--
+ALTER TABLE `productimages`
+  ADD CONSTRAINT `fk_productimages_products` FOREIGN KEY (`productID`) REFERENCES `products` (`productID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
