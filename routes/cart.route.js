@@ -10,8 +10,11 @@ router.get('/', async function(req, res) {
     if (!sessionId) {
         return res.redirect('/');
     } else {
-    const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + sessionId);
+    const product = await db.load("SELECT p.productID, p.productName, p.productPrice, c.size, c.quantity, (p.productPrice*c.quantity) as total, pm.main FROM products p, customercart c, productimages pm WHERE c.productId = p.productID and c.productId = pm.productID AND c.customerID = " + sessionId);
+    //const image = await db.load('select main from productimages where productID = ' + sessionId);
     const maxOrder = await db.load("select count(*) as count from orders where customerID = " + sessionId);
+    //console.log(image);
+    //product[0].main = image[0].main;
     // xem còn order được nữa không? mỗi khách chỉ được tạo tối đa 2 đơn 1 ngày!
         var isOrder = true;
         if (maxOrder[0].count >= 2) {

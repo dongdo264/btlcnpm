@@ -11,9 +11,10 @@ router.get('/view/:id', async function(req, res) {
         return res.redirect('/');
     } else {
         // lấy sản phẩm -> lấy thông tin các size trong kho hàng
-        const product = await db.load("SELECT * FROM products WHERE status = 'SELLING' and productID = " + id);
+        const product = await db.load("SELECT * FROM products p, productimages pm WHERE p.productID = pm.productID and p.status = 'SELLING' and p.productID = " + id);
         const list = await db.load("select count(*) as count from customercart where customerID = " + sessionId);
         const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock != 0");
+
         product[0].outOfStock = false;
         product[0].maxCart = false;
         // check xem giỏ hàng ở mức tối đa chưa ( 5 sản phẩm )
@@ -26,7 +27,7 @@ router.get('/view/:id', async function(req, res) {
         }
         // lấy ngẫu nhiên 4 sản phẩm random cho khách ở cuối trang
         const related_product = [];
-        const list2 = await db.load("select * from products where status = 'SELLING' and productID != " + id);
+        const list2 = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and p.productID != " + id);
         for (var i = 0; i < 4; i++) {
             var rand = Math.floor(Math.random()*list2.length);
             related_product.push(list2[rand]);

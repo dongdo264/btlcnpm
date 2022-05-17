@@ -177,13 +177,14 @@ router.post('/addNewProd', async function(req, res) {
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 44, '" + size44 + "') ");
+    await db.load("insert into productimages(productID) values(" + id + ')');
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     const url = '/admin/editProduct/' + id;
     res.redirect(url);
 });
 
 router.get('/editProduct', async function(req, res) {
-    const list = await db.load("select * from products where status = 'SELLING'");
+    const list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING'");
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',
         categories : list,
@@ -259,7 +260,7 @@ router.post('/editProduct/:id', async function(req, res) {
 
 router.get('/editProduct/:id/imageEdit', async function(req, res) {
     const id = req.params.id;
-    const list = await db.load('select * from products where productID = ' + id);
+    const list = await db.load('select pm.* from productimages pm where productID = ' + id);
     
     fs.mkdir(path.join('public', 'img', id),
     { recursive: true }, (err) => {
@@ -279,8 +280,10 @@ var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, path.join('public', 'img', req.params.id))
     },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + path.extname(file.originalname))
+    filename: async function (req, file, cb) {
+        var name = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+        cb(null, name);
+        await db.load('update productimages set ' + file.fieldname + " = '" + name + "' where productID = " + req.params.id);
     }
 })
 var upload = multer({
@@ -335,9 +338,9 @@ router.get('/searchbyproduct', async function(req, res) {
     const q = req.query.q;
     var rows;
     if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
-        rows = await db.load("select * from products where status ='SELLING' and productID = " + q);
+        rows = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status ='SELLING' and p.productID = " + q);
     } else {
-        rows = await db.load("select * from products where status = 'SELLING' and productName LIKE '%" + q + "%'");
+        rows = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and p.productName LIKE '%" + q + "%'");
     }
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',
