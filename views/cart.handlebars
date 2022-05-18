@@ -10,12 +10,22 @@
     $('#form-Payment').on('submit', function(event) {
         event.preventDefault();
         if (validateOrder()) {
-            if (validatePhone()) {
+            if (!validatePhone()) {
+                //if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
+                //$('#form-Payment').off('submit').submit();
+                //alert('Gửi đơn hàng thành công!');
+                //}
+                alert('Không thành công! Số điện thoại không lợp lệ!');
+            } else if (!validateName()){
+                alert('Không thành công! Tên không hợp lệ!');
+            } else if (!validateAdress()) {
+                alert('Không thành công! Địa chỉ không hợp lệ!');
+            } else {
                 if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
                 $('#form-Payment').off('submit').submit();
-                }
-            } else {
-                alert('Không thành công! Số điện thoại không lợp lệ!');
+                alert('Gửi đơn hàng thành công!');
+               }
+               //alert('Gửi đơn hàng thành công!');
             }
         } else {
             alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');

@@ -30,6 +30,15 @@
                     </div>
                 </form>
                 {{else}}
+                {{#if adminSearchFromOrder}}
+                    <form class="header__search-box admin" method="get" action="/admin/vieworder/{{orderID}}/search">  
+                    <input class="input-search" type="search" placeholder="Nhập mã sản phẩm hoặc tên sản phẩm cần tìm" aria-label="Search"
+                        name="q">
+                    <div class="icon__search">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </div>
+                </form>
+                {{else}}
                 <form class="header__search-box admin" method="get" action="/admin/search">  
                     <input class="input-search" type="search" placeholder="Nhập từ khóa cần tìm" aria-label="Search"
                         name="q">
@@ -37,6 +46,7 @@
                         <button type="submit"><i class="ti-search"></i></button>
                     </div>
                 </form>
+                {{/if}}
                 {{/if}}
                 <ul class="header__navbar-list" style="padding-left: 20%;">
                     <li class="header__navbar-item">

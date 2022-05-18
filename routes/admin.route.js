@@ -46,7 +46,7 @@ router.get('/vieworder/:id', async function(req, res) {
     const id = req.params.id;
     var isUpdate = true;
     const rows = await db.load('select * from orders where orderNumber = ' + id);
-    const order_list = await db.load('select o.productID, o.orderNumber, o.quantity, o.priceEach, p.productID,o.size, p.productName,(o.quantity * o.priceEach) as total from orderdetails as o, products as p where orderNumber = ' + id + ' and o.productID = p.productID');
+    const order_list = await db.load('select o.productID, o.orderNumber, o.quantity, o.priceEach, p.productID,o.size, p.productName,(o.quantity * o.priceEach) as total, pm.main from orderdetails as o, products as p, productimages as pm where orderNumber = ' + id + ' and o.productID = p.productID and pm.productID = o.productID');
     for (var i = 0; i < order_list.length; i++) {
         const stt = await db.load('select * from productdetails where productID = ' + order_list[i].productID + " and size = " + order_list[i].size);
         order_list[i].status = 'Đủ hàng';
@@ -77,7 +77,9 @@ router.get('/vieworder/:id', async function(req, res) {
         rows,
         order_list,
         sum,
-        isUpdate
+        isUpdate,
+        adminSearchFromOrder: true,
+        orderID : id
     });
 });
 router.post('/vieworder/:id', async function(req, res) {
@@ -114,6 +116,69 @@ router.post('/vieworder/:id', async function(req, res) {
     }
     //const url = '/admin/vieworder/' + id;
     res.redirect('/admin');
+});
+
+router.get('/vieworder/:id/search', async function(req, res) {
+    const id = req.params.id;
+    const q = req.query.q;
+    var rows;
+    if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
+        rows = await db.load("select p.*, pm.main, " + id + " as orderID from products p inner join productimages pm on p.productID = pm.productID where p.status ='SELLING' and p.productID = " + q);
+    } else {
+        rows = await db.load("select p.*, pm.main, " + id + " as orderID from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and p.productName LIKE '%" + q + "%'");
+    }
+    res.render('adminEdit', {
+        layout : 'admin.main.handlebars',
+        categories: rows,
+        adminSearchFromOrder: true,
+        orderID : id
+    });
+
+});
+
+router.get('/vieworder/:id/product/:productID', async function(req, res) {
+    const id = req.params.id;
+    const pID = req.params.productID;
+    const product = await db.load("SELECT * FROM products p, productimages pm WHERE p.productID = pm.productID and p.status = 'SELLING' and p.productID = " + pID);
+    const productDetail = await db.load("select * from productdetails where productID = + " + pID + " and quantityInStock != 0");
+    if (productDetail.length == 0) {
+        product[0].outOfStock = true;
+    }
+    product[0].productDetail = productDetail;
+    product[0].adminSearchFromOrder = true;
+    product[0].orderID = id;
+    product[0].maxCart = false;
+    res.render('productDetail', {
+        categories: product,
+    });
+
+});
+
+router.post('/vieworder/:id/product/:productID', async function(req, res) {
+    const id = req.params.id;
+    var size = req.body.variation;                      // lấy size
+    var quantity = req.body.quantity;
+    const pID = req.params.productID;
+    const product = await db.load('select * from products where productID = ' + pID);
+    const productInOrder = await db.load('select * from orderdetails where orderNumber = ' + id);
+    var check = true;
+    for (var i = 0; i < productInOrder.length; i++) {
+        if(pID == productInOrder[i].productID) {
+            if (size == productInOrder[i].size) {
+                quantity = parseInt(quantity) + parseInt(productInOrder[i].quantity);
+                await db.load('update orderdetails set quantity = ' + quantity + ' where productID = ' + pID + ' and orderNumber = ' + id + ' and size = ' + size);
+                check = false;
+            }
+        }
+    }
+    if (check) {
+        await db.load('SET FOREIGN_KEY_CHECKS = 0');
+        await db.load('insert into orderdetails values(' + id + ", " + pID +', ' + quantity + ', ' + product[0].productPrice + ', ' + size + ')');
+        await db.load('SET FOREIGN_KEY_CHECKS = 1');
+    }
+    const url = '/admin/vieworder/' + id;
+    res.redirect(url);
+
 });
 
 router.get('/delorder', async function(req, res) {
@@ -293,35 +358,6 @@ var multiUpload = upload.fields([{name: 'main', maxCount: 10}, {name: 'view1', m
 router.post('/editProduct/:id/imageEdit', multiUpload, async function(req, res) {
     res.redirect('/admin/editProduct');
 });
-// router.post('/editProduct/:id/imageEdit', multer({storage:multer.diskStorage({
-//             destination: function(req, file, cb){
-//                 cb(null, path.join('public', 'img', req.params.id))
-//             },
-//             filename: function(req,file,cb){
-//                 cb(null,file.originalname)
-//             }
-            
-//             })}).array('myImage', 5), async function(req, res) {
-//     // const id = req.params.id;
-
-//     // var storage = multer.diskStorage({
-//     //     destination:function(req,file,cb){
-//     //         cb(null, path.join('public', 'img'))
-//     //     },
-//     //     filename:function(req,file,cb){
-//     //         cb(null,file.originalname)
-//     //     }
-        
-//     // })
-
-//     // var upload = multer({storage:storage});
-
-//     // upload.single('myImage0');
-
-//     const url = '/admin/editProduct';
-//     res.redirect(url);
-// });
-
 
 router.get('/delproduct/:id', async function(req, res) {
     const id = req.params.id;

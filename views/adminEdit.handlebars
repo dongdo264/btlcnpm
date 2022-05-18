@@ -7,23 +7,34 @@
             </div>
             
             <div class="grid__column_10">
+                    {{#if adminSearchFromOrder}}
+                        {{#each this.categories}}
+                    <div class="grid__column">
+                                <div class="home-product-item">
+                                <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/{{main}})"></div>
+                                <a href="/admin/vieworder/{{orderID}}/product/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">Mã sản phẩm : {{productID}} <br>{{productName}}</h2></a>
+                                <div class="home-product-item-price">{{format_number productPrice}}đ</div>>
+                                
+                                </div>
+                            </div> 
+                    {{/each}}
+                    {{else}}
                     {{#each this.categories}}
                     <div class="grid__column">
                                 <div class="home-product-item">
                                 <div class="home-product-item-img" style="background-image: url(/img/{{productID}}/{{main}})"></div>
                                 {{!-- <a href="/admin/editProduct/{{productID}}/imageEdit" class="btn-image">
                                     <div>chỉnh sửa ảnh sản phẩm</div>
-                                </a> --}}
-                                    
+                                </a> --}} 
                                 <a href="/admin/editProduct/{{productID}}" style="text-decoration:none"><h2 class="home-product-item-name">Mã sản phẩm : {{productID}} <br>{{productName}}</h2></a>
                                 {{!-- <div class="home-product-item-price">{{format_number productPrice}}đ</div>> --}}
                                 <a href="/admin/delproduct/{{productID}}">
                                     <button class="edit-button-2" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')"><i class="ti-trash"></i> Xoá</button>
                                 </a>
                                 </div>
-                            </div>  
-                        
-                    {{/each}}                                           
+                            </div> 
+                    {{/each}}  
+                    {{/if}}                                         
             </div>
             
         </div>
