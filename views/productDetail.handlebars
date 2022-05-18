@@ -80,6 +80,30 @@
                                 <p>Sản phẩm này đã hết hàng</p>
                                 </div>                  
                             {{else}}
+                            {{#if adminSearchFromOrder}}
+                                <form action="/admin/vieworder/{{orderID}}/product/{{productID}}" class="add-to-cart-form" method="POST" id="addtocart">
+                                <div style="justify-content: space-between  ;" class="clearfix">
+                                    <div class="form-group single-product-size">
+                                        <strong>Chọn size</strong>
+                                        {{#each productDetail}}
+                                            <label>
+                                                <input type="radio" name="variation" value={{size}} id="size" data-quantity="0">
+                                                <span>{{size}}</span>
+                                            </label>
+                                        {{/each}}
+                                            <div class="form-group single-product-quantity">
+                                                <strong>Số lượng</strong>
+                                                <input type="number" min="1" class="form-control quantity" name="quantity" value="1" max="20">
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <button class="btn btn-primary single-product-submit" type="submit">
+                                <i class="ti-shopping-cart"></i>
+                                Thêm vào giỏ hàng  
+                                </button>
+                            </form>
+                            {{else}}
                             <form action="/product/view/{{productID}}" class="add-to-cart-form" method="POST" id="addtocart">
                                 <div style="justify-content: space-between  ;" class="clearfix">
                                     <div class="form-group single-product-size">
@@ -102,6 +126,7 @@
                                 Thêm vào giỏ hàng  
                                 </button>
                             </form>
+                            {{/if}}
                             {{/if}}
                         {{/if}}
                     </div>

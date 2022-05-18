@@ -69,7 +69,7 @@ router.get('/search', async function(req, res) {
         sort_by = "";
     }
     // đếm số lượng sp thỏa mãn
-    const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and productName LIKE '" + '%' + name + '%' + "'");
+    const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and productName LIKE '" + '%' + name  + "%' or style LIKE '%" + name + "%'");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
