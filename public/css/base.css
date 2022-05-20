@@ -281,11 +281,11 @@ p {
 }
 .sort-product {
     display: flex;
+    padding-top: 10px;
 }
 .select-box {
     background-color: #373737;
     color: #fff;
     outline: none;
-    height: 30px;
     border-radius: 5px;
 }

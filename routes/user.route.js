@@ -11,10 +11,6 @@ router.get('/', async function(req, res) {
     if (!page) {
         page = 1;
     }
-    // const test = await db.load("select * from products where status = 'SELLING'");
-    // for (var i=0;i<test.length;i++) {
-    //     await db.load('insert into productimages(productID) values (' + test[i].productID + ')');
-    // }
     // đếm số lượng sản phẩm
     const countP = await db.load("select count(*) as count from products where status = 'SELLING'");
     const numberOfProduct = countP[0].count;
@@ -69,7 +65,7 @@ router.get('/search', async function(req, res) {
         sort_by = "";
     }
     // đếm số lượng sp thỏa mãn
-    const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and productName LIKE '" + '%' + name  + "%' or style LIKE '%" + name + "%'");
+    const countP = await db.load("SELECT count(*) as count FROM products WHERE status = 'SELLING' and ( productName LIKE '" + '%' + name  + "%' or style LIKE '%" + name + "%')");
     const numberOfProduct = countP[0].count;
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;

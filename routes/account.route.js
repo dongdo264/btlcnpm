@@ -10,14 +10,13 @@ router.get('/login', async function(req, res) {
     });
 });
 router.post('/login', async function(req, res) {
-    const username = req.body.username;
-    const password = req.body.password;
     var check = false;
     const rows = await db.load('select * from accounts');
     for (var i = 0;i < rows.length; i++) {
-        if (rows[i].username == username) {
-            if (bcrypt.compareSync(password, rows[i].password) === true) {
+        if (rows[i].username == req.body.username) {
+            if (bcrypt.compareSync(req.body.password, rows[i].password) === true) {
                 req.session.isAuthenticated = true;
+                req.session.adminUser = req.body.username;
                 check = true;
                 break;
             }
@@ -40,26 +39,20 @@ router.get('/changepassword', async function(req, res) {
     });
 });
 router.post('/changepassword', async function(req, res) {
+    const user = req.session.adminUser;
     const old = req.body.oldpassword;
     const newpass = req.body.newpassword;
     const confirm = req.body.confirm;
-    const rows = await db.load('select * from accounts');
-    if (newpass.length < 5) {
+    const rows = await db.load("select * from accounts where username = '" + user + "'");
+    if (bcrypt.compareSync(old, rows[0].password) == false || rows.length == 0) {
         return res.render('changepassword',{
             layout: 'login.handlebars',
             err : true,
-            msg : 'Mật khẩu chứa ít nhất 5 kí tư'
-        });
-    }
-    if (newpass != confirm || bcrypt.compareSync(old, rows[0].password) == false) {
-        return res.render('changepassword',{
-            layout: 'login.handlebars',
-            err : true,
-            msg : 'Không thành công, vui lòng xem lại'
+            msg : 'Không thành công, thông tin tài khoản hoặc mật khẩu không chính xác'
         });
     }
     var pass = bcrypt.hashSync(newpass, 8);
-    await db.load("update accounts set password = '" + pass + "'");
+    await db.load("update accounts set password = '" + pass + "' where username = '" + user + "'");
     res.redirect('/admin');
 });
 router.get('/logout', async function(req, res) {

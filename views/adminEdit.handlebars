@@ -2,7 +2,11 @@
             <div class="section_header">
                 <div class="container_section_header">
                     <h2 class="section_title">Danh sách sản phẩm <br> 
+                    {{#if adminSearchFromOrder}}
+
+                    {{else}}
                     <a href="/admin/addNewProd" style="text-decoration: none; color : red">Thêm sản phẩm mới</a></h2>
+                    {{/if}}
                 </div>
             </div>
             

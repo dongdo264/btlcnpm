@@ -23,6 +23,7 @@ function showSlides() {
 
 </script>
 {{/section}}
+
   
     <div class="slideshow-container" style="padding-top: 30px;">
 
@@ -111,12 +112,12 @@ function showSlides() {
                                 <div class="custom-select" style="width:200px;">
                                     <select class="select-box" onchange="window.location.href=this.value">
                                       {{#if home}}
-                                      <option >Sắp xếp sản phẩm</option>
-                                      <option value="/?sort_by=price-asc&page=1">Giá: Tăng dần</option>
-                                      <option value="/?sort_by=price-desc&page=1">Giá: Giảm dần</option>
-                                      <option value="/?sort_by=title-asc&page=1">Tên: A-Z</option>
-                                      <option value="/?sort_by=title-desc&page=1">Tên: Z-A</option>
-                                      <option value="/?sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                      <option id="sort">Sắp xếp sản phẩm</option>
+                                      <option id="sort" value="/?sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option id="sort" value="/?sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option id="sort" value="/?sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option id="sort" value="/?sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option id="sort" value="/?sort_by=best-selling&page=1">Bán chạy nhất</option>
                                       {{else}}
                                       <option >Sắp xếp sản phẩm</option>
                                       <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
