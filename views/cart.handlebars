@@ -11,21 +11,19 @@
         event.preventDefault();
         if (validateOrder()) {
             if (!validatePhone()) {
-                //if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
-                //$('#form-Payment').off('submit').submit();
-                //alert('Gửi đơn hàng thành công!');
-                //}
                 alert('Không thành công! Số điện thoại không lợp lệ!');
             } else if (!validateName()){
                 alert('Không thành công! Tên không hợp lệ!');
             } else if (!validateAdress()) {
                 alert('Không thành công! Địa chỉ không hợp lệ!');
             } else {
-                if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
+                //if (confirm('Đơn hàng của bạn sẽ được gửi đi, chúng tôi sẽ sớm liên lạc với bạn để xác nhận. Bấm OK để xác nhận gửi đơn hàng')) {
+                //    $('#form-Payment').off('submit').submit();
+                //    alert('Gửi đơn hàng thành công!');
+                //}
                 $('#form-Payment').off('submit').submit();
                 alert('Gửi đơn hàng thành công!');
-               }
-               //alert('Gửi đơn hàng thành công!');
+                
             }
         } else {
             alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');
@@ -111,7 +109,7 @@
 
                     <div class="shop-back" id="button-showinfo">
                         {{#if isOrder}}
-                        <button class="btn btn-first" onclick="window.location.href='/'">Tiếp tục mua hàng</button>
+                        <button class="btn btn-secondary" style="background-color: white;" onclick="window.location.href='/'">Tiếp tục mua hàng</button>
                         <button class="btn btn-secondary" onclick="getPaymentInfo()"><i class="ti-shopping-cart"></i> Đặt hàng</button>
                         {{else}}
                             <h2 style="font-size: 2rem; color:red">Bạn chỉ có thể tạo tối đa 3 đơn 1 ngày</h2>

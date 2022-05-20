@@ -10,6 +10,7 @@ module.exports = async function(req, res, next) {
             await db.load('delete from customercart where customerID = ' + customerList[i].customerID);
             await db.load('delete from customers where customerID = ' + customerList[i].customerID);
         }
+        res.locals.adminUser = req.session.adminUser;
     }
     next();
 }

@@ -10,17 +10,22 @@ function validateOrder() {
 }
 function validateName() {
     var name = document.getElementById("name").value;
+    name = name.replaceAll(" ", "");
+    if (name.length < 5) {
+        return false;
+    }
+    console.log(name);
     for (var i = 0; i < name.length;i++){
-        if ((name.charCodeAt(i) >= 65 && name.charCodeAt(i) <= 90 ) || (name.charCodeAt(i) >= 97 || name.charCodeAt(i) <= 122)) {
-            return true;
+        if (name.charCodeAt(i) < 65 || ( name.charCodeAt(i) > 90 && name.charCodeAt(i) < 97) || (name.charCodeAt(i) > 122 && name.charCodeAt(i) < 128)) {
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 function validateAdress() {
     var address = document.getElementById("address").value;
-    if (address.length < 10) {
+    if (address.length < 5) {
         return false;
     }
     return true;

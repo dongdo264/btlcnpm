@@ -103,6 +103,12 @@ router.post('/vieworder/:id', async function(req, res) {
                 await db.load('update productdetails set quantityInStock = quantityInStock - ' + rows[i].quantity  + " where productID = " + rows[i].productID + " and size = " + rows[i].size);
                 await db.load('update products set quantitySold = quantitySold + ' + rows[i].quantity + " where productID = " + rows[i].productID);
             }
+            const rows_ = await db.load('select * from productdetails where quantityInStock <= 0');
+            await db.load('SET FOREIGN_KEY_CHECKS = 0');
+            for (var i = 0; i < rows_.length; i++) {
+                await db.load('delete from customercart where productId = ' + rows_[i].productID + ' and size = ' + rows_[i].size);
+            }
+            await db.load('SET FOREIGN_KEY_CHECKS = 0');
         }
     } else if (stt == 4) {
         status = 'Bị hủy';

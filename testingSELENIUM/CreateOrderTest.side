@@ -1,0 +1,2298 @@
+{
+  "id": "cb02bb7b-18c4-4826-89f0-5f7adddbbd62",
+  "version": "2.0",
+  "name": "CreateOrderTest",
+  "url": "http://localhost:3000/cart",
+  "tests": [{
+    "id": "a456c074-e7c4-4705-bdfe-76866e2019ca",
+    "name": "Test_01",
+    "commands": [{
+      "id": "c835349e-24ef-4f47-939a-e2b64d24c35f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "18015f5a-6d5d-4db8-b04f-58d54ca8d6b0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "517x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "346fa275-5673-4fb3-9223-72c3a1b236c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick='getPaymentInfo()']", "xpath:attributes"],
+        ["xpath=//div[@id='button-showinfo']/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "980d6ccc-4e54-4d70-9265-1b3cf5253d61",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc1ee011-6013-4597-aa0b-ff3dc3221fc1",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "862e1828-d903-4bd9-9ebd-cf8d8bf7e6e2",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bfe7a0b9-9034-4b74-af3b-073e8b481a0c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "516222ed-b864-45ce-95d2-f55846b3f483",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "810df324-64d9-486d-8dd8-afde4ca7a0c5",
+    "name": "Test_02",
+    "commands": [{
+      "id": "28efd61f-747f-4adc-a86e-b05653a4a187",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bf54146e-c3ab-4805-b5b7-c1fdec5a6002",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0f383c3-aff1-422b-871c-2a587b60d7b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick='getPaymentInfo()']", "xpath:attributes"],
+        ["xpath=//div[@id='button-showinfo']/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34cd50f9-9c31-45a7-b091-f44e6b4f6d3c",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c552698-4188-4b14-b445-a2cc9d13164d",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "d6fd05d1-694e-447c-8f78-df4890290e9c",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5dbfa369-4098-47e6-93e3-b1f135c3ed97",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a0587c0-2cd8-46db-943e-1d6508d41862",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a37a96d1-59aa-46b1-aaa3-7b43bc54ad81",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "65b7f152-b1f4-44dd-84e9-4bda6d3d61e3",
+    "name": "Test_03",
+    "commands": [{
+      "id": "f1bb9cf4-b991-48f2-86c5-19eae2290b47",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc663648-8fc5-430f-ac52-5a64b7e7bb3a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1d31be9-2c53-4b19-a5f3-150617947dbe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick='getPaymentInfo()']", "xpath:attributes"],
+        ["xpath=//div[@id='button-showinfo']/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e11899e7-479d-4a78-86df-fc235f5af21f",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b65b99ea-d452-418f-bfc6-143960515468",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "b3ac883d-fd0d-4d3f-8dac-619d2ec33159",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e1efd94-48a7-431a-bc00-a87525567539",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "27523ea9-78df-4369-826b-cb6ad092f240",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a6717ec0-8cb4-4d1e-b955-2dc3c078adc0",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ed23d98c-6622-4580-a211-17705440e34f",
+    "name": "Test_04",
+    "commands": [{
+      "id": "188d9e6b-3942-4324-9449-0dcc98e1ff84",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08030249-6a03-4b2c-a15e-818cd3723fe0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6b2b41f6-0ac3-4c87-aee3-c862bf796b38",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "670e852d-9861-4aa3-a689-2451a36fc7c5",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa53ef8c-9170-425a-a5d3-2da3d05b4f49",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "99469169-fe72-478d-81c1-4e571708f79b",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "149feef6-6185-478e-9c7a-4e4245e0bec3",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "08487c01-bda9-49e7-8dfe-a7934e5b5b4d",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9a268e3-677e-4e9e-a083-9fab9a92ae2b",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0123456789"
+    }, {
+      "id": "73c6d612-853d-411a-9a1f-434e7ccd45e0",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d4fa3d5-2991-4431-ad32-9ffb3c8b7368",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "84792614-a292-43c8-8fbb-cb8e266aa4ef",
+    "name": "Test_05",
+    "commands": [{
+      "id": "ce501fc4-62b3-4f0a-8251-81d2f62239fa",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5971740-c76d-4c62-9f09-eabc788689bf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bdff47c3-ccde-4a4c-b249-6e5db0b5222a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b666f2af-bdd9-465f-9c1a-e92ada30514d",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75f832ae-45d0-4cc9-8c2a-453205c3b166",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "c73de240-a8b3-4fe1-9af0-c69ac9f5e6b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aede1772-49eb-48ea-9f9f-e6a71d972686",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "e1bfbec8-d076-4367-93ec-775a0cff74f3",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "878ef0dc-b9b5-45da-a2e5-b5548856cea3",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0223456789"
+    }, {
+      "id": "ac5a2e15-dbdd-4555-8055-b5e2767ba861",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "602c9034-7412-4569-b94e-7b6b707b6150",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "70462b38-c127-4175-bafa-2a2c3c8a94a9",
+    "name": "Test_06",
+    "commands": [{
+      "id": "22ff630d-2b84-4b7f-908f-16d17829113b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df407f83-b27d-45ce-bd15-a238aa74a151",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0b4b241-b730-4373-bb9a-c0fc9c0f0b66",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "41e7e09b-8eff-4bfb-97d0-3a8c800e22a6",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f08c4d9d-9a93-4442-8512-17cf6c6bd3a7",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "93458b21-7d38-416d-af47-01464f379107",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e4b42bec-09e8-4766-a00a-fbfb18c071e7",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "40b7405c-e354-4cc6-95fb-f87d2a0c4a90",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d809bb3b-61d7-42dd-b950-670327a91b6c",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0423456789"
+    }, {
+      "id": "d8dc31b9-7456-469f-8add-69edfea3bad2",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6bcfcf43-45d9-4a62-8298-9cbcc10a4c02",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "312db9aa-acb4-44a5-9624-01e4757ecdf4",
+    "name": "Test_07",
+    "commands": [{
+      "id": "fe458244-8550-4f1e-96e9-f2b1f839a50d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c07df426-3583-41e2-99e1-3b5d253dd172",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "557aafac-3c33-4b27-8722-04f79be84e1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e9d8990-655e-44c8-9d4f-f5f5c5f74157",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "baebdb17-0bb0-41bc-aad6-aeab693d34fb",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "c5abe9b6-c465-45e3-8196-56b6b2f96f3f",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2879cc8f-a2d0-42f7-8dbc-ce90526a3f16",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "a04f20e4-a5bd-465e-bd07-debef0bd0d6d",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5717e15-0997-406c-9dbd-cad38407e28c",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0632133188"
+    }, {
+      "id": "b76f66e6-4b56-4354-a1a1-62653e9a922c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dbb873be-9ea3-48ef-b5a2-73fda9064f69",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "c6a2ab4e-c625-4199-93e0-9064ad2969ef",
+    "name": "Test_08",
+    "commands": [{
+      "id": "80db73ac-5a17-4807-97a3-fc5a330eb3ba",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c72c1d25-3d14-4eef-a6c6-6d359db68c97",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "59fbedc7-af11-4a71-af01-0725ce34200d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65469ecb-3ebd-4fa5-9de3-702e5dcef55b",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f2e927f-4478-4880-abdd-2bf87462efe5",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "07bedb9c-efbd-424f-b646-8e7232216182",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "434b5a9b-8f7e-418b-a0c8-a7472c3a12ec",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "5ebd0023-b036-4cfd-9557-41671d68f306",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7efe701-e76f-41e2-b0c8-0e6cb927cf92",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0332 1338c"
+    }, {
+      "id": "0ead7f3d-1d8a-4e06-bf3b-0dfb2c0eaeb8",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "facd652d-4be6-47e5-81c9-48f3d4fc7b20",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "496a6420-f972-41c3-a2f6-dd2c949b62d6",
+    "name": "Test_09",
+    "commands": [{
+      "id": "164a4569-0f05-42a8-96ce-1064299074ac",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e844b9ed-b2de-4707-923a-12c0305bb633",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "816ded48-14a5-498f-8018-a1db1f75528a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77190687-c6fc-46a8-8bc4-780bf5e30fde",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82f5592a-c65d-42bf-aaa2-723d0b4a5c91",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "d3f8c661-52ca-4b4a-9074-9d51cbe3235f",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "018ddfa8-2df8-4cd6-a558-2bb48ebed90c",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "f88d6717-3fe8-45ac-a73d-d19f1810d3dc",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5a6cd8b-7558-41b1-90a6-06172d830dc3",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "033213318"
+    }, {
+      "id": "facffd06-6182-4659-9000-6b86fe4cf3c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17903aea-8272-40a3-8b0d-d0d78db146c1",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0fb8a7f6-dd77-49bb-acea-3339a9726648",
+    "name": "Test_10",
+    "commands": [{
+      "id": "78c5e3e4-f677-4116-b6aa-0cc644fb33b2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a1abcff-333f-4836-bbb8-819ba061b4b1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33373d79-71c1-4dbd-b626-6708ee1b4af0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "924df800-3b81-4f3b-a381-fda31b8c1400",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d0d46c7-fd26-46d4-874b-6aa1e3e5e87e",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "9f0ea7e3-0cea-4e4c-bfc8-18427d6d890f",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "128f03b2-7519-4aba-a935-3679bd1e4b9f",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "80885bcd-eb60-4ba5-b0cc-6df7736adbb8",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ce714e6-4619-401c-867a-96649096e7b3",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "03321331888"
+    }, {
+      "id": "4c7f0475-fcfe-4387-9dff-7ca8a199b5a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a776715-650b-4088-8c05-2af21fe781cc",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Số điện thoại không lợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fbcc82cc-d73b-458c-b54c-98be9b1eb2d2",
+    "name": "Test_11",
+    "commands": [{
+      "id": "b9d29cc7-a8b9-470b-8de1-b885299eb3fe",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3913bcb6-1d96-4452-85c5-f0219d87db2d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c27abbb-9133-4a1c-a45f-fae276172a29",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b356397-9dd6-4269-83d8-f8651f2eb006",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d6de9a0-c52f-4032-8f3b-45c3695ca435",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "0294f711-750d-4b2d-804e-b41f537c22c7",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "341174d0-065e-4a27-8d45-1a83c34c6000",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "a5a8b2d5-bb4f-40b9-b9b1-c80dc32b79aa",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09d71060-802d-45da-b185-26ecfeb57e7b",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0332133188"
+    }, {
+      "id": "380a9637-7b3a-40e1-b50a-bbbcc1661579",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b55bdb74-0801-4bbb-8672-42667fd06e18",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Gửi đơn hàng thành công!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3da6b9a0-80b2-4eaf-b890-d02457a5be79",
+    "name": "Test_12",
+    "commands": [{
+      "id": "bd924746-5ebc-4c57-b113-15d89f4d2b47",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a7e0a91-e9d5-48d1-a05e-815a390a74f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2fc6ab46-dcc4-4ae3-b996-0feab3583487",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fdc8b90-4c4f-4057-8799-01c15ec244f8",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "565cfe86-1cc9-4edb-b316-edc0ba5a9851",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "90d908b3-51dc-4dd8-b574-ef0bd64b0650",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "097a9a33-0815-4c96-8622-28350e1dc827",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "f9e37351-c87c-4bb9-a1b3-f069af669c81",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f802c54-8928-4087-9d64-de67268422d7",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0532133188"
+    }, {
+      "id": "0583dfa6-f97d-4e13-bf0d-553d0f5633f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd84c10e-7ddc-4ce1-ab85-30b2215b3229",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Gửi đơn hàng thành công!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8db67601-bff0-427a-9893-968dda0c9b8b",
+    "name": "Test_13",
+    "commands": [{
+      "id": "583e0505-bbde-49cd-ac26-95b9b44b3177",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fffaceec-065b-4a39-9c5e-9d0e4676c03a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f245b6bd-7237-4c4e-8c91-e56d43430033",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "534ecf78-64f5-4958-b779-2acd9f190a19",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5f620ac-a1ba-453c-8297-591a0fdd55ea",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "91a50c73-6525-4817-8c93-71fa1621f6fc",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f0cf576-f674-49e8-b4b6-091f0527a5b9",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "380615c3-439b-4858-9d96-c3307faa32da",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ea9effa-fc67-444c-bb1f-c0d47389e934",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0732133188"
+    }, {
+      "id": "0b2dbe66-3370-4af6-a27f-6a115cc84010",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc0c56e2-5b86-4f31-8b26-9916ca24a265",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Gửi đơn hàng thành công!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2670ab7e-182c-4662-b518-3693b5d61f8d",
+    "name": "Test_16",
+    "commands": [{
+      "id": "03d4f85c-2d90-4268-9268-19b0ca379b03",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9faa9d4c-10fd-4ad5-ad46-053549b49f36",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac40285d-570e-434b-b696-8bffa1c8e4b8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0fde94a-f5fa-46e2-8ab0-4fb435cdd0f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f7d6197-9297-4e7c-8092-06f4b23ab413",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A@"
+    }, {
+      "id": "89830378-5641-4290-8c3a-747858f7d666",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f462f68-ae3d-4930-b2b2-b6be03df57f7",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "fbcd9851-ec4d-4d07-85da-2e2aff0be713",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "67ce756d-9753-44cd-a498-dd742583d26c",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0332133188"
+    }, {
+      "id": "b1154d7a-8aa4-4742-ac28-032af65a0b6b",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6791822f-f847-43aa-a220-6cab714bff26",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Tên không hợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "e6903ebf-9c8b-4209-9548-7d0a310a9ecd",
+    "name": "Test_17",
+    "commands": [{
+      "id": "e3c077ec-3820-48e5-b851-6274b1c54419",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "49c2caec-0d3f-4149-97a3-9a014099aa29",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56e63222-c37c-47f1-82c6-8b4fe5bf4989",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "62a7ebe0-bddf-403c-934b-384f9102eb59",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a90f01f2-8693-4acb-8f3e-4908c1ce00c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "!@$#@$%  %"
+    }, {
+      "id": "0b1dcd72-8cf5-4c88-a9e2-d660d8b6ef46",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7e29207-a05f-4d1a-bf4f-8f360431abf5",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "293f7888-4836-4eb3-849c-60325c19ad95",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "738b2341-8797-4ed6-8fa8-3e06335e1bd3",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0332133188"
+    }, {
+      "id": "f943c47d-12e2-4890-a67c-fd0392217ef0",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b46c210-51bb-4695-81ff-d6ef3eb22b97",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Tên không hợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b0f9047f-ecd0-4856-922c-c47ab7e1933b",
+    "name": "Test_18",
+    "commands": [{
+      "id": "4fcd81ee-8d17-4951-9fb7-20a30af2bc8f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1deec036-a957-460b-a502-8f8ceb49de20",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d8a1f5d-59f9-4187-9955-2ddd8a678484",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8dff289d-c919-4dbf-8418-4d7788fa31b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab386c14-f2db-474d-9952-734b0da1699e",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "                      f                         "
+    }, {
+      "id": "324b1a8d-82f4-4592-a0f7-7253e4315cc6",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ae31b0b-5c75-47fe-9de2-ea28a4f91e5d",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "89b83426-c231-41cd-9ae0-98d6269dad6d",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9b4baae-e75e-4f65-9d9d-7864bc327411",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0332133188"
+    }, {
+      "id": "c313b68e-0e9b-4995-b6f8-3c7f1eb544a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09c5cb18-9784-44a8-9e80-fd6c4cfc2fcc",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Không thành công! Tên không hợp lệ!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "69255924-ff69-445c-a4ce-2fdce5db457b",
+    "name": "Test_14",
+    "commands": [{
+      "id": "e1ee2af1-49f6-4702-bc7a-449750179182",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aacbd026-ac1b-474a-9c5c-cebeecfbc96f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f6ee756c-162b-4a00-8508-16ed8ac3cc37",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2902b32-62a1-4b92-b238-ab192d4ab1b3",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6cd939d-c20d-4ab2-a9f3-bf6ba8f4f7d6",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "9c607ccd-5fd6-44e7-ab74-1db6153bd56b",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "826f4eaa-96fe-4164-978b-fd8ed4e2cce0",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "90206ed9-2ae6-4e85-a137-08324186b3c0",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6517ed49-ece2-49a1-bb9e-59437dc5c4ce",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0832133188"
+    }, {
+      "id": "9dafd543-179b-438c-a5b2-d50913864f0f",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c21e6df-d1d2-45cf-bf50-3d2cfe2e6afb",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Gửi đơn hàng thành công!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3de31f8b-cef9-4156-84d0-94aa5edd6877",
+    "name": "Test_15",
+    "commands": [{
+      "id": "2c603fa4-bfa0-4be7-9b33-59fd5d1137cb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/cart",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb1c14f8-b108-4f69-a789-f9bbf5caae1c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "518x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ff738464-aed3-4d41-8eed-42fb12dc2b9f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2) > .ti-shopping-cart",
+      "targets": [
+        ["css=.btn:nth-child(2) > .ti-shopping-cart", "css:finder"],
+        ["xpath=//div[@id='button-showinfo']/button[2]/i", "xpath:idRelative"],
+        ["xpath=//button[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c16099ce-af62-4e7a-8ea9-d256fa55a72b",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5aa71474-c7a4-4575-8b54-cec74e232443",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Văn A"
+    }, {
+      "id": "e36bf754-60ab-4955-a95e-f48252294993",
+      "comment": "",
+      "command": "click",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49c7bf21-eaaa-4b09-9af0-d7f35465e7cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Ba Vì - Hà Nội"
+    }, {
+      "id": "37594330-a56d-4a72-8ae0-0ec31d99b26a",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1486837c-205a-4331-91e1-cbfdef356472",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//form[@id='form-Payment']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "0932133188"
+    }, {
+      "id": "ee64e19f-1a7f-456b-b92e-1cd485dc0366",
+      "comment": "",
+      "command": "click",
+      "target": "css=#button-payment > .btn",
+      "targets": [
+        ["css=#button-payment > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='button-payment']/button", "xpath:idRelative"],
+        ["xpath=//div[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b5746b9-7214-4eae-9f9b-b691ee4bfe33",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Gửi đơn hàng thành công!",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3e57cb8a-a32a-4e0b-a43c-398bd0126d42",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a456c074-e7c4-4705-bdfe-76866e2019ca"]
+  }],
+  "urls": ["http://localhost:3000/cart"],
+  "plugins": []
+}

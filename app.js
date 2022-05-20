@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const appMiddleware = require('./middleware/app.middleware');
 const loginMiddleware = require('./middleware/login.middleware');
-const adminMiddleware = require('./middleware/admin.middleware');
 
 
 
