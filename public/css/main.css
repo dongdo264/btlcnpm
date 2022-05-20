@@ -1384,8 +1384,9 @@ label {
         margin-right: auto;
     }
 
-    .shop-back .btn {
+    .container_content .shop-back .btn {
         width: calc(100% - 54px);
+        min-width: 0;
     }
 
     .shop-back .btn-first {
