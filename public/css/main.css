@@ -1355,9 +1355,9 @@ label {
         margin: 0 0;
     }
 
-    .main #content .container_content {
-        margin-left: 30px;
-        margin-right: 30px;
+    .container #content .container_content {
+        margin: auto;
+        width: calc(100% - 60px);
     }
 
     #content .container_content .info-shipping {
@@ -1385,7 +1385,7 @@ label {
     }
 
     .shop-back .btn {
-        width: 100%;
+        width: calc(100% - 54px);
     }
 
     .shop-back .btn-first {
@@ -1427,9 +1427,9 @@ label {
         margin-right: 30px;
     }
 
-    .main #content .container_content {
-        margin-left: 30px;
-        margin-right: 30px;
+    .container #content .container_content {
+        margin: auto;
+        width: calc(100% - 60px);
     }
 }
 
