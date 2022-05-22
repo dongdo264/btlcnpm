@@ -48,10 +48,10 @@ router.post('/changepassword', async function(req, res) {
         return res.render('changepassword',{
             layout: 'login.handlebars',
             err : true,
-            msg : 'Không thành công, thông tin tài khoản hoặc mật khẩu không chính xác'
+            msg : 'Không thành công, mật khẩu không chính xác!'
         });
     }
-    var pass = bcrypt.hashSync(newpass, 8);
+    const pass = bcrypt.hashSync(newpass, 8);
     await db.load("update accounts set password = '" + pass + "' where username = '" + user + "'");
     res.redirect('/admin');
 });

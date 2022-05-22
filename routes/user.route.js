@@ -1,5 +1,4 @@
 const express = require('express');
-const { route } = require('express/lib/application');
 const db = require('../utils/database');
 
 const router = express.Router();
@@ -17,7 +16,7 @@ router.get('/', async function(req, res) {
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
     if (numberPage != parseInt(numberPage)) {
-        numberPage += 1;
+        numberPage = parseInt(numberPage) + 1;
     }
     const offset = (parseInt(page) - 1) * limit;
     var page_number = [];
@@ -46,7 +45,11 @@ router.get('/', async function(req, res) {
         categories : list,
         empty : list.length === 0,
         page_number,
-        home: true
+        home: true,
+        sort_by,
+        numberPage,
+        end : page != numberPage,
+        start : page > 1
     });
 });
 
@@ -70,7 +73,7 @@ router.get('/search', async function(req, res) {
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
     if (numberPage != parseInt(numberPage)) {
-        numberPage += 1;
+        numberPage = parseInt(numberPage) + 1;
     }
     const offset = (parseInt(page) - 1) * limit;
     var page_number = [];
@@ -125,7 +128,7 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     const limit = 12
     var numberPage = parseInt(numberOfProduct) / limit;
     if (numberPage != parseInt(numberPage)) {
-        numberPage += 1;
+        numberPage = parseInt(numberPage) + 1;
     }
     const offset = (parseInt(page) - 1) * limit;
     if (brand == '') {
@@ -191,7 +194,11 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
         list_style,
         home: false,
         brand,
-        loaidinh
+        loaidinh,
+        end : page != numberPage,
+        numberPage,
+        sort_by,
+        start : page > 1
     });
 });
 
