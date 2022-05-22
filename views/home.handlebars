@@ -68,11 +68,11 @@ function showSlides() {
                           </div>
                             <ul class="list-trademark">
                               {{#if home}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/Nike">Nike</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Adidas">Adidas</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Puma">Puma</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Mizuno">Mizuno</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Kamito">Kamito</a></li> 
+                                        <li class="name-trademark"><a href="/thuong-hieu/Nike">     Nike</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Adidas">     Adidas</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Puma">     Puma</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Mizuno">     Mizuno</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Kamito">     Kamito</a></li> 
                               {{else}}
                               {{#each list_brand}}
                                     {{#if active}}
@@ -90,14 +90,14 @@ function showSlides() {
                           </div>
                             <ul class="list-trademark">
                               {{#if home}}                                                              
-                                        <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ nhân tạo">Sân cỏ nhân tạo</a></li>
-                                          <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ tự nhiên">Sân cỏ tự nhiên</a></li>                                
+                                        <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ nhân tạo">     Sân cỏ nhân tạo</a></li>
+                                          <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ tự nhiên">     Sân cỏ tự nhiên</a></li>                                
                               {{else}}
                               {{#each list_style}}
                                     {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">     Sân {{value}}</a></li>
                                     {{else}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">     Sân {{value}}</a></li>
                                     {{/if}}
                                 {{/each}}
                                 {{/if}}
@@ -148,6 +148,11 @@ function showSlides() {
                     <ul class="pagination">
                         
                         {{#if home}}
+                        {{#if start}}
+                            <li class="page_item">
+                                  <a class="page_link" href="/?sort_by={{sort_by}}&page=1"><i class="ti-angle-double-left"></i></a>
+                              </li>
+                              {{/if}}
                             {{#each this.page_number}}
                               {{#if active}}
                               <li class="page_item" style="background: #ffe11b;">
@@ -157,10 +162,20 @@ function showSlides() {
                               <li class="page_item">
                                   <a class="page_link" href="/?sort_by={{sort_by}}&page={{value}}">{{value}}</a>
                               </li>
-                              {{/if}}
+                              {{/if}}   
                             {{/each}}
+                            {{#if end}}
+                            <li class="page_item">
+                                  <a class="page_link" href="/?sort_by={{sort_by}}&page={{numberPage}}"><i class="ti-angle-double-right"></i></a>
+                              </li>
+                              {{/if}}
 
                         {{else}}
+                        {{#if start}}
+                             <li class="page_item">
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by={{sort_by}}&page=1"><i class="ti-angle-double-left"></i></a>
+                              </li>
+                              {{/if}}
                             {{#each this.page_number}}
                               {{#if active}}
                               <li class="page_item" style="background: #ffe11b;">
@@ -172,7 +187,13 @@ function showSlides() {
                               </li>
                               {{/if}}
                             {{/each}}
+                            {{#if end}}
+                             <li class="page_item">
+                                  <a class="page_link" href="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by={{sort_by}}&page={{numberPage}}"><i class="ti-angle-double-right"></i></a>
+                              </li>
+                              {{/if}}
                         {{/if}}
+                            
                         
                     </ul>
                 </nav>   

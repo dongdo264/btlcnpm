@@ -36,7 +36,29 @@
 }
 </script>
 {{/section}}
-<div class="container" >
+
+ <div class="container">
+        <div class="grid">
+            <div class="grid__row app-content">
+                <div class="grid__column_1">
+                    <nav class="category">
+                        <a href="/admin" style="text-decoration: none;"><h3 class="trademark">Quản lý đơn hàng</h3></a>
+                        <ul class="list-trademark">
+                            <li class="name-trademark"><a href="/admin/?day=today">Trong ngày hôm nay</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=7day">Trong 7 ngày vừa qua</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=all">Cũ hơn</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="category">
+                        <a href="/admin/editProduct" style="text-decoration: none;"><h3 class="trademark">Quản lý sản phẩm</h3></a>
+                        <ul class="list-trademark">  
+                            <li class="name-trademark"><a href="/admin/editProduct">Danh sách sản phẩm</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+     
+                    <div class="container" >
     <form id="content" method="post">
         <div class="container_content">
             <div class="section_header">
@@ -116,3 +138,7 @@
         </div>
     </form>
 </div>
+            </div>
+        </div>
+    </div>
+

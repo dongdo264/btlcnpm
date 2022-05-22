@@ -1,4 +1,125 @@
-<div class="container">
+    <div class="container">
+        <div class="grid">
+            <div class="grid__row app-content">
+                <div class="grid__column_1">
+                    <nav class="category">
+                        <a href="/admin" style="text-decoration: none;"><h3 class="trademark">Quản lý đơn hàng</h3></a>
+                        <ul class="list-trademark">
+                            <li class="name-trademark"><a href="/admin/?day=today">Trong ngày hôm nay</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=7day">Trong 7 ngày vừa qua</a></li>
+                            <li class="name-trademark"><a href="/admin/?day=all">Cũ hơn</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="category">
+                        <a href="/admin/editProduct" style="text-decoration: none;"><h3 class="trademark">Quản lý sản phẩm</h3></a>
+                        <ul class="list-trademark">  
+                            <li class="name-trademark"><a href="/admin/editProduct">Danh sách sản phẩm</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+     
+            <div class="grid__column_2">
+                <div class="grid__row  grid__full-width">
+                        {{#if empty}}
+                            <h1 class="heading-product">Không có đơn hàng nào</h1>
+                        {{else}}
+                            <h1 class="heading-product">Danh sách đơn hàng</h1>
+                        
+                            <div class="sort-product">
+                                <div class="custom-select" style="width:200px;">
+                                    <select class="select-box" onchange="window.location.href=this.value">
+                                      <option value="/admin?day={{day}}">Tất cả đơn hàng</option>
+                                      <option value="/admin?status=đang xử lý&day={{day}}">Đang xử lý</option>
+                                      <option value="/admin?status=đang giao hàng&day={{day}}">Đang giao hàng</option>
+                                      <option value="/admin?status=đã hoàn tất&day={{day}}">Đã hoàn tất</option>
+                                      <option value="/admin?status=bị hủy&day={{day}}">Bị hủy</option>
+                                    </select>
+                                  </div>
+                            </div>
+                            {{/if}}
+                        </div>
+            <div class="grid__column_10">  
+                <div class="container">
+            <div id="content">
+                <div class="container_content">
+                <div class="list_orders">
+                        {{#if empty}}
+                        {{else}}
+                        <table class="table_orders">
+                            <thead>
+                                <tr class="title-row">
+                                    <th>Tên khách hàng</th>
+                                    <th>Số ĐT</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Ghi chú</th>
+                                    <th>Trạng thái</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this.rows}}
+                                <tr class="order_detail">
+                                    <td class="describe_product">
+                                        {{customerName}}
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{phone}}</span>
+                                    </td>
+                                    <td>
+                                        {{address}}
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{orderDate}}</span>
+                                    </td>
+                                    <td class="price_total">
+                                        <div class="cl--primary" style="color:#ffe11b">{{comment}}</div>
+                                    </td>
+                                    <td class="price_product">
+                                        <span>{{status}}</span>
+                                    </td>
+                                    
+                                    <td class="recycle">
+                                        <a href="/admin/vieworder/{{orderNumber}}">
+                                            <button class="btn btn-secondary" type="button">
+                                                <i class="ti-pencil-alt" style="color:lime"></i><span style="color:lime"> Chi tiết</span>
+                                            </button>
+                                        </a>
+                                    </td>
+
+                                    <td class="recycle">
+                                        <a href="/admin/delete?id={{orderNumber}}">
+                                            <button class="btn btn-secondary" type="button" onclick="return confirm('Bạn có chắc muốn xóa bỏ đơn hàng này?')">
+                                                <i class="ti-trash"></i><span>Xoá</span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        {{/if}}
+                    </div>     
+            </div>   
+            </div>
+            </div>
+            </div>
+            
+            </div>
+            </div>  
+        </div>
+    </div>
+    
+    
+    
+    
+
+
+
+{{!-- <div class="container">
             <div id="content">
                 <div class="container_content">
                     <div class="grid__row  grid__full-width">
@@ -82,4 +203,4 @@
                     </div>
                 </div>
             </div>
-       </div>
+       </div> --}}

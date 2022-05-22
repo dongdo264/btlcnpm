@@ -255,11 +255,32 @@ router.post('/addNewProd', async function(req, res) {
 });
 
 router.get('/editProduct', async function(req, res) {
-    const list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING'");
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+    var list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING'");
+    const numberOfProduct = list.length;
+    const limit = 12;
+    var numberPage = parseInt(numberOfProduct) / limit;
+    if (numberPage != parseInt(numberPage)) {
+        numberPage += 1;
+    }
+    const offset = (parseInt(page) - 1) * limit;
+    var page_number = [];
+    for (var i = 1; i <= numberPage; i++) {
+        const item = {
+            value : i,
+            active: i == page
+        }
+        page_number.push(item);
+    }
+    list =  await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' limit 12 offset " + offset);
     res.render('adminEdit', {
         layout : 'admin.main.handlebars',
         categories : list,
-        adminSearchProduct : true
+        adminSearchProduct : true,
+        page_number
     });
 });
 
@@ -377,7 +398,7 @@ router.get('/delproduct/:id', async function(req, res) {
 });
 
 router.get('/searchbyproduct', async function(req, res) {
-    const q = req.query.q;
+    var page = req.query.page;
     var rows;
     if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
         rows = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status ='SELLING' and p.productID = " + q);
