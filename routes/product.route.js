@@ -12,7 +12,7 @@ router.get('/view/:id', async function(req, res) {
     } else {
         // lấy sản phẩm -> lấy thông tin các size trong kho hàng
         const product = await db.load("SELECT * FROM products p, productimages pm WHERE p.productID = pm.productID and p.status = 'SELLING' and p.productID = " + id);
-        const list = await db.load("select count(*) as count from customercart where customerID = " + sessionId);
+        const list = await db.load("select count(*) as count from customer_product where customerID = " + sessionId);
         const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock > 0");
 
         product[0].outOfStock = false;
@@ -51,13 +51,13 @@ router.post('/view/:id', async function(req, res) {
         return res.redirect('/');
     } else {
         // khi thêm vào giỏ kiểm tra xem trong giỏ ban đầu đã có sản phẩm đó chưa? nếu check có rồi thì tăng số lượng lên
-        const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + customerID); 
+        const product = await db.load("SELECT products.productID, products.productName, products.productPrice, customer_product.size, customer_product.quantity, (products.productPrice*customer_product.quantity) as total FROM products, customer_product WHERE customer_product.productId = products.productID AND customer_product.customerID = " + customerID); 
         var check = true;
         for (var i = 0; i < product.length; i++) {
             if(id == product[i].productID) {
                 if (size == product[i].size) {
                     quantity = parseInt(quantity) + parseInt(product[i].quantity);
-                    await db.load('update customercart set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
+                    await db.load('update customer_product set quantity = ' + quantity + ' where productId = ' + id + ' and customerID = ' + customerID + ' and size = ' + size);
                     check = false;
                 }
             }
@@ -70,7 +70,7 @@ router.post('/view/:id', async function(req, res) {
                 size,
                 quantity
             }
-            const tb = 'customercart';
+            const tb = 'customer_product';
             await db.addToCart(tb, obj);
         }
         return res.redirect('/cart');

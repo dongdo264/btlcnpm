@@ -1,0 +1,442 @@
+{
+  "id": "364bd822-3d84-432d-8557-662e3dfe71db",
+  "version": "2.0",
+  "name": "Test_Login",
+  "url": "http://localhost:3000/account/login",
+  "tests": [{
+    "id": "be5908ee-1e0e-4885-91da-c23a64d753ab",
+    "name": "Test_01",
+    "commands": [{
+      "id": "e8336a5f-f7ba-48f5-8381-6ba077b2ad2d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ef834c1-8985-48cd-abad-f643a8a1f3de",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68fddae3-02f3-4be0-8840-c2b5a2c2d229",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72d2a53f-15fa-43f8-8ff3-8a2ae0d19543",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7095f053-fc60-4c69-9738-50016ee868fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "807bc68d-800c-48f6-8398-8209f8b6ccab",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert > h2",
+      "targets": [
+        ["css=.alert > h2", "css:finder"],
+        ["xpath=//div/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Tài khoản hoặc mật khẩu không chính xác')]", "xpath:innerText"]
+      ],
+      "value": "Tài khoản hoặc mật khẩu không chính xác"
+    }]
+  }, {
+    "id": "e3ff468e-819c-40d0-bd56-ba830209cf59",
+    "name": "Test_02",
+    "commands": [{
+      "id": "14301700-8bcb-4d34-9d73-d74547d9716a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f87918d-920f-4171-b3c2-c00e57104a43",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca6dceed-cc43-4461-8684-160b7efc5a8d",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "Admin"
+    }, {
+      "id": "f945b5c8-3cd3-47cc-9b4e-034069a2de14",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5c51959-d5a2-4971-a271-ceff39bd7c3e",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3eeedf91-879f-4589-8ca3-9a60d3dfee5d",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "604ae281-4d3d-4e9a-bdcb-e867396643de",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert > h2",
+      "targets": [
+        ["css=.alert > h2", "css:finder"],
+        ["xpath=//div/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Tài khoản hoặc mật khẩu không chính xác')]", "xpath:innerText"]
+      ],
+      "value": "Tài khoản hoặc mật khẩu không chính xác"
+    }]
+  }, {
+    "id": "4daf71fb-9be9-4f5b-9017-9afc24c9b5c5",
+    "name": "Test_03",
+    "commands": [{
+      "id": "0eed7cd6-c994-4339-9aaa-c0f060e82681",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "126e1aa7-a17f-4cc9-9668-d3f4c3bb7d7c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "947ad8cf-dbaf-4c43-b21c-97769bd49899",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "Admin"
+    }, {
+      "id": "4e0ba361-1b94-4992-80d8-227ee14636b7",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a9134c7-1882-44ff-b94d-d1e4e66ae732",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "66e6c8ca-58e9-4f5b-9bc9-09c3a793fad7",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "a      a1"
+    }, {
+      "id": "78e977af-fa32-4f30-bf1e-2c841be84886",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e2dfc549-55d6-4f2c-845e-c5f3f6c7dac7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert > h2",
+      "targets": [
+        ["css=.alert > h2", "css:finder"],
+        ["xpath=//div/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Tài khoản hoặc mật khẩu không chính xác')]", "xpath:innerText"]
+      ],
+      "value": "Tài khoản hoặc mật khẩu không chính xác"
+    }]
+  }, {
+    "id": "41b282cc-8374-4250-9980-bda6c0b74d63",
+    "name": "Test_04",
+    "commands": [{
+      "id": "3298d02b-28b1-4dc7-af6e-013a7bdc4978",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "06381a0a-7256-4a9d-a30d-74ee9c959db0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ba4817a8-aa73-4102-b71d-a6a73a214532",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "Ad min"
+    }, {
+      "id": "3771f703-c25c-406c-a0f1-7ef5517b3dc7",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c2b8f67-1ba1-46fd-8657-59eaac8a2ccd",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6ef7817-76c8-46ba-89b7-bac1469a6726",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "admin12"
+    }, {
+      "id": "f929310f-9282-41e7-b8f0-0e96b1e9d9ae",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a3ab3eb-7906-42c9-98af-d7b477b8f3ed",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.alert > h2",
+      "targets": [
+        ["css=.alert > h2", "css:finder"],
+        ["xpath=//div/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Tài khoản hoặc mật khẩu không chính xác')]", "xpath:innerText"]
+      ],
+      "value": "Tài khoản hoặc mật khẩu không chính xác"
+    }]
+  }, {
+    "id": "cf8e6421-4bde-40e6-acef-58866f4bbdce",
+    "name": "Test_05",
+    "commands": [{
+      "id": "71d47386-d467-4700-85f7-731f4da48374",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e74a67ab-c583-4851-ba75-d0bfc540329b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab98a83c-a5c3-4bab-bd9d-61ddd7ffb80e",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "Admin"
+    }, {
+      "id": "44fb0cf2-6124-4d64-bed9-57a2765ce8db",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e23432d-f14b-46ca-8777-291bfc888dba",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49180a3b-1184-49e4-8f46-dce3a478927b",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "admin12"
+    }, {
+      "id": "8aadc4af-49cd-496f-9538-4b8480a29e1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac357155-a610-41d6-982f-4b3230b07dff",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/admin",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4d139573-c10a-4e0f-a296-7ac763c1ba2b",
+    "name": "Test_06",
+    "commands": [{
+      "id": "ad773711-29c7-4aa6-a8e7-ed23b2eb9f18",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/account/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5bb37bee-c79b-4595-a8c5-3c8f2f55ec5f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "715x666",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "65eb476b-7c4f-4f97-838e-418709e9342d",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "Admin1"
+    }, {
+      "id": "50be5cde-7cf2-4213-806c-1c42a25f37e9",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a7168aa1-e562-4bb6-8cd7-e4f12fca9b38",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "375e6c58-c8eb-412d-9974-a8fa40d46e26",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "123456"
+    }, {
+      "id": "ef013586-f1dd-4d34-9c6e-d07794095387",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "813d6c7f-3b97-47d3-85fa-dd05d6bdfd92",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/admin",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8111d16e-a1d9-47fe-b7c7-0e550365488a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["be5908ee-1e0e-4885-91da-c23a64d753ab"]
+  }],
+  "urls": ["http://localhost:3000/account/login"],
+  "plugins": []
+}

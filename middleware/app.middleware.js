@@ -23,7 +23,7 @@ module.exports = async function(req, res, next) {
             db.load('insert into customers(customerID) values (' + req.signedCookies.sessionId + ')');
         }
         res.locals.isNewSession = false;
-        const list = await db.load('select count(*) as count from customercart where customerID = ' + req.signedCookies.sessionId);
+        const list = await db.load('select count(*) as count from customer_product where customerID = ' + req.signedCookies.sessionId);
         res.locals.productInCart = list[0].count;
         if (list[0].count == 0) {
             res.locals.isEmptyCart = true;

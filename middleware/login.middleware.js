@@ -7,7 +7,7 @@ module.exports = async function(req, res, next) {
     else {
         const customerList = await db.load('select * from customers where accessDate <= DATE_ADD(NOW(), INTERVAL -1 DAY)');
         for (var i = 0; i < customerList.length; i++) {
-            await db.load('delete from customercart where customerID = ' + customerList[i].customerID);
+            await db.load('delete from customer_product where customerID = ' + customerList[i].customerID);
             await db.load('delete from customers where customerID = ' + customerList[i].customerID);
         }
         res.locals.adminUser = req.session.adminUser;

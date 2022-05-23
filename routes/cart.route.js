@@ -10,14 +10,14 @@ router.get('/', async function(req, res) {
     if (!sessionId) {
         return res.redirect('/');
     } else {
-    const product = await db.load("SELECT p.productID, p.productName, p.productPrice, c.size, c.quantity, (p.productPrice*c.quantity) as total, pm.main FROM products p, customercart c, productimages pm WHERE c.productId = p.productID and c.productId = pm.productID AND c.customerID = " + sessionId);
+    const product = await db.load("SELECT p.productID, p.productName, p.productPrice, c.size, c.quantity, (p.productPrice*c.quantity) as total, pm.main FROM products p, customer_product c, productimages pm WHERE c.productId = p.productID and c.productId = pm.productID AND c.customerID = " + sessionId);
     //const image = await db.load('select main from productimages where productID = ' + sessionId);
     const maxOrder = await db.load("select count(*) as count from orders where customerID = " + sessionId);
     //console.log(image);
     //product[0].main = image[0].main;
     // xem còn order được nữa không? mỗi khách chỉ được tạo tối đa 2 đơn 1 ngày!
         var isOrder = true;
-        if (maxOrder[0].count >= 2) {
+        if (maxOrder[0].count >= 3) {
             isOrder = false;
         }
         var sum = 0;
@@ -40,8 +40,8 @@ router.get('/delete', async function(req, res) {
     if (!customID) {
         return res.redirect('/');
     } else {
-        await db.deleteProductInCart('customercart', customID, id, size);
-        //await db.load('delete from customercart where productId = ' + id + ' and size = ' + size);
+        await db.deleteProductInCart('customer_product', customID, id, size);
+        //await db.load('delete from customer_product where productId = ' + id + ' and size = ' + size);
         res.redirect('/cart');
     }
 });
@@ -69,14 +69,14 @@ router.post('/payment', async function(req, res) {
             }
             orderNumber = Math.floor(Math.random() * 100000000) + 10000000;
         }
-        const product = await db.load("SELECT products.productID, products.productPrice, customercart.size, customercart.quantity, (products.productPrice*customercart.quantity) as total FROM products, customercart WHERE customercart.productId = products.productID AND customercart.customerID = " + sessionId);
-        await db.load('insert into orders values(' + orderNumber + ', ' + sessionId + ", '"+ name + "', '" + phone + "', '" + address + "',CURDATE(), '" + note + "', 'Đang xử lý')");
+        const product = await db.load("SELECT products.productID, products.productPrice, customer_product.size, customer_product.quantity, (products.productPrice*customer_product.quantity) as total FROM products, customer_product WHERE customer_product.productId = products.productID AND customer_product.customerID = " + sessionId);
+        await db.load('insert into orders values(' + orderNumber + ', ' + sessionId + ", '"+ name + "', '" + phone + "', '" + address + "',NOW(), '" + note + "', 'Đang xử lý')");
         await db.load('SET FOREIGN_KEY_CHECKS = 0');
         for(var i = 0; i < product.length; i++) {
             await db.load('insert into orderdetails values (' + orderNumber + ',' + product[i].productID + ',' + product[i].quantity + ','+ product[i].productPrice + ', ' + product[i].size + ')');
         }
         await db.load('SET FOREIGN_KEY_CHECKS = 1');
-        await db.load('delete from customercart where customerID = ' + sessionId);
+        await db.load('delete from customer_product where customerID = ' + sessionId);
         res.redirect('/');
     }
 });
