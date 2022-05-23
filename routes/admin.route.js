@@ -20,11 +20,11 @@ router.get('/', async function(req, res) {
     var rows;
     if (!day || day == 'all') {
         day = "all";
-        rows = await db.load("select * from orders where status LIKE '%" + status + "%' order by orderDate desc");
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' order by orderDate asc");
     } else if (day == 'today') {
-        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and DAY(orderDate) = DAY(CURDATE()) order by orderDate desc");
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and CAST(orderDate AS DATE) = CURDATE() order by orderDate asc");
     } else if (day == '7day') {
-        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and orderDate >= DATE_ADD(CURDATE(), INTERVAL -7 DAY) order by orderDate desc");
+        rows = await db.load("select * from orders where status LIKE '%" + status + "%' and orderDate >= DATE_ADD(CURDATE(), INTERVAL -7 DAY) order by orderDate asc");
     }
     res.render('admin', {
         layout : 'admin.main.handlebars',
@@ -68,6 +68,7 @@ router.get('/vieworder/:id', async function(req, res) {
         sta = 2;
     } else if (stt == 'Đã hoàn tất') {
         sta = 3;
+        isUpdate = false;
     } else if (stt == 'Bị hủy') {
         sta = 4;
     }
@@ -106,7 +107,7 @@ router.post('/vieworder/:id', async function(req, res) {
             const rows_ = await db.load('select * from productdetails where quantityInStock <= 0');
             await db.load('SET FOREIGN_KEY_CHECKS = 0');
             for (var i = 0; i < rows_.length; i++) {
-                await db.load('delete from customercart where productId = ' + rows_[i].productID + ' and size = ' + rows_[i].size);
+                await db.load('delete from customer_product where productId = ' + rows_[i].productID + ' and size = ' + rows_[i].size);
             }
             await db.load('SET FOREIGN_KEY_CHECKS = 0');
         }
@@ -390,7 +391,7 @@ router.get('/delproduct/:id', async function(req, res) {
     const id = req.params.id;
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     await db.load('delete from productdetails where productID = ' + id);
-    await db.load('delete from customercart where productID = ' + id)
+    await db.load('delete from customer_product where productID = ' + id)
     await db.load("update products set status = 'DELETE' where productID = " + id );
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     var url = '/admin/editProduct';
@@ -398,7 +399,7 @@ router.get('/delproduct/:id', async function(req, res) {
 });
 
 router.get('/searchbyproduct', async function(req, res) {
-    var page = req.query.page;
+    //var page = req.query.page;
     var rows;
     if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
         rows = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status ='SELLING' and p.productID = " + q);

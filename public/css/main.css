@@ -490,6 +490,7 @@ label {
   
 
 .single-product-quantity {
+    width: 25%;
     float: right;
     margin-bottom: 10px;
     margin-left: 100px;
