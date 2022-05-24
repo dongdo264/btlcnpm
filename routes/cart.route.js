@@ -69,13 +69,16 @@ router.post('/payment', async function(req, res) {
             }
             orderNumber = Math.floor(Math.random() * 100000000) + 10000000;
         }
+        // lấy ra các sản phẩm khách để trong giỏ
         const product = await db.load("SELECT products.productID, products.productPrice, customer_product.size, customer_product.quantity, (products.productPrice*customer_product.quantity) as total FROM products, customer_product WHERE customer_product.productId = products.productID AND customer_product.customerID = " + sessionId);
         await db.load('insert into orders values(' + orderNumber + ', ' + sessionId + ", '"+ name + "', '" + phone + "', '" + address + "',NOW(), '" + note + "', 'Đang xử lý')");
         await db.load('SET FOREIGN_KEY_CHECKS = 0');
+        // đưa sản phẩm khách để trong giỏ vào chi tiết đơn hàng
         for(var i = 0; i < product.length; i++) {
             await db.load('insert into orderdetails values (' + orderNumber + ',' + product[i].productID + ',' + product[i].quantity + ','+ product[i].productPrice + ', ' + product[i].size + ')');
         }
         await db.load('SET FOREIGN_KEY_CHECKS = 1');
+        // xóa hết dữ liệu trong giỏ hàng
         await db.load('delete from customer_product where customerID = ' + sessionId);
         res.redirect('/');
     }

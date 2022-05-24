@@ -14,7 +14,9 @@ router.get('/view/:id', async function(req, res) {
         const product = await db.load("SELECT * FROM products p, productimages pm WHERE p.productID = pm.productID and p.status = 'SELLING' and p.productID = " + id);
         const list = await db.load("select count(*) as count from customer_product where customerID = " + sessionId);
         const productDetail = await db.load("select * from productdetails where productID = + " + id + " and quantityInStock > 0");
-
+        if (product.length == 0) {
+            return res.redirect('/');
+        }
         product[0].outOfStock = false;
         product[0].maxCart = false;
         // check xem giỏ hàng ở mức tối đa chưa ( 5 sản phẩm )

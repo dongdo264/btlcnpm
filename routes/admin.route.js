@@ -18,6 +18,16 @@ router.get('/', async function(req, res) {
         status = "";
     }
     var rows;
+    var checked_status = 0;
+    if (status == 'Đang xử lý') {
+        checked_status = 1;
+    } else if (status == 'Đang giao hàng') {
+        checked_status = 2;
+    } else if (status == 'Đã hoàn tất') {
+        checked_status = 3;
+    } else if (status == 'Bị hủy') {
+        checked_status = 4;
+    }
     if (!day || day == 'all') {
         day = "all";
         rows = await db.load("select * from orders where status LIKE '%" + status + "%' order by orderDate asc");
@@ -31,9 +41,12 @@ router.get('/', async function(req, res) {
         rows,
         empty : rows.length == 0,
         status,
-        day
+        day,
+        checked_status
     });
 });
+
+// xóa đơn hàng
 router.get('/delete', async function(req, res) {
     const id = req.query.id;
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
@@ -83,6 +96,8 @@ router.get('/vieworder/:id', async function(req, res) {
         orderID : id
     });
 });
+
+// cập nhật đơn hàng
 router.post('/vieworder/:id', async function(req, res) {
     const id = req.params.id;
     const name = req.body.name;
@@ -161,6 +176,7 @@ router.get('/vieworder/:id/product/:productID', async function(req, res) {
 
 });
 
+// thêm sản phẩm vào đơn hàng
 router.post('/vieworder/:id/product/:productID', async function(req, res) {
     const id = req.params.id;
     var size = req.body.variation;                      // lấy size
@@ -188,6 +204,7 @@ router.post('/vieworder/:id/product/:productID', async function(req, res) {
 
 });
 
+// xóa sản phẩm trong đơn hàng
 router.get('/delorder', async function(req, res) {
     const productID = req.query.productID;
     const orderNumber = req.query.orderNumber;
@@ -206,7 +223,6 @@ router.get('/search', async function(req, res) {
     });
 });
 
-
 router.get('/addNewProd', async function(req, res) {
     const list_size = [];
     for (var j = 37; j <= 45; j++) {
@@ -223,6 +239,7 @@ router.get('/addNewProd', async function(req, res) {
     });
 });
 
+// thêm sản phẩm mới
 router.post('/addNewProd', async function(req, res) {
     const name = req.body.nameP;
     const brand = req.body.brandP;
@@ -237,8 +254,10 @@ router.post('/addNewProd', async function(req, res) {
     const size42 = req.body.size42;
     const size43 = req.body.size43;
     const size44 = req.body.size44;
+    const size45 = req.body.size45;
     const check = await db.load("select max(productID) as id from products");
     const id = check[0].id + 1;
+    // thêm size vào bảng details nè!
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     await db.load("insert into products (productID, productName, productBrand, productDescription, productPrice, style) values (" + id + ",'" + name + "', '" + brand + "', '" + desc + "', '" + price + "', '" + style + "') ");  
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 37, '" + size37 + "') ");
@@ -249,12 +268,14 @@ router.post('/addNewProd', async function(req, res) {
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 44, '" + size44 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 45, '" + size45 + "') ");
     await db.load("insert into productimages(productID) values(" + id + ')');
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     const url = '/admin/editProduct/' + id;
     res.redirect(url);
 });
 
+// xem danh sách sản phẩm
 router.get('/editProduct', async function(req, res) {
     var page = req.query.page;
     if (!page) {
@@ -285,9 +306,20 @@ router.get('/editProduct', async function(req, res) {
     });
 });
 
+// vào xem thông tin sản phẩm
 router.get('/editProduct/:id' ,async function(req, res) {
     const id = req.params.id;
     const rows = await db.load("select * from products where status ='SELLING' and productID = " + id);
+    rows[0].checked_brand = 0;
+    if (rows[0].productBrand == 'Adidas') {
+        rows[0].checked_brand = 1;
+    } else if (rows[0].productBrand == 'Mizuno') {
+        rows[0].checked_brand = 2;
+    } else if (rows[0].productBrand == 'Puma') {
+        rows[0].checked_brand = 3;
+    } else if (rows[0].productBrand == 'Kamito') {
+        rows[0].checked_brand = 4;
+    }
     const size_ = [];
     const rows_size = await db.load('select size, quantityInStock from productdetails where productID = ' + id)
     for (var j = 37; j <= 44; j++) {
@@ -319,7 +351,7 @@ router.get('/editProduct/:id' ,async function(req, res) {
     });
 });
 
-
+// chỉnh sửa thông tin sản phẩm
 router.post('/editProduct/:id', async function(req, res) {
     const id = req.params.id;
     const productName = req.body.editNameP;
@@ -351,6 +383,7 @@ router.post('/editProduct/:id', async function(req, res) {
     res.redirect(url);
 });
 
+// chỉnh sửa ảnh sản phẩm
 router.get('/editProduct/:id/imageEdit', async function(req, res) {
     const id = req.params.id;
     const list = await db.load('select pm.* from productimages pm where productID = ' + id);
@@ -384,22 +417,26 @@ var upload = multer({
 })
 var multiUpload = upload.fields([{name: 'main', maxCount: 10}, {name: 'view1', maxCount: 10}, {name: 'view2', maxCount: 10}, {name: 'view3', maxCount: 10}, {name: 'view4', maxCount: 10}]);
 router.post('/editProduct/:id/imageEdit', multiUpload, async function(req, res) {
-    res.redirect('/admin/editProduct');
+    const url = '/admin/editProduct/' + req.params.id;
+    res.redirect(url);
 });
 
+// xóa sản phẩm!
 router.get('/delproduct/:id', async function(req, res) {
     const id = req.params.id;
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     await db.load('delete from productdetails where productID = ' + id);
-    await db.load('delete from customer_product where productID = ' + id)
+    await db.load('delete from customer_product where productID = ' + id);
     await db.load("update products set status = 'DELETE' where productID = " + id );
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     var url = '/admin/editProduct';
     res.redirect(url);
 });
 
+// tìm kiếm sản phẩm
 router.get('/searchbyproduct', async function(req, res) {
     //var page = req.query.page;
+    var q = req.query.q;
     var rows;
     if (!isNaN(parseFloat(q)) && !isNaN(q - 0)) {
         rows = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status ='SELLING' and p.productID = " + q);

@@ -11,8 +11,10 @@ router.get('/login', async function(req, res) {
 });
 router.post('/login', async function(req, res) {
     var check = false;
+    // lấy tất cả các account ra để check
     const rows = await db.load('select * from accounts');
     for (var i = 0;i < rows.length; i++) {
+        // nếu mà user + pass đúng thì cho true rồi chuyển về trang chủ
         if (rows[i].username == req.body.username) {
             if (bcrypt.compareSync(req.body.password, rows[i].password) === true) {
                 req.session.isAuthenticated = true;
@@ -51,6 +53,7 @@ router.post('/changepassword', async function(req, res) {
             msg : 'Không thành công, mật khẩu không chính xác!'
         });
     }
+    // hash mật khẩu, đưa vào database
     const pass = bcrypt.hashSync(newpass, 8);
     await db.load("update accounts set password = '" + pass + "' where username = '" + user + "'");
     res.redirect('/admin');

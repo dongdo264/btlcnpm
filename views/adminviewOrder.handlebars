@@ -7,12 +7,15 @@
     $('#content').on('submit', function(event) {
         event.preventDefault();
         if (validateOrder()) {
-            if (validatePhone()) {
+            if (!validatePhone()) {
+                alert('Không thành công! Số điện thoại không lợp lệ!');
+                
+            } else if (!validateName()){
+                alert('Không thành công! Tên không lợp lệ!'); 
+            } else {
                 if (confirm('Chỉnh sửa xong rồi à?')) {
                 $('#content').off('submit').submit();
                 }
-            } else {
-                alert('Không thành công! Số điện thoại không lợp lệ!');
             }
         } else {
             alert('Không thành công! Vui lòng kiểm tra nhập đầy đủ thông tin');

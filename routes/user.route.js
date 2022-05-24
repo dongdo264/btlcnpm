@@ -10,6 +10,9 @@ router.get('/', async function(req, res) {
     if (!page) {
         page = 1;
     }
+    if (!sort_by) {
+        sort_by = "";
+    }
     // đếm số lượng sản phẩm
     const countP = await db.load("select count(*) as count from products where status = 'SELLING'");
     const numberOfProduct = countP[0].count;
@@ -29,16 +32,22 @@ router.get('/', async function(req, res) {
         page_number.push(item);
     }
     // lấy các sản phẩm theo yêu cầu (sắp xếp)
+    var checked_sort = 0;
     var list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
+        checked_sort = 1;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
+        checked_sort = 2;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
+        checked_sort = 3;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
+        checked_sort = 4;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING'  order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
+        checked_sort = 5;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     res.render('home', {
@@ -49,7 +58,8 @@ router.get('/', async function(req, res) {
         sort_by,
         numberPage,
         end : page != numberPage,
-        start : page > 1
+        start : page > 1,
+        checked_sort
     });
 });
 
@@ -86,17 +96,23 @@ router.get('/search', async function(req, res) {
         }
         page_number.push(item);
     }
-    var list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' limit " + limit + " offset " + offset);
+    var checked_sort = 0;
+    var list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
-        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice limit " + limit + " offset " + offset);
+        checked_sort = 1;
+        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
-        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productPrice desc limit " + limit + " offset " + offset);
+        checked_sort = 2;
+        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
-        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName limit " + limit + " offset " + offset);
+        checked_sort = 3;
+        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where p.status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
-        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by productName desc limit " + limit + " offset " + offset);
+        checked_sort = 4;
+        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
-        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productName LIKE '%" + name + "%' or style LIKE '%" + name + "%' order by quantitySold desc limit " + limit + " offset " + offset);
+        checked_sort = 5;
+        list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and (productName LIKE '%" + name + "%' or style LIKE '%" + name + "%') order by quantitySold desc limit " + limit + " offset " + offset);
     }
     res.render('search', {
         categories : list,
@@ -104,7 +120,8 @@ router.get('/search', async function(req, res) {
         searchName: name,
         sort_by,
         empty : list.length === 0,
-        numberOfProduct
+        numberOfProduct,
+        checked_sort
     });
 });
 
@@ -171,16 +188,22 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
     if (brand == 'all') {
         brand = ''
     }
+    var checked_sort = 0;
     var list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' limit " + limit + " offset " + offset);
     if (sort_by == 'price-asc') {
+        checked_sort = 1;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice limit " + limit + " offset " + offset);
     } else if (sort_by == 'price-desc') {
+        checked_sort = 2;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productPrice desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-asc') {
+        checked_sort = 3;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName limit " + limit + " offset " + offset);
     } else if (sort_by == 'title-desc') {
+        checked_sort = 4;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by productName desc limit " + limit + " offset " + offset);
     } else if (sort_by == 'best-selling') {
+        checked_sort = 5;
         list = await db.load("select p.*, pm.main from products p inner join productimages pm on p.productID = pm.productID where status = 'SELLING' and productBrand LIKE '%" + brand + "%' AND style LIKE '%" + loaidinh + "%' order by quantitySold desc limit " + limit + " offset " + offset);
     }
     if (brand == '') {
@@ -198,7 +221,8 @@ router.get('/thuong-hieu/:brand', async function(req, res) {
         end : page != numberPage,
         numberPage,
         sort_by,
-        start : page > 1
+        start : page > 1,
+        checked_sort
     });
 });
 
