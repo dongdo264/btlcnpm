@@ -20,6 +20,9 @@ function showSlides() {
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 
+    var select = document.getElementsByClassName('select-box')[0].id;
+    var slt = document.getElementById(select);
+    slt.selectedIndex = select;
 
 </script>
 {{/section}}
@@ -68,11 +71,11 @@ function showSlides() {
                           </div>
                             <ul class="list-trademark">
                               {{#if home}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/Nike">     Nike</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Adidas">     Adidas</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Puma">     Puma</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Mizuno">     Mizuno</a></li>
-                                        <li class="name-trademark"><a href="/thuong-hieu/Kamito">     Kamito</a></li> 
+                                        <li class="name-trademark"><a href="/thuong-hieu/Nike">Nike</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Adidas">Adidas</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Puma">Puma</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Mizuno">Mizuno</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/Kamito">Kamito</a></li> 
                               {{else}}
                               {{#each list_brand}}
                                     {{#if active}}
@@ -90,14 +93,14 @@ function showSlides() {
                           </div>
                             <ul class="list-trademark">
                               {{#if home}}                                                              
-                                        <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ nhân tạo">     Sân cỏ nhân tạo</a></li>
-                                          <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ tự nhiên">     Sân cỏ tự nhiên</a></li>                                
+                                        <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ nhân tạo">Sân cỏ nhân tạo</a></li>
+                                          <li class="name-trademark"><a href="/thuong-hieu/all?loaidinh=cỏ tự nhiên">Sân cỏ tự nhiên</a></li>                                
                               {{else}}
                               {{#each list_style}}
                                     {{#if active}}
-                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">     Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a style="color: #ffe11b;" href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
                                     {{else}}
-                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">     Sân {{value}}</a></li>
+                                        <li class="name-trademark"><a href="/thuong-hieu/{{brand}}?loaidinh={{value}}&sort_by=&page=1">Sân {{value}}</a></li>
                                     {{/if}}
                                 {{/each}}
                                 {{/if}}
@@ -110,21 +113,21 @@ function showSlides() {
                             <h1 class="heading-product">Danh sách sản phẩm</h1>
                             <div class="sort-product">
                                 <div class="custom-select" style="width:200px;">
-                                    <select class="select-box" onchange="window.location.href=this.value">
+                                    <select class="select-box" id="{{checked_sort}}" onchange="window.location.href=this.value">
                                       {{#if home}}
-                                      <option id="sort">Sắp xếp sản phẩm</option>
-                                      <option id="sort" value="/?sort_by=price-asc&page=1">Giá: Tăng dần</option>
-                                      <option id="sort" value="/?sort_by=price-desc&page=1">Giá: Giảm dần</option>
-                                      <option id="sort" value="/?sort_by=title-asc&page=1">Tên: A-Z</option>
-                                      <option id="sort" value="/?sort_by=title-desc&page=1">Tên: Z-A</option>
-                                      <option id="sort" value="/?sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                      <option id="0" value="/?page=1">Sắp xếp sản phẩm</option>
+                                      <option id="1" value="/?sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option id="2" value="/?sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option id="3" value="/?sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option id="4" value="/?sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option id="5" value="/?sort_by=best-selling&page=1">Bán chạy nhất</option>
                                       {{else}}
-                                      <option >Sắp xếp sản phẩm</option>
-                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
-                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-desc&page=1">Giá: Giảm dần</option>
-                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-asc&page=1">Tên: A-Z</option>
-                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-desc&page=1">Tên: Z-A</option>
-                                      <option value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=best-selling&page=1">Bán chạy nhất</option>
+                                      <option id="0" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=&page=1">Sắp xếp sản phẩm</option>
+                                      <option id="1" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-asc&page=1">Giá: Tăng dần</option>
+                                      <option id="2" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=price-desc&page=1">Giá: Giảm dần</option>
+                                      <option id="3" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-asc&page=1">Tên: A-Z</option>
+                                      <option id="4" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=title-desc&page=1">Tên: Z-A</option>
+                                      <option id="5" value="/thuong-hieu/{{brand}}?loaidinh={{loaidinh}}&sort_by=best-selling&page=1">Bán chạy nhất</option>
                                       {{/if}}
                                     </select>
                                   </div>

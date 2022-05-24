@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 23, 2022 lúc 05:29 PM
+-- Thời gian đã tạo: Th5 24, 2022 lúc 05:18 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -56,7 +56,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customerID`, `accessDate`) VALUES
-(106424870, '2022-05-23 20:58:23');
+(71374997, '2022-05-24 21:01:18');
 
 -- --------------------------------------------------------
 
@@ -70,17 +70,6 @@ CREATE TABLE `customer_product` (
   `size` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `customer_product`
---
-
-INSERT INTO `customer_product` (`customerID`, `productId`, `size`, `quantity`) VALUES
-(106424870, 11, 39, 1),
-(106424870, 11, 41, 1),
-(106424870, 12, 41, 1),
-(106424870, 12, 42, 3),
-(106424870, 12, 43, 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +148,7 @@ INSERT INTO `orders` (`orderNumber`, `customerID`, `customerName`, `phone`, `add
 (47101840, 106424870, 'Nguyễn Văn A Đồng', '0963712656', 'Ba Vì - Hà Nội', '2022-05-23 00:00:00', 'Không', 'Đã hoàn tất'),
 (62555872, 80571211, 'Quách Văn Quẹ', '0963712656', 'ba vi', '2022-05-15 00:00:00', 'Không', 'Đang xử lý'),
 (63576691, 96894360, 'TEst 18/5', '0963712222', 'Ba Vì - Hà Nội', '2022-05-18 00:00:00', 'Không', 'Đã hoàn tất'),
-(63596731, 89958823, 'Nguyễn Văn B', '0963712656', 'Ba Vì - Hà Nội', '2022-05-21 00:00:00', 'Không', 'Đang xử lý'),
+(63596731, 89958823, 'Nguyễn Văn B', '0963712656', 'Ba Vì - Hà Nội', '2022-05-21 00:00:00', 'Không', 'Đang giao hàng'),
 (79684343, 106424870, 'Quách Văn Quẹ', '0963712656', 'Ba Vì - Hà Nội', '2022-05-23 00:00:00', 'Không', 'Đang xử lý'),
 (81989779, 73109347, 'Nguyễn Văn A', '0963712656', 'Hà Nội', '2022-04-21 00:00:00', 'Không', 'Đã hoàn tất'),
 (88549843, 82788225, 'Quách Văn Quẹ', '0963712656', 'Ba Vì - Hà Nội', '2022-05-01 00:00:00', 'Không', 'Đang xử lý'),
@@ -189,12 +178,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (14, 41, 9),
 (14, 42, 9),
 (14, 43, 10),
-(15, 38, 0),
-(15, 39, 10),
-(15, 40, 10),
-(15, 41, 0),
-(15, 42, 10),
-(15, 43, 10),
 (17, 38, 0),
 (17, 39, 0),
 (17, 40, 0),
@@ -237,12 +220,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (27, 41, 10),
 (27, 42, 10),
 (27, 43, 0),
-(28, 38, 0),
-(28, 39, 0),
-(28, 40, 0),
-(28, 41, 10),
-(28, 42, 0),
-(28, 43, 0),
 (29, 38, 10),
 (29, 39, 10),
 (29, 40, 0),
@@ -309,12 +286,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (40, 41, 10),
 (40, 42, 9),
 (40, 43, 10),
-(41, 38, 0),
-(41, 39, 10),
-(41, 40, 10),
-(41, 41, 10),
-(41, 42, 10),
-(41, 43, 0),
 (42, 38, 0),
 (42, 39, 0),
 (42, 40, 0),
@@ -375,12 +346,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (51, 41, 0),
 (51, 42, 10),
 (51, 43, 0),
-(52, 38, 0),
-(52, 39, 10),
-(52, 40, 10),
-(52, 41, 10),
-(52, 42, 10),
-(52, 43, 0),
 (53, 38, 0),
 (53, 39, 0),
 (53, 40, 0),
@@ -405,12 +370,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (57, 41, 0),
 (57, 42, 0),
 (57, 43, 9),
-(16, 38, 0),
-(16, 39, 10),
-(16, 40, 10),
-(16, 41, 8),
-(16, 42, 7),
-(16, 43, 0),
 (56, 38, 0),
 (56, 39, 0),
 (56, 40, 0),
@@ -431,14 +390,6 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (10, 42, 10),
 (10, 43, 10),
 (10, 44, 1),
-(11, 37, 0),
-(11, 38, 10),
-(11, 39, 10),
-(11, 40, 10),
-(11, 41, 10),
-(11, 42, 0),
-(11, 43, 10),
-(11, 44, 0),
 (65, 37, 3),
 (65, 38, 3),
 (65, 39, 0),
@@ -494,7 +445,55 @@ INSERT INTO `productdetails` (`productID`, `size`, `quantityInStock`) VALUES
 (73, 41, 2),
 (73, 42, 0),
 (73, 43, 0),
-(73, 44, 0);
+(73, 44, 0),
+(41, 37, 0),
+(41, 38, 0),
+(41, 39, 10),
+(41, 40, 10),
+(41, 41, 10),
+(41, 42, 10),
+(41, 43, 0),
+(41, 44, 0),
+(11, 37, 0),
+(11, 38, 10),
+(11, 39, 10),
+(11, 40, 10),
+(11, 41, 10),
+(11, 42, 0),
+(11, 43, 10),
+(11, 44, 0),
+(16, 37, 0),
+(16, 38, 0),
+(16, 39, 10),
+(16, 40, 10),
+(16, 41, 8),
+(16, 42, 7),
+(16, 43, 0),
+(16, 44, 0),
+(28, 37, 0),
+(28, 38, 0),
+(28, 39, 0),
+(28, 40, 0),
+(28, 41, 10),
+(28, 42, 0),
+(28, 43, 0),
+(28, 44, 0),
+(52, 37, 0),
+(52, 38, 0),
+(52, 39, 10),
+(52, 40, 10),
+(52, 41, 10),
+(52, 42, 10),
+(52, 43, 0),
+(52, 44, 0),
+(15, 37, 0),
+(15, 38, 0),
+(15, 39, 10),
+(15, 40, 10),
+(15, 41, 0),
+(15, 42, 10),
+(15, 43, 10),
+(15, 44, 0);
 
 -- --------------------------------------------------------
 
@@ -569,7 +568,8 @@ INSERT INTO `productimages` (`productID`, `main`, `view1`, `view2`, `view3`, `vi
 (70, NULL, NULL, NULL, NULL, NULL),
 (71, NULL, NULL, NULL, NULL, NULL),
 (72, NULL, NULL, NULL, NULL, NULL),
-(73, 'main-1653144954442.png', 'view1-1653144954467.webp', 'view2-1653144954470.webp', 'view3-1653144954478.webp', 'view4-1653144954481.webp');
+(73, 'main-1653144954442.png', 'view1-1653144954467.webp', 'view2-1653144954470.webp', 'view3-1653144954478.webp', 'view4-1653144954481.webp'),
+(74, 'main-1653401459129.png', 'view1-1653401459170.webp', 'view2-1653401459174.webp', 'view3-1653401459190.webp', 'view4-1653401459196.webp');
 
 -- --------------------------------------------------------
 
@@ -594,11 +594,11 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDescription`, `productPrice`, `style`, `quantitySold`, `status`) VALUES
 (10, 'Nike', 'Nike Mercurial Vapor 14 Pro TF Blueprint pack – Chlorine Blue / Laser Orange DJ2851-484', 'Giày Nike Mercurial Vapor 14 Pro TF Blueprint pack– Chlorine Blue / Laser Orange phiên bản Vapor Pro 14 năm 2022 mới nhất, model giày bóng đá Nike Mercurial Vapor 14 Pro cực kỳ được yêu thích ở Việt Nam', 2999999, 'TF, Cỏ nhân tạo', 18, 'SELLING'),
-(11, 'Nike', 'Nike Phantom GT Academy Flyease FG/MG- Black/ Cyber/ Light Photo Blue', 'Giày Nike Phantom GT Academy Flyease FG/MG- Black/ Cyber/ Light Photo Blue thấp cổ, giày Phantom GT cổ truyền thống sản phẩm hoàn toàn mới, thiết kế trẻ trung và mạnh mẽ, ngoại thất cực đẹp', 3999999, 'TF, Cỏ nhân tạo', 18, 'SELLING'),
+(11, 'Nike', 'Nike Phantom GT Academy Flyease FG/MG- Black/ Cyber/ Light Photo Blue', 'Giày Nike Phantom GT Academy Flyease FG/MG- Black/ Cyber/ Light Photo Blue thấp cổ, giày Phantom GT cổ truyền thống sản phẩm hoàn toàn mới, thiết kế trẻ trung và mạnh mẽ, ngoại thất cực đẹp', 3999999, 'FG, Cỏ tự nhiên', 18, 'SELLING'),
 (12, 'Nike', 'Nike Mercurial Superfly 8 Academy TF CR7 Euro 2020 Spark Positivity', 'Nike Mercurial Superfly 8 Academy TF CR7 Euro 2020 Spark Positivity đây là phiên bản đặc biệt và độc quyền dành cho Ronaldo tại Euro 2020, colorway này là độc nhất chỉ xuất hiện trên dòng Superfly 8 cổ cao, được gọi là Spark Positivity pack, model giày Nike Mercurial', 2200000, 'TF, Cỏ nhân tạo', 21, 'SELLING'),
 (14, 'Nike', 'Nike Mercurial Superfly 8 Academy TF Mbappe Flames- Light Thistle/ Metallic Silver', 'Nike Mercurial Superfly 8 Academy TF Mbappe Flames- Light Thistle/ Metallic Silver nằm trong loạt sản phẩm độc quyền dảnh riêng cho siêu sao nước Pháp và CLB PSG, colorway này là độc nhất chỉ xuất hiện trên dòng Superfly 8 cổ cao', 2600000, 'TF, cỏ nhân tạo', 20, 'SELLING'),
-(15, 'Nike', 'Nike Tiempo Legend 9 Academy TF- Light Photo Blue/ Black/ Lime Glow', 'Nike Tiempo Legend 9 Academy TF- Light Photo Blue/ Black/ Lime Glow chính hãng, một trong những đôi giày Nike Tiempo nhẹ nhất từng được sản xuất nhưng vẫn giữ được mọi ưu điểm của dòng giày đá bóng huyền thoại này', 2200000, 'FG, cỏ tự nhiên', 0, 'SELLING'),
-(16, 'Nike', 'Nike Mercurial Superfly 8 Academy FG/AG- Bright Crimson/ Metallic Silver', 'Nike Mercurial Superfly 8 Academy FG/AG- Bright Crimson/ Metallic Silver giày bóng đá Nike chính hãng, giày bóng đá sân cỏ nhân tạo, giày đá bóng sân cỏ tự nhiên, đế giày kiểu MG phù hợp chơi bóng trên cả 2 mặt sân, đế giày kiểu lai, upper làm từ da giúp anh em ghi bàn liên tọi', 1800000, 'TF, Cỏ nhân tạo', 1, 'SELLING'),
+(15, 'Nike', 'Nike Tiempo Legend 9 Academy TF- Light Photo Blue/ Black/ Lime Glow', 'Nike Tiempo Legend 9 Academy TF- Light Photo Blue/ Black/ Lime Glow chính hãng, một trong những đôi giày Nike Tiempo nhẹ nhất từng được sản xuất nhưng vẫn giữ được mọi ưu điểm của dòng giày đá bóng huyền thoại này', 2200000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(16, 'Nike', 'Nike Mercurial Superfly 8 Academy FG/AG- Bright Crimson/ Metallic Silver', 'Nike Mercurial Superfly 8 Academy FG/AG- Bright Crimson/ Metallic Silver giày bóng đá Nike chính hãng, giày bóng đá sân cỏ nhân tạo, giày đá bóng sân cỏ tự nhiên, đế giày kiểu MG phù hợp chơi bóng trên cả 2 mặt sân, đế giày kiểu lai, upper làm từ da giúp anh em ghi bàn liên tọi', 1800000, 'FG, Cỏ tự nhiên', 1, 'SELLING'),
 (17, 'Nike', 'Nike Mercurial Vapor 14 Pro FG- Bright Crimson/ Metallic Silver', 'Nike Mercurial Vapor 14 Pro FG- Bright Crimson/ Metallic Silver giày đá bóng sân cỏ tự nhiên, giày đá bóng Nike chính hãng, giày đá bóng Nike Mercurial chính hãng, upper làm từ da tổng hợp kết hợp sợi, trọng lượng giày cực nhẹ', 2700000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (18, 'Nike', 'Nike Tiempo Legend 9 Academy TF Motivation pack- White/ Volt/ Bright Crimson', 'Nike Tiempo Legend 9 Academy TF Motivation pack- White/ Volt/ Bright Crimson cực đẹp, kết hợp màu trắng-đỏ và chuối siêu đẹp ! Giày đá bóng Nike Tiempo Legend 9 Academy TF chính hãng, một trong những đôi giày Nike đẹp nhất', 1850000, 'TF, Cỏ nhân tạo', 10, 'SELLING'),
 (19, 'Nike', 'Nike Mercurial Superfly 8 Academy TF Recharge pack- Sapphire/ Volt/ Blue', 'Nike Mercurial Superfly 8 Academy TF Recharge pack- Sapphire/ Volt/ Blue cao cổ, giày Nike Superfly 8 TF, sản phẩm Nike Mercurial Superfly 8 Academy mới nhất, dòng sản phẩm mới ra mắt 2021', 2100000, 'TF, Cỏ nhân tạo', 3, 'SELLING'),
@@ -608,7 +608,7 @@ INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDesc
 (23, 'Adidas', 'Adidas Predator Edge .4 TF- Core Black', 'Adidas Predator Edge .4 TF- Core Black upper làm từ da tổng hợp, đế giày kiểu TF phù hợp chơi trên sân cỏ nhân tạo…. đây là một sản phẩm phổ thông đáp ứng nhu cầu chơi bóng tốt nhất khi có độ', 1300000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (24, 'Adidas', 'Adidas Copa Sense .1 TF- Core Black/ White/ Solar Yellow', 'Adidas Copa Sense .1 TF- Core Black/ White/ Solar Yellow giày đá bóng chính hãng, giày sân cỏ nhân tạo, giày bóng đá Adidas Copa, upper làm từ da thật – da bê cực mềm, đế giày kiểu TF phù hợp với sân cỏ nhân tạo', 4500000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (27, 'Adidas', 'Adidas Predator Freak .3 TF Superlative- Core Black / Cloud White / Royal Blue', 'Adidas Predator Freak .3 TF Superlative- Core Black / Cloud White / Royal Blue nằm trong bộ sưu tập giày Adidas Superlative, upper của giày kết hợp màu trắng vôi kết hợp 3 sọc dọc màu xám nhạt gây mê đắm cho anh em chơi', 1600000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
-(28, 'Adidas', 'Adidas Predator Edge .3 L FG Sapphire Edge pack- Hi-Res Blue S18/ Turbo', 'Adidas Predator Edge .3 L FG Sapphire Edge pack- Hi-Res Blue S18/ Turbo nằm trong bộ sưu tập giày Adidas Sapphire Edge pack, giày đá bóng Adidas Predator Edge… Model giày đá bóng Adidas mới nhất hướng tới một siêu giày kiểm soát bóng tối ưu, thiết kế cực đẹp', 1900000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(28, 'Adidas', 'Adidas Predator Edge .3 L FG Sapphire Edge pack- Hi-Res Blue S18/ Turbo', 'Adidas Predator Edge .3 L FG Sapphire Edge pack- Hi-Res Blue S18/ Turbo nằm trong bộ sưu tập giày Adidas Sapphire Edge pack, giày đá bóng Adidas Predator Edge… Model giày đá bóng Adidas mới nhất hướng tới một siêu giày kiểm soát bóng tối ưu, thiết kế cực đẹp', 1900000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (29, 'Adidas', 'Adidas Copa Sense .3 TF Edge of Darkness pack – Core Black/ Footwear White/ Blue Rush', 'Adidas Copa Sense .3 TF Edge of Darkness pack – Core Black/ Footwear White/ Blue Rush nằm trong bộ sưu tập Adidas Edge of Darkness pack, giày đá bóng chính hãng, giày sân cỏ nhân tạo, giày bóng đá Adidas Copa, upper làm từ da thật', 1900000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (30, 'Adidas', 'Adidas X SpeedFlow .3 TF White Spark pack – màu trắng', 'Adidas X SpeedFlow .3 TF White Spark pack – màu trắng cực đẹp, giày đá bóng Adidas chính hãng, nằm trong thế hệ mới nhất Adidas SpeedFlow- dòng giày tốc độ đỉnh cao', 1850000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (31, 'Puma', 'Puma Future Future Z 3.1 TT TF xanh chuối', 'Puma Future Future Z 3.1 TT TF xanh chuối giày đá bóng Puma chính hãng, giày đá bóng Puma Ultra, upper làm từ da tổng hợp, đế giày kiểu TF phù hợp chơi bóng trên sân cỏ nhân tạo', 1600000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
@@ -621,7 +621,7 @@ INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDesc
 (38, 'Puma', 'Puma 365 Concrete 1 St Roma TF- Energy Red/Red/Black', 'Puma 365 Concrete 1 St Roma TF- Energy Red/Red/Black giày đá bóng Puma chính hãng, sản phẩm cao cấp của Puma, tương đương các mẫu Adidas 19.1 TF, upper làm từ sợi kết hợp da tổng hợp, upper kiểu liền khối- không lưỡi gà, đế giày kiểu TF đá sân cỏ', 3100000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (39, 'Puma', 'Puma One 20.3 TT/TF Rise pack- Energy Peach/ Fizzy Yellow', 'Puma One 20.3 TT/TF Rise pack- Energy Peach/ Fizzy Yellow giày bóng đá sân cỏ nhân tạo, giày bóng đá Puma chính hãng, upper làm từ da thật cực mềm kết hợp dạng sợi, cổ giày được kéo cao liền', 1850000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (40, 'Puma', 'Puma Future 5.3 Netfit MG/AG – Ultra Yellow / Puma Black', 'Trải nghiệm Puma Future 5.3 MG, phiên bản tuyệt vời nhất chơi bóng trên sân cỏ nhân tạo hay tự nhiên. Puma Future 5.3 MG, món hàng được săn đón nhiều nhất trong năm', 1899000, 'TF, Cỏ nhân tạo', 2, 'SELLING'),
-(41, 'Puma', 'Giày đá bóng Puma Ultra 1.1 FG/AG- Shocking Orange/ Black', 'Giày đá bóng Puma Ultra 1.1 FG/AG- Shocking Orange/ Black sản phẩm mới nhất nằm trong dòng giày Puma Ultra hoàn toàn mới, giày đá bóng Puma Ultra cực đẹp, dòng giày hoàn toàn mới hướng tới trọng lượng siêu nhẹ. Puma áp dụng công nghệ MATRYXEVO độc quyền chế tạo', 5499000, 'Cỏ nhân tạo, AG, TF, Cỏ tự nhiên', 0, 'SELLING'),
+(41, 'Nike', 'Giày đá bóng Puma Ultra 1.1 FG/AG- Shocking Orange/ Black', 'Giày đá bóng Puma Ultra 1.1 FG/AG- Shocking Orange/ Black sản phẩm mới nhất nằm trong dòng giày Puma Ultra hoàn toàn mới, giày đá bóng Puma Ultra cực đẹp, dòng giày hoàn toàn mới hướng tới trọng lượng siêu nhẹ. Puma áp dụng công nghệ MATRYXEVO độc quyền chế tạo', 5499000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (42, 'Puma', 'Puma Ultra 1.1 FG Turbo pack – Black/ Luminous Pink', 'Puma Ultra 1.1 FG Turbo pack – Black/ Luminous Pink sản phẩm mới nhất nằm trong dòng giày Puma Ultra hoàn toàn mới, giày đá bóng Puma Ultra cực đẹp, dòng giày hoàn toàn mới hướng tới trọng lượng siêu nhẹ. Puma áp dụng công nghệ MATRYXEVO', 6000000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (43, 'Adidas', 'Adidas Predator Edge .1 FG Sapphire Edge pack- Hi-res Blue/ Turbo', 'Adidas Predator Edge .1 FG Sapphire Edge pack- Hi-res Blue/ Turbo màu xanh dương cực đẹp, nằm trong bộ sưu tập Sapphire Edge pack cực đẹp, là sản phẩm cao cấp nhất dành cho anh em có điều kiện, được sử dụng những công nghệ tân tiến nhất', 4999999, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (44, 'Mizuno', 'Mizuno Monarcida Neo II Select AS TF – Blue / White / Red', 'Mizuno Monarcida Neo II Select AS TF – Blue / White / Red giày bóng đá Mizuno chính hãng, upper làm từ da tổng hợp mềm mại, đế TF phù hợp với sân cỏ nhân tạo, cực kỳ phù hợp với phom chân bè, dễ đi dễ xỏ', 1399000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
@@ -632,7 +632,7 @@ INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDesc
 (49, 'Mizuno', 'Mizuno Morelia Neo III Pro AS TF – Core White / Volt / Light Pink', 'Mizuno Morelia Neo III Pro AS TF – Core White / Volt / Light Pink , giày đá bóng chính hãng, giày đá bóng sân cỏ nhân tạo, upper làm tư da tổng hợp, đế giày kiểu TF phù hợp với sân cỏ nhân tạo', 2999000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (50, 'Adidas', 'Adidas Predator Freak .1 L FG Superspectral – Black/ White/ Shock Pink', 'Adidas Predator Freak .1 L FG Superspectral – Black/ White/ Shock Pink, giày đá bóng Adidas Predator Freak… Model giày đá bóng mới nhất hướng tới một siêu giày kiểm soát bóng tối ưu, thiết kế cực đẹp', 2999000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (51, 'Adidas', 'Adidas X Ghosted .1 FG Superspectral- Shock Pink/ Core Black/ Screaming Orange', 'Adidas X Ghosted .1 FG Superspectral- Shock Pink/ Core Black/ Screaming Orange , giày đá bóng siêu nhẹ dành cho sân cỏ tự nhiên, upper Fluroskin cực mềm mại, khung sườn kiểu SpeedFrame siêu nhẹ khiến trọng lượng chỉ dưới 200 gram/chiếc', 5000000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
-(52, 'Adidas', 'Adidas Predator Freak + TF Meteorite- Solar Red/ Black/ White', 'Adidas Predator Freak + TF Meteorite- Solar Red/ Black/ White, giày đá bóng chính hãng, giày đá bóng không dây, giày đá bóng Adidas chính hãng, nằm trong bộ sưu tập giày Adidas Meteorite pack, giày đá bóng Adidas Predator Freak… Model giày đá bóng mới nhất', 4200000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
+(52, 'Adidas', 'Adidas Predator Freak + TF Meteorite- Solar Red/ Black/ White', 'Adidas Predator Freak + TF Meteorite- Solar Red/ Black/ White, giày đá bóng chính hãng, giày đá bóng không dây, giày đá bóng Adidas chính hãng, nằm trong bộ sưu tập giày Adidas Meteorite pack, giày đá bóng Adidas Predator Freak… Model giày đá bóng mới nhất', 4200000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
 (53, 'Adidas', 'Adidas Predator Freak .3 L FG White Spark – Cloud White / Iron Metallic / Solar Red', 'Adidas Predator Freak .3 L FG White Spark – Cloud White / Iron Metallic / Solar Red mới nhất hướng tới một siêu giày kiểm soát bóng tối ưu, thiết kế cực đẹp và mang đầy đủ công nghệ đỉnh cao nhất. Đây là phiên bản thấp cổ, đế FG phù hợp chơi bóng trên sân cỏ tự nhiên. Upper có 2 lớp, bên trong là sợi và bên ngoài được phủ da tổng hợp. Dòng sản phẩm giày Adidas Predator Freak định hướng sử dụng cho các tiền vệ công thượng thừa như Pogba', 1900000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
 (54, 'Nike', 'Nike Mercurial Superfly 8 Pro FG – Black/ Cyber/ Off Noir', 'Nike Mercurial Superfly 8 Pro FG – Black/ Cyber/ Off Noir', 4200000, 'FG, Cỏ tự nhiên', 1, 'SELLING'),
 (55, 'Nike', 'Nike Phantom GT Academy Flyease FG/MG – Photo Blue/ Metallic Silver', 'Nike Phantom GT Academy Flyease FG/MG – Photo Blue/ Metallic Silver thấp cổ, giày Phantom GT cổ truyền thống… sản phẩm hoàn toàn mới, thiết kế trẻ trung và mạnh mẽ, ngoại thất cực đẹp… dòng giày Nike Phantom GT hướng tới lối chơi toàn diện, hỗ trợ khả năng rê bóng, chuyển bóng và sút bóng', 1700000, 'FG, Cỏ tự nhiên', 0, 'SELLING'),
@@ -653,7 +653,8 @@ INSERT INTO `products` (`productID`, `productBrand`, `productName`, `productDesc
 (70, 'Nike', 'dong do', '', 2600000, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
 (71, 'Nike', 'dong do', '', 12, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
 (72, 'Nike', 'dong do', '', 2600000, 'TF, Cỏ nhân tạo', 0, 'DELETE'),
-(73, 'Nike', 'Nike Tiempo Legend 9 Academy TF – Team Red / Bright Crimson / White', 'Giày bóng đá Nike Tiempo Legend 9 Academy TF – Team Red / Bright Crimson / White – DA1191-616 ! Giày đá bóng Nike Tiempo Legend 9 Academy TF chính hãng, một trong những đôi giày Nike Tiempo nhẹ nhất từng được sản xuất nhưng vẫn giữ được mọi ưu điểm của dòng giày đá bóng huyền thoại này. Model Nike Tiempo 9 mang thiết kế mới khác biệt so với thệ hệ trước, upper có phần đơn điệu khi không sử dụng các khối kim cương 3D nữa, chất liệu chế tạo vẫn từ da bê cực mềm, đã được xử lý kĩ càng, bên ngoài được bọc một lớp da tổng hợp chống nước- đảm bảo chơi bóng trong mọi điều kiện thời tiết, bất kể trời mưa.', 1850000, 'TF, Cỏ nhân tạo', 0, 'SELLING');
+(73, 'Nike', 'Nike Tiempo Legend 9 Academy TF – Team Red / Bright Crimson / White', 'Giày bóng đá Nike Tiempo Legend 9 Academy TF – Team Red / Bright Crimson / White – DA1191-616 ! Giày đá bóng Nike Tiempo Legend 9 Academy TF chính hãng, một trong những đôi giày Nike Tiempo nhẹ nhất từng được sản xuất nhưng vẫn giữ được mọi ưu điểm của dòng giày đá bóng huyền thoại này. Model Nike Tiempo 9 mang thiết kế mới khác biệt so với thệ hệ trước, upper có phần đơn điệu khi không sử dụng các khối kim cương 3D nữa, chất liệu chế tạo vẫn từ da bê cực mềm, đã được xử lý kĩ càng, bên ngoài được bọc một lớp da tổng hợp chống nước- đảm bảo chơi bóng trong mọi điều kiện thời tiết, bất kể trời mưa.', 1850000, 'TF, Cỏ nhân tạo', 0, 'SELLING'),
+(74, 'Kamito', 'Kamito TA11 TF- Hồng/Trắng', 'Giày bóng đá Kamito TA11 TF- Hồng/Trắng KMA220172, mã sản phẩm KMA220172, giày đá bóng Kamito TA11, model giày bóng đá tốt nhất ở phân khúc giá dưới 1 triệu đồng tại Việt Nam dành cho sân cỏ nhân tạo. Chỉ với một ngân sách vừa phải anh em có thể sắm được sản phẩm tốt, đáp ứng đầy đủ nhu cầu chơi bóng cơ bản. Giày Kamito TA11 là thương hiệu chính hãng của Việt Nam chúng ta. Chữ TA11 viết tắt tên cầu thủ Nguyễn Tuấn Anh mang số áo 11, và nhằm tôn vinh cho những đóng góp của anh.', 690000, 'TF, Cỏ nhân tạo', 0, 'SELLING');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -723,7 +724,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
