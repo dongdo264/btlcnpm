@@ -54,7 +54,7 @@ router.post('/changepassword', async function(req, res) {
         });
     }
     // hash mật khẩu, đưa vào database
-    const pass = bcrypt.hashSync(newpass, 8);
+    const pass = bcrypt.hashSync(newpass, 10);
     await db.load("update accounts set password = '" + pass + "' where username = '" + user + "'");
     res.redirect('/admin');
 });
