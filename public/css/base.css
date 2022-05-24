@@ -222,7 +222,7 @@ p {
         width: 100%;
     }
     .grid__column_10 .grid__column {
-        width: calc(50% - 40px);
+        width: calc(50% - 28px);
     }
 
     .grid__column_10 {
