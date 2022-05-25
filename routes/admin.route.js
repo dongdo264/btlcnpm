@@ -322,7 +322,7 @@ router.get('/editProduct/:id' ,async function(req, res) {
     }
     const size_ = [];
     const rows_size = await db.load('select size, quantityInStock from productdetails where productID = ' + id)
-    for (var j = 37; j <= 44; j++) {
+    for (var j = 37; j <= 45; j++) {
         var check = true;
         for (var i = 0; i<rows_size.length;i++) {
             if (rows_size[i].size == j) {
@@ -367,6 +367,7 @@ router.post('/editProduct/:id', async function(req, res) {
     const size42 = req.body.size42;
     const size43 = req.body.size43;
     const size44 = req.body.size44;
+    const size45 = req.body.size45;
     await db.load('SET FOREIGN_KEY_CHECKS = 0');
     await db.load('delete from productdetails where productID = ' + id);
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 37, '" + size37 + "') ");
@@ -377,6 +378,7 @@ router.post('/editProduct/:id', async function(req, res) {
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 42, '" + size42 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 43, '" + size43 + "') ");
     await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 44, '" + size44 + "') ");
+    await db.load("insert into productdetails (productID, size, quantityInStock) values ('" + id + "', 45, '" + size45 + "') ");
     await db.load("update products set productName = '" + productName + "', productBrand = '" + productBrand + "', productDescription = '" + productDescription + "', productPrice = '" + productPrice + "', style = '" + style + "' where productID = " + id); 
     await db.load('SET FOREIGN_KEY_CHECKS = 1');
     const url = '/admin/editProduct';

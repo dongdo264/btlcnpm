@@ -45,6 +45,8 @@
                     </div>
                     </div>  
                 </div>   
+                {{#if empty}}
+                {{else}}
                 <nav class="nav__pagination">
                     <ul class="pagination">
                             {{#each this.page_number}} 
@@ -60,5 +62,6 @@
                             {{/each}}
                     </ul>
                 </nav>
+                {{/if}}
             </div>
 </div>
