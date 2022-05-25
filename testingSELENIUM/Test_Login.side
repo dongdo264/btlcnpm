@@ -289,43 +289,48 @@
       "value": "Tài khoản hoặc mật khẩu không chính xác"
     }]
   }, {
-    "id": "cf8e6421-4bde-40e6-acef-58866f4bbdce",
+    "id": "2cccd5e2-f329-409b-8360-d9d8d9821442",
     "name": "Test_05",
     "commands": [{
-      "id": "71d47386-d467-4700-85f7-731f4da48374",
+      "id": "e45c7514-ad9f-48af-8fb5-365b19c52933",
       "comment": "",
       "command": "open",
       "target": "http://localhost:3000/account/login",
       "targets": [],
       "value": ""
     }, {
-      "id": "e74a67ab-c583-4851-ba75-d0bfc540329b",
+      "id": "fe00abb7-3e0f-41b4-b771-5e4f4d36719f",
       "comment": "",
       "command": "setWindowSize",
-      "target": "715x666",
+      "target": "1296x696",
       "targets": [],
       "value": ""
     }, {
-      "id": "ab98a83c-a5c3-4bab-bd9d-61ddd7ffb80e",
+      "id": "e9d70831-4c82-43ba-a394-575fbbf8f865",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "407fa1a7-f5a4-4723-901c-413bfe5e0a62",
       "comment": "",
       "command": "type",
       "target": "name=username",
-      "targets": [],
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
       "value": "Admin"
     }, {
-      "id": "44fb0cf2-6124-4d64-bed9-57a2765ce8db",
-      "comment": "",
-      "command": "click",
-      "target": "name=username",
-      "targets": [
-        ["name=username", "name"],
-        ["css=input:nth-child(2)", "css:finder"],
-        ["xpath=//input[@name='username']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "4e23432d-f14b-46ca-8777-291bfc888dba",
+      "id": "9eeaac53-324f-457e-be58-780fbac143ca",
       "comment": "",
       "command": "click",
       "target": "name=password",
@@ -337,53 +342,60 @@
       ],
       "value": ""
     }, {
-      "id": "49180a3b-1184-49e4-8f46-dce3a478927b",
+      "id": "c3d736ef-0ce5-4c20-8f6a-bd8afe289cf5",
       "comment": "",
       "command": "type",
       "target": "name=password",
-      "targets": [],
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
       "value": "admin12"
     }, {
-      "id": "8aadc4af-49cd-496f-9538-4b8480a29e1c",
+      "id": "041f851d-9c7c-488a-8f30-325fceaf7c25",
       "comment": "",
       "command": "click",
       "target": "css=button",
-      "targets": [],
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
       "value": ""
     }, {
-      "id": "ac357155-a610-41d6-982f-4b3230b07dff",
+      "id": "3bc6f5bb-7e67-441a-af66-46fc54e2c58a",
       "comment": "",
-      "command": "open",
-      "target": "http://localhost:3000/admin",
-      "targets": [],
-      "value": ""
+      "command": "assertText",
+      "target": "css=.category:nth-child(1) .trademark",
+      "targets": [
+        ["css=.category:nth-child(1) .trademark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Quản lý đơn hàng')]", "xpath:innerText"]
+      ],
+      "value": "Quản lý đơn hàng"
     }]
   }, {
-    "id": "4d139573-c10a-4e0f-a296-7ac763c1ba2b",
+    "id": "5585a67b-de77-44fa-ad26-ed9dc97aecfc",
     "name": "Test_06",
     "commands": [{
-      "id": "ad773711-29c7-4aa6-a8e7-ed23b2eb9f18",
+      "id": "5aeab4ff-d77a-4b2c-8b8a-43ca3a587770",
       "comment": "",
       "command": "open",
       "target": "http://localhost:3000/account/login",
       "targets": [],
       "value": ""
     }, {
-      "id": "5bb37bee-c79b-4595-a8c5-3c8f2f55ec5f",
+      "id": "ede4a8f3-dadb-46f6-9b84-10dcf66d6b76",
       "comment": "",
       "command": "setWindowSize",
-      "target": "715x666",
+      "target": "1296x696",
       "targets": [],
       "value": ""
     }, {
-      "id": "65eb476b-7c4f-4f97-838e-418709e9342d",
-      "comment": "",
-      "command": "type",
-      "target": "name=username",
-      "targets": [],
-      "value": "Admin1"
-    }, {
-      "id": "50be5cde-7cf2-4213-806c-1c42a25f37e9",
+      "id": "78886615-c0b6-433a-bb43-66c3da249717",
       "comment": "",
       "command": "click",
       "target": "name=username",
@@ -395,7 +407,19 @@
       ],
       "value": ""
     }, {
-      "id": "a7168aa1-e562-4bb6-8cd7-e4f12fca9b38",
+      "id": "f3e5cfed-89e3-459c-93bc-d6b64cc87c10",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Admin1"
+    }, {
+      "id": "bf8272ff-caf3-45ab-8a89-1951235e8a47",
       "comment": "",
       "command": "click",
       "target": "name=password",
@@ -407,26 +431,40 @@
       ],
       "value": ""
     }, {
-      "id": "375e6c58-c8eb-412d-9974-a8fa40d46e26",
+      "id": "c82e0f37-ae62-4ea2-ba11-adebd34171af",
       "comment": "",
       "command": "type",
       "target": "name=password",
-      "targets": [],
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
       "value": "123456"
     }, {
-      "id": "ef013586-f1dd-4d34-9c6e-d07794095387",
+      "id": "80931c6a-5892-4c1f-8663-39aa585a8a07",
       "comment": "",
       "command": "click",
       "target": "css=button",
-      "targets": [],
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
       "value": ""
     }, {
-      "id": "813d6c7f-3b97-47d3-85fa-dd05d6bdfd92",
+      "id": "713ad6cd-11ac-42a3-b33e-2574006966b5",
       "comment": "",
-      "command": "open",
-      "target": "http://localhost:3000/admin",
-      "targets": [],
-      "value": ""
+      "command": "assertText",
+      "target": "css=.category:nth-child(1) .trademark",
+      "targets": [
+        ["css=.category:nth-child(1) .trademark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Quản lý đơn hàng')]", "xpath:innerText"]
+      ],
+      "value": "Quản lý đơn hàng"
     }]
   }],
   "suites": [{
