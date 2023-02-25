@@ -1,0 +1,24 @@
+[
+    {
+    "mysql" : {
+        "host":"bt70nktlmvzrg9bb2xkf-mysql.services.clever-cloud.com",
+        "connectionLimit" : 100,
+        "port":3306,
+        "user":"uz7pltl2wsupauhm",
+        "password":"VsVaqeAUhr2el7iHgIHO",
+        "dateStrings" : "date",
+        "database":"bt70nktlmvzrg9bb2xkf"
+    } 
+}, 
+{
+    "mysql" : {
+        "host":"remotemysql.com",
+        "connectionLimit" : 100,
+        "port":3306,
+        "user":"x8ssn7PJWT",
+        "password":"opVI02e7hd",
+        "dateStrings" : "date",
+        "database":"x8ssn7PJWT"
+    } 
+}  
+]
