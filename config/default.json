@@ -1,10 +1,11 @@
 {
     "mysql" : {
-        "host":"localhost",
+        "host":"sql8.freemysqlhosting.net",
+        "connectionLimit" : 100,
         "port":3306,
-        "user":"root",
-        "password":"",
+        "user":"sql8601003",
+        "password":"EuTajrI5jW",
         "dateStrings" : "date",
-        "database":"qlbh"
-    }
-}
+        "database":"sql8601003"
+    } 
+}  
