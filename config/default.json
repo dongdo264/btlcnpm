@@ -1,11 +1,11 @@
 {
     "mysql" : {
-        "host":"sql8.freemysqlhosting.net",
+        "host":"bt70nktlmvzrg9bb2xkf-mysql.services.clever-cloud.com",
         "connectionLimit" : 100,
         "port":3306,
-        "user":"sql8601003",
-        "password":"EuTajrI5jW",
+        "user":"uz7pltl2wsupauhm",
+        "password":"VsVaqeAUhr2el7iHgIHO",
         "dateStrings" : "date",
-        "database":"sql8601003"
+        "database":"bt70nktlmvzrg9bb2xkf"
     } 
 }  
